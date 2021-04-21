@@ -1,6 +1,8 @@
 https://www.itsolutionstuff.com/post/laravel-8-user-roles-and-permissions-tutorialexample.html
 
-# analytic-hierarchy-process
+# Sistem Pendukung Keputusan Pemilihan Laptop Menggunakan Metode AHP dan Profile Matching
+Sistem Pendukung Keputusan Pemilihan Laptop Menggunakan Metode AHP dan Profile Matching
+# Laptop Selection Decision Support System Using AHP Method and Profile Matching
 Simple decision support system application with combination of AHP method and Profile Matching method.
 
 ## Installation
