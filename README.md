@@ -1,5 +1,9 @@
 https://www.itsolutionstuff.com/post/laravel-8-user-roles-and-permissions-tutorialexample.html
 
+Created by: Muhammad Mukharir
+
+===  CS17 ===
+
 # Sistem Pendukung Keputusan Pemilihan Laptop Menggunakan Metode AHP dan Profile Matching
 Sistem Pendukung Keputusan Pemilihan Laptop Menggunakan Metode AHP dan Profile Matching
 # Laptop Selection Decision Support System Using AHP Method and Profile Matching
@@ -25,9 +29,8 @@ pass : 123456
 
 ## Screenshot
 
-![image](https://user-images.githubusercontent.com/32015601/115595976-c7f5c680-a301-11eb-993b-e9ffa80d88d0.png)
-![image](https://user-images.githubusercontent.com/32015601/115597675-b7dee680-a303-11eb-8a82-0cc18a5a90a8.png)
-
+![image](https://user-images.githubusercontent.com/32015601/116123652-77111400-a6ed-11eb-8a95-273e1465ad98.png)
+![image](https://user-images.githubusercontent.com/32015601/116123708-8a23e400-a6ed-11eb-8dd7-437e2c968a36.png)
 
 
 
