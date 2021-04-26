@@ -1,6 +1,32 @@
 https://www.itsolutionstuff.com/post/laravel-8-user-roles-and-permissions-tutorialexample.html
 
+# Sistem Pendukung Keputusan Pemilihan Laptop Menggunakan Metode AHP dan Profile Matching
+Sistem Pendukung Keputusan Pemilihan Laptop Menggunakan Metode AHP dan Profile Matching
+# Laptop Selection Decision Support System Using AHP Method and Profile Matching
+Simple decision support system application with combination of AHP method and Profile Matching method.
 
+## Installation
+1. git clone https://github.com/MuhammadMukharir/SPK-pemilihan-laptop-metode-AHP-dan-Profile-Matching-PM.git projectName
+2. cd projectName
+3. composer install
+4. npm install
+5. edit file .env to fit your environment such your DatabaseName
+6. php artisan key:generate
+7. Create an empty database for our application
+8. In the .env file, add database information to allow Laravel to connect to the database
+9. php artisan migrate
+10. php artisan db:seed
+11. php artisan serve
+
+login <br>
+email: admin@gmail.com <br>
+pass : 123456
+
+
+## Screenshot
+
+![image](https://user-images.githubusercontent.com/32015601/115595976-c7f5c680-a301-11eb-993b-e9ffa80d88d0.png)
+![image](https://user-images.githubusercontent.com/32015601/115597675-b7dee680-a303-11eb-8a82-0cc18a5a90a8.png)
 
 
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
