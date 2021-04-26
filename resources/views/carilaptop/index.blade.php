@@ -29,7 +29,7 @@
         <th>Product Name</th>
         <th>Harga</th>
         <th>Details</th>
-        <th>Action</th>
+        <th width='320px'>Action</th>
     </tr>
     @foreach ($products as $product)
     <tr>
@@ -38,7 +38,30 @@
         <td><strong> Rp{{ number_format($product->harga,0,",",".") }} </strong></td>
         <td>{{ $product->detail }}</td>
         <td>
-            <a class="btn btn-info" href="{{ route('search.show',$product->id) }}">Show</a>
+            {{-- <a class="btn btn-info" href="{{ route('search.show',$product->id) }}">Show</a> --}}
+
+            @if ( !($product->fav_product_id) )
+
+            <form action="{{ route('myfavorites.store',$product->id) }}" method="POST">
+                <a class="btn btn-info" href="{{ route('search.show',$product->id) }}">Show</a>
+
+                <input type="hidden" name="product_id" value="{{ $product->id }}">
+                <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
+                @csrf
+                <button type="submit" class="btn btn-link"> <i class="fas fa-star"></i> Add to favorite</button>
+                {{-- <a class="btn btn-danger" href="{{ route('myfavorites.store') }}"> Add to favorite</a> --}}
+            </form>
+        @else
+            <form action="{{ route('myfavorites.destroy',$product->id) }}" method="POST">
+                
+                <a class="btn btn-info" href="{{ route('search.show',$product->id) }}">Show</a>
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="btn btn-link "> <i class="far fa-star"></i> Remove from favorite</button>
+
+            </form>  
+        @endif
+
         </td>
     </tr>
     @endforeach

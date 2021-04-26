@@ -8,7 +8,9 @@
 
     @if ( !($is_favorite) )
         <form action="{{ route('myfavorites.store',$product->id) }}" method="POST">
-            <a class="btn btn-secondary" href="{{ route('search.index') }}"> Back</a>
+
+            {{-- <a class="btn btn-secondary" href="{{ route('search.index') }}"> Back</a> --}}
+            <a class="btn btn-secondary" href="{{ url()->previous()  }}"> Back</a>
 
             <input type="hidden" name="product_id" value="{{ $product->id }}">
             <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
@@ -18,7 +20,8 @@
         </form>
     @else
         <form action="{{ route('myfavorites.destroy',$product->id) }}" method="POST">
-            <a class="btn btn-secondary" href="{{ route('search.index') }}"> Back</a>
+            {{-- <a class="btn btn-secondary" href="{{ route('search.index') }}"> Back</a> --}}
+            <a class="btn btn-secondary" href="{{ url()->previous()  }}"> Back</a>
             @csrf 
             @method('DELETE')
             <button type="submit" class="btn btn-danger"> <i class="far fa-star"></i> Remove from favorite</button>

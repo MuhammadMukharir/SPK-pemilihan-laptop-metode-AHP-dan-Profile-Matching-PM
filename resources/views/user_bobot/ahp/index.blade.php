@@ -3,7 +3,7 @@
 @section('title', 'AHP Management')
 
 @section('content_header')
-<h2> AHP Management Admin </h2>
+<h2> AHP Management </h2>
 @stop
 
 @section('content')
@@ -45,7 +45,7 @@
             <h2>Users Management</h2>
         </div> --}}
         <div class="pull-right">
-            <a class="btn btn-success" href="{{ route('ahp.create') }}"> <i class="fas fa-plus"></i> Create New Calculation</a>
+            <a class="btn btn-success" href="{{ route('user.bobot.ahp.create') }}"> <i class="fas fa-plus"></i> Create New Calculation</a>
         </div>
     </div>
 </div>
@@ -57,7 +57,6 @@
 <th style="text-align: center">No</th>
 <th>Nama Perhitungan</th>
 <th>Detail</th>
-<th>Nama Pembuat</th>
 <th>Atribut</th>
 <th width="320px">Action</th>
 </tr>
@@ -67,13 +66,17 @@
     <td>{{ $ahp->nama_perhitungan }}</td>
     <td>{{ $ahp->detail }}</td>
 
-    <td>{{ $ahp->name }}</td>
-
     <td>
 
     @if ( $ahp->is_created_by_admin ) <label class="badge badge-pill badge-info"> Dibuat Admin </label>
-    @else <label class="badge badge-pill badge-success"> Dibuat User </label>
+    @else 
+        @if ( $ahp->creator_id === $this_user->id )
+            <label class="badge badge-pill badge-success"> Dibuat oleh Anda</label>
+        @else
+            <label class="badge badge-pill badge-success"> Dibuat User</label>
+        @endif
     @endif
+    
 
     @if ( $ahp->is_konsisten ) <label class="badge badge-pill badge-success"> Perhitungan Konsisten </label>
     @else       <label class="badge badge-danger"> Perhitungan Belum Konsisten </label>    
@@ -91,22 +94,27 @@
     </td>
 
     <td>
-    <a class="btn btn-info" href="{{ route('ahp.show',$ahp->id_perhitungan) }}">Show</a>
-    <a class="btn btn-primary" href="{{ route('ahp.edit',$ahp->id_perhitungan) }}">Edit</a>
+    <a class="btn btn-info" href="{{ route('user.bobot.ahp.show',$ahp->id_perhitungan) }}">Show</a>
 
-    @if ($ahp->id_perhitungan !== 1)
-        {!! Form::open(['method' => 'DELETE','route' => ['ahp.destroy', $ahp->id_perhitungan],'style'=>'display:inline']) !!}
+    @if ($ahp->is_created_by_admin) 
+        {{-- <a class="btn btn-link disabled" href="">Edit</a> --}}
+    @else <a class="btn btn-primary" href="{{ route('user.bobot.ahp.edit',$ahp->id_perhitungan) }}">Edit</a>
+        
+    @endif
+
+    @if ($ahp->id_perhitungan !== 1 && !$ahp->is_created_by_admin)
+        {!! Form::open(['method' => 'DELETE','route' => ['user.bobot.ahp.destroy', $ahp->id_perhitungan],'style'=>'display:inline']) !!}
             {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
             {{-- {!! Form::button('<i class="fas fa-user-times"></i>Delete', ['class' => 'btn btn-danger', 'type' => 'submit']) !!} --}}
         {!! Form::close() !!}  
     @else
-        <a class="btn btn-danger disabled">Delete</a>
+        {{-- <a class="btn btn-danger disabled">Delete</a> --}}
         
     @endif
         
 
     @if (!($this_user->id_perhitungan_aktif === $ahp->id_perhitungan) && $ahp->is_konsisten)
-        {!! Form::open(['method' => 'post','route' => ['ahp.toggle', $ahp->id_perhitungan],'style'=>'display:inline']) !!}
+        {!! Form::open(['method' => 'post','route' => ['user.bobot.ahp.toggle', $ahp->id_perhitungan],'style'=>'display:inline']) !!}
             {!! Form::submit('Set Aktif', ['class' => 'btn btn-warning']) !!}
             {{-- {!! Form::button('<i class="fas fa-user-times"></i>Delete', ['class' => 'btn btn-danger', 'type' => 'submit']) !!} --}}
         {!! Form::close() !!}

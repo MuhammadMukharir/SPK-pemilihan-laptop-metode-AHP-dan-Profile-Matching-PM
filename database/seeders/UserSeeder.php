@@ -9,6 +9,8 @@ use Spatie\Permission\Models\Permission;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
 
+use App\Models\BobotLangsung;
+
 class UserSeeder extends Seeder
 {
     /**
@@ -47,7 +49,8 @@ class UserSeeder extends Seeder
             ]
         ];
 
-        foreach ($users as $user) {
+        foreach ($users as $user) 
+        {
             $this_user = User::create(
                 [
                     'name' => $user['name'],
@@ -57,6 +60,24 @@ class UserSeeder extends Seeder
             );
             
             $this_user->assignRole(['User']);
+
+            $init_bobot_langsung = BobotLangsung::create(
+                [
+                    'id_user'   => $this_user->id,
+                    'c1'        => 1,
+                    'c2'        => 1,
+                    'c3'        => 1,
+                    'c4'        => 1,
+                    'c5'        => 1,
+                    'c6'        => 1,
+                    'c7'        => 1,
+                    'c8'        => 1,
+                    'c9'        => 1,
+                    'c10'       => 1,
+                    'c11'       => 1,
+                    'c12'       => 1,
+                ]
+            );
         }
 
 

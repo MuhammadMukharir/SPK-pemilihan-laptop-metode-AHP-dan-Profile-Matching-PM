@@ -6,7 +6,12 @@
 <h2> Show Product </h2>
 <div class="pull-right">
     
+    {{-- <a class="btn btn-secondary" href="{{ route('myfavorites.index') }}"> Back</a> --}}
+
     @if ( !($is_favorite) )
+        {{-- <a class="btn btn-success" href="{{ route('myfavorites.store',$product->id) }}"> Add to favorite</a> --}}
+        {{-- <button type="submit" class="btn btn-success"> <i class="fas fa-star"></i> Add to favorite</button> --}}
+
         <form action="{{ route('myfavorites.store',$product->id) }}" method="POST">
             <a class="btn btn-secondary" href="{{ route('myfavorites.index') }}"> Back</a>
 
@@ -17,7 +22,10 @@
             {{-- <a class="btn btn-danger" href="{{ route('myfavorites.store') }}"> Add to favorite</a> --}}
         </form>
     @else
+        {{-- <a class="btn btn-danger" href="{{ route('myfavorites.destroy',$product->id) }}"> Remove from favorite</a> --}}
+
         <form action="{{ route('myfavorites.destroy',$product->id) }}" method="POST">
+            
             <a class="btn btn-secondary" href="{{ route('myfavorites.index') }}"> Back</a>
             @csrf
             @method('DELETE')

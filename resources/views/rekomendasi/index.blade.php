@@ -35,6 +35,19 @@
 @stop
 
 @section('content')
+<p>Hello {{ auth()->user()->name }}, masukkan nilai preferensi spesifikasi laptop yang Anda inginkan atau gunakan nilai preset yang tersedia</p>
+
+  <div class="col-xs-5 col-sm-5 col-md-5">
+    <div class="form-group">
+        {{-- <label for="inputStatus">Jenis layar</label> --}}
+        <strong>Pembobotan yang digunakan:</strong>
+        <select name="jenis_pembobotan" class="form-control custom-select" required>
+            <option value="" selected disabled >-- Pilih salah satu --</option>
+            <option value="1">Analytical Hierarchy Process (AHP)</option>
+            <option value="0">Pembobotan langsung</option>
+        </select>
+    </div>
+</div>
 
 <div class="content">
     <div class="container-fluid">

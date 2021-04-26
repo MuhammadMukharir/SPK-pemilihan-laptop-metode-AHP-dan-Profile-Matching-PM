@@ -17,7 +17,14 @@ class SearchController extends Controller
 
         // $products = Product::latest()->paginate(6);
         // $products = Product::where('name', 'LIKE', '%'.$search.'%')->latest()->paginate(6);
-        $products = Product::where('name', 'LIKE', '%'.$search.'%')->latest()->get();
+        // $products = Product::where('name', 'LIKE', '%'.$search.'%')->latest()->get();
+        $products = Product::where('name', 'LIKE', '%'.$search.'%')
+        ->leftJoin('favorites','favorites.fav_product_id','=','products.id')
+        // ->where(Auth::id())
+        ->where('favorites.user_id', Auth::id())
+        ->orWhere('favorites.fav_product_id', null)
+        ->orderBy('products.created_at', 'desc')
+        ->get();
 
         // dd($products);
 
@@ -52,7 +59,7 @@ class SearchController extends Controller
 
         // send data to view
         $product = Product::where('id', $id)->first();
-        $is_favorite = Favorite::where([['user_id', $this_user_id], ['product_id', $id]])->first();
+        $is_favorite = Favorite::where([['user_id', $this_user_id], ['fav_product_id', $id]])->first();
 
         return view('carilaptop.show',compact('product', 'is_favorite'));
     }

@@ -270,9 +270,29 @@ return [
             'icon_color' => '',
         ],
         [
-            'text' => 'My Favorite',
-            'url'  => 'laptop/myfavorites',
-            'icon' => 'fas fa-fw fa-star',
+            'text' => 'Hasil Rekomendasi',
+            'url'  => 'laptop/rekomendasi/hasil',
+            'icon' => 'fas fa-fw fa-poll',
+            'can'  => 'user',
+            'icon_color' => '',
+        ],
+
+        // metode pembobotan
+        [
+            'header' => 'METODE PEMBOBOTAN',
+            'can'  => 'user',
+        ],
+        [
+            'text' => 'Pembobotan AHP',
+            'url'  => 'user/bobot/ahp',
+            'icon' => 'fas fa-fw fa-balance-scale',
+            'can'  => 'user',
+            'icon_color' => '',
+        ],
+        [
+            'text' => 'Pembobotan langsung',
+            'url'  => 'user/bobot/langsung',
+            'icon' => 'fas fa-fw fa-balance-scale',
             'can'  => 'user',
             'icon_color' => '',
         ],
@@ -293,6 +313,13 @@ return [
             'url'  => 'myprofile/password',
             'icon' => 'fas fa-fw fa-lock',
             'can'  => 'user',
+        ],
+        [
+            'text' => 'My Favorite',
+            'url'  => 'laptop/myfavorites',
+            'icon' => 'fas fa-fw fa-star',
+            'can'  => 'user',
+            'icon_color' => '',
         ],
         
         // admin previlage
@@ -329,7 +356,7 @@ return [
             'icon_color' => '',
         ],
         [
-            'text' => 'AHP WEIGHTING',
+            'text' => 'AHP WEIGHTING ADMIN',
             'url'  => 'ahp',
             'icon' => 'fas fa-fw fa-balance-scale',
             'can'  => 'admin',

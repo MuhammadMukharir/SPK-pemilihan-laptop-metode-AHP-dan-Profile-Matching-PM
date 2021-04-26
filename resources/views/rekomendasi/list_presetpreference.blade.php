@@ -11,7 +11,7 @@
 
 @section('content')
 
-<p>Hello {{ auth()->user()->name }}, here you can choose preset preferences</p>
+<p>Hello {{ auth()->user()->name }}, silakan pilih nilai preset preferensi spesifikasi laptop yang tersedia</p>
 
 <div class="content">
     <div class="container-fluid">

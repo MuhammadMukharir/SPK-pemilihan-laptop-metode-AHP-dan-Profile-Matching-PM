@@ -98,8 +98,8 @@ class PresetPreferenceSeeder extends Seeder
                 'resolusi_layar'   => '2073600',
             ],
             [
-                'nama'             => 'Demo Proposal',
-                'detail'           => 'cross check perhitungan proposal',
+                'nama'             => 'LAPTOP EDITING 2D v2',
+                'detail'           => 'Laptop editing 2D v2',
                 'harga'            => '13000000',
                 'prosesor'         => '20',
                 'kapasitas_ram'    => '8',

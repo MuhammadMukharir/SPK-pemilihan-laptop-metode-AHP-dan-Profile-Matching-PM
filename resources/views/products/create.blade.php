@@ -134,7 +134,7 @@
                 {{-- <label for="inputStatus">Jenis layar</label> --}}
                 <strong>Jenis layar:</strong>
                 <select name="jenis_layar" class="form-control custom-select" required>
-                    <option selected disabled>-- Pilih salah satu --</option>
+                    <option value="" selected disabled>-- Pilih salah satu --</option>
                     <option value="1">Twisted Nematic (TN)</option>
                     <option value="3">In-Plane Switching (IPS)</option>
                     <option value="5">Organic Light-emitting Diode (OLED)</option>

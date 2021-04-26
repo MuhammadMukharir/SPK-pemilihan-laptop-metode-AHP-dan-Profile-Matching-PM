@@ -9,7 +9,10 @@ use App\Models\Product;
 
 use App\Models\AHP;
 use App\Models\Bobot;
+use App\Models\BobotLangsung;
 use Auth;
+use App\Models\User;
+use App\Models\HasilRekomendasi;
 
 class RekomendasiController extends Controller
 {
@@ -53,13 +56,51 @@ class RekomendasiController extends Controller
         return view('rekomendasi.preset_detail',compact('presetpreference'));
     }
 
+    public function hasil_index(Product $product)
+    {
+        // $products = 
+        $this_user_id = Auth::id();
+        // $products = Product::leftJoin('favorites','favorites.fav_product_id','=','products.id')
+        // // ->where(Auth::id())
+        // ->where('favorites.user_id', $this_user_id)
+        // ->orWhere('favorites.fav_product_id', null)
+        // ->leftJoin('hasil_rekomendasi','hasil_rekomendasi.product_id','=','products.id')
+        // ->orderBy('hasil_rekomendasi.n_bobot', 'desc')
+        // ->get();
+
+        $products = HasilRekomendasi::where('hasil_rekomendasi.user_id', $this_user_id)
+        ->leftJoin('products', 'products.id', 'hasil_rekomendasi.product_id')
+        ->leftJoin('favorites', 'favorites.fav_product_id', 'hasil_rekomendasi.product_id')
+        ->orderBy('hasil_rekomendasi.n_bobot', 'desc')
+        ->get();
+
+        return view('rekomendasi.list_rekomendasi', compact('products'));
+    }
+
     public function hasil(Request $input)
     {
         request()->validate($this->preference_atribute_required);
 
         // dd($input->harga);
 
-        $products = Product::latest()->get();
+
+        // $products = Product::latest()->get();
+        
+        // $coba = DB::table('products')
+        // ->select('*')
+        // ->leftJoin('favorites','favorites.user_id','=','users.id')
+        // ->where(Auth::id())
+        // ->get();
+
+        $products = Product::leftJoin('favorites','favorites.fav_product_id','=','products.id')
+        // ->where(Auth::id())
+        ->where('favorites.user_id', Auth::id())
+        ->orWhere('favorites.fav_product_id', null)
+        ->orderBy('products.created_at', 'desc')
+        ->get();
+
+        // dd($coba);
+        
 
         // dd($products[0]->harga);
 
@@ -192,9 +233,44 @@ class RekomendasiController extends Controller
         $gap_refresh_rate     = hitungBobotBerdasarkanInterpolasiLinearGAP($gap_refresh_rate);
         $gap_resolusi_layar   = hitungBobotBerdasarkanInterpolasiLinearGAP($gap_resolusi_layar);
         
-        $is_bobot_dipilih = AHP::where('is_konsisten', '=', 1)->where('is_dipilih', '=' , 1)->first();
+        $this_user_id = Auth::id();
+        $this_user = User::where('id', $this_user_id)->first();
+        
 
-        $bobot_ahp = Bobot::where('id_perhitungan', '=', $is_bobot_dipilih->id_perhitungan)->first();
+        $bobot_ahp = null;
+
+        // jika menggunakan pembobotan AHP
+        if ($input->jenis_pembobotan) {
+            
+            $is_bobot_dipilih = AHP::where('is_konsisten', '=', 1)->where('id_perhitungan', $this_user->id_perhitungan_aktif)->first();
+            if (empty($is_bobot_dipilih)) {return redirect()->back()->with('error', 'Pastikan Anda telah mengaktifkan satu opsi pembobotan AHP yang konsisten');}
+            
+            $bobot_ahp = Bobot::where('id_perhitungan', '=', $is_bobot_dipilih->id_perhitungan)->first();
+            
+        
+        // jika menggunakan pembobotan Langsung
+        } else{
+
+            
+            $bobot_ahp = BobotLangsung::where('id_user', '=', $this_user_id)->first();
+
+            // normalisasi
+            $sum = $bobot_ahp->c1 + $bobot_ahp->c2 + $bobot_ahp->c3 + $bobot_ahp->c4 + $bobot_ahp->c5 + $bobot_ahp->c6
+                    + $bobot_ahp->c7 + $bobot_ahp->c8 + $bobot_ahp->c9 + $bobot_ahp->c10 + $bobot_ahp->c11 + $bobot_ahp->c12;
+            $bobot_ahp->c1 = $bobot_ahp->c1 / $sum;
+            $bobot_ahp->c2 = $bobot_ahp->c2 / $sum;
+            $bobot_ahp->c3 = $bobot_ahp->c3 / $sum;
+            $bobot_ahp->c4 = $bobot_ahp->c4 / $sum;
+            $bobot_ahp->c5 = $bobot_ahp->c5 / $sum;
+            $bobot_ahp->c6 = $bobot_ahp->c6 / $sum;
+            $bobot_ahp->c7 = $bobot_ahp->c7 / $sum;
+            $bobot_ahp->c8 = $bobot_ahp->c8 / $sum;
+            $bobot_ahp->c9 = $bobot_ahp->c9 / $sum;
+            $bobot_ahp->c10 = $bobot_ahp->c10 / $sum;
+            $bobot_ahp->c11 = $bobot_ahp->c11 / $sum;
+            $bobot_ahp->c12 = $bobot_ahp->c12 / $sum;
+        }
+        // $bobot_ahp = Bobot::where('id_perhitungan', '=', $is_bobot_dipilih->id_perhitungan)->first();
 
         // kalikan bobot_gap (PM) dengan bobot_ahp (AHP) => SAW
         $arr_for_sort_product = array();
@@ -239,14 +315,41 @@ class RekomendasiController extends Controller
             array_push($arr_for_sort_product, $temp);
         }
 
+        // dd($arr_for_sort_product);
+
         // sort by n_bobot (nilai akhir alternatif)
         $col = array_column( $arr_for_sort_product, 'n_bobot' );
         array_multisort( $col, SORT_DESC, $arr_for_sort_product );
+
+
+        // dd($arr_for_sort_product);
+        // delete dulu apabila pernah melakukan rekomendasi
+        HasilRekomendasi::where('user_id', $this_user_id)->delete();
+
+        // mulai memasukkan data ke Tabel hasil_rekomendasi
+        $data = array();
+        foreach ($arr_for_sort_product as $key => $arr) {
+            $temp = array(
+                'user_id'    => $this_user_id,
+                'product_id' => $arr['product']->id,
+                'n_bobot'    => $arr['n_bobot'],
+            );
+            array_push($data, $temp);
+        }
+        HasilRekomendasi::insert($data);
+        // dd($data);
 
         // ambil column product dari array yang sudah di sort
         $hasil_rekomendasi = array_column( $arr_for_sort_product, 'product');
         $n_bobot = array_column( $arr_for_sort_product, 'n_bobot');
         $products = $hasil_rekomendasi;
+
+        foreach ($products as $key => $product) {
+            $product->n_bobot = $n_bobot[$key];
+        }
+
+        // $products[0]->n_bobot = 999;
+        // dd($products[0]->n_bobot);
 
         // dd($n_bobot);
         
@@ -255,6 +358,17 @@ class RekomendasiController extends Controller
         return view('rekomendasi.list_rekomendasi',compact('products', 'n_bobot'));
 
     }
+
+    // public function show(Product $product, $id)
+    // {
+    //     $this_user_id = Auth::id();
+
+    //     // send data to view
+    //     $product = Product::where('id', $id)->first();
+    //     $is_favorite = Favorite::where([['user_id', $this_user_id], ['fav_product_id', $id]])->first();
+
+    //     return view('carilaptop.show',compact('product', 'is_favorite'));
+    // }
 
 
     

@@ -3,37 +3,32 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
-// use App\Models\PresetPreference;
-// use App\Models\Product;
+use Auth;
 
 use App\Models\AHP;
 use App\Models\Bobot;
 use App\Models\PerbandinganBerpasangan;
+use App\Models\BobotLangsung;
 
 use Illuminate\Support\Facades\DB;
-use Auth;
 use App\Models\User;
 
-class AHPController extends Controller
+class UserMetodePembobotanController extends Controller
 {
+    // tidak jadi digunakan untuk validasi pembobotan langsung
     protected $product_atribute_required = array(
-        'name'          => 'required',
-        'detail'        => '',
-        'harga'             => 'required|numeric|between:0,200000000',
-        'prosesor'          => 'required|numeric|between:0,200',
-        'kapasitas_ram'     => 'required|numeric|between:0,64',
-        'kapasitas_hdd'     => 'required|numeric|between:0,5000',
-        'kapasitas_ssd'     => 'required|numeric|between:0,5000',
-        'kapasitas_vram'    => 'required|numeric|between:0,32',
+        'harga'             => 'required|numeric|between:0,10',
+        'prosesor'          => 'required|numeric|between:0,10',
+        'kapasitas_ram'     => 'required|numeric|between:0,10',
+        'kapasitas_hdd'     => 'required|numeric|between:0,10',
+        'kapasitas_ssd'     => 'required|numeric|between:0,10',
+        'kapasitas_vram'    => 'required|numeric|between:0,10',
         'kapasitas_maxram'  => 'required|numeric|between:0,64',
         'berat'             => 'required|numeric|between:0,10000',
         'ukuran_layar'      => 'required|numeric|between:5,30',
         'jenis_layar'       => 'required|numeric|between:0,5',
         'refresh_rate'      => 'required|numeric|between:0,1000',
         'resolusi_layar'    => 'required|numeric|between:0,80000000'
-
-
     );
 
     protected $ahp_atribute_required = array(
@@ -107,53 +102,25 @@ class AHPController extends Controller
         'c11c12'    => 'required|numeric|between:0,9', 
     );
 
-
-    //
-    public function index()
+    // pembobotan AHP
+    public function ahp_index()
     {
-        // $ahplist = AHP::latest()->paginate(6);
-        // $ahplist = AHP::latest()->get();
         $this_user = User::where('id', Auth::id())->first();
-        // $users = User::get();
-
-        // $nama_pembuat = array();
-        // foreach ($ahplist as $key => $ahp) {
-        //     $temp = User::where('id', $ahp->creator_id)->first();
-        //     array_push($nama_pembuat, $temp->name);
-        // }
-
         $ahplist = DB::table('ahp')
         ->select('*')
-        ->join('users','users.id','=','ahp.creator_id')
-        ->orderBy('ahp.created_at', 'desc')->get();
+        ->where('ahp.is_created_by_admin', 1)
+        ->orWhere('ahp.creator_id', $this_user->id)
+        ->latest()->get();
 
-        // $ahplist = DB::table('users')
-        // ->select('*')
-        // ->join('ahp', 'ahp.creator_id','=', 'users.id')
-        // ->get();
-        // dd($ahplist);
-
-        // dd($this_user);
-
-        // return view('presetpreferences.index',compact('presetpreferences'))
-        //     ->with('i', (request()->input('page', 1) - 1) * 6);
-        
-        return view('ahp.index',compact('ahplist', 'this_user'));
+        return view('user_bobot.ahp.index',compact('ahplist', 'this_user'));
     }
 
-    public function create()
+    public function ahp_create()
     {
-        return view('ahp.create');
+        return view('user_bobot.ahp.create');
     }
 
-    
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function ahp_store(Request $request)
     {
         request()->validate($this->ahp_atribute_required);
     
@@ -460,58 +427,39 @@ class AHPController extends Controller
 
 
         if ($is_konsisten) {
-            return redirect()->route('ahp.show', $ahp_obj->id_perhitungan)
+            return redirect()->route('user.bobot.ahp.show', $ahp_obj->id_perhitungan)
                         ->with('success','AHP calculation added successfully and consistent.');
         } elseif (!$is_konsisten) {
-            return redirect()->route('ahp.show', $ahp_obj->id_perhitungan)
+            return redirect()->route('user.bobot.ahp.show', $ahp_obj->id_perhitungan)
                         ->with('danger','AHP calculation added successfully but not consistent.');
         }else {
-            return redirect()->route('ahp.show', $ahp_obj->id_perhitungan)
+            return redirect()->route('user.bobot.ahp.show', $ahp_obj->id_perhitungan)
                         ->with('danger','ooppss something wrong');
         }
 
-        // if ($is_konsisten) {
-        //     return redirect()->route('ahp.index')
-        //                 ->with('success','AHP calculation added successfully and consistent.');
-        // } elseif (!$is_konsisten) {
-        //     return redirect()->route('ahp.index')
-        //                 ->with('warning','AHP calculation added successfully but not consistent.');
-        // }else {
-        //     return redirect()->route('ahp.index')
-        //                 ->with('danger','ooppss something wrong');
-        // }
         
             
     }
-    
-    public function show($id)
-    {
-        // dd($init_id_perhitungan);
-        // dd($input->ahp);
-        // dd($ahp_obj->id());
 
-        // $AHP
+    public function ahp_show($id)
+    {
         $ahp = AHP::where('id_perhitungan', '=', $id)->first();
         $bobot = Bobot::where('id_perhitungan', '=', $id)->first();
         $PB_obj = PerbandinganBerpasangan::where('id_perhitungan', '=', $id)->get();
 
-        return view('ahp.show',compact('ahp', 'bobot', 'PB_obj'));
-
+        return view('user_bobot.ahp.show',compact('ahp', 'bobot', 'PB_obj'));
     }
-    
-    public function edit(AHP $ahp_obj, $id)
-    {
-        // dd($id);
 
+    public function ahp_edit(AHP $ahp_obj, $id)
+    {
         $ahp = AHP::where('id_perhitungan', '=', $id)->first();
         $bobot = Bobot::where('id_perhitungan', '=', $id)->first();
         $PB_obj = PerbandinganBerpasangan::where('id_perhitungan', '=', $id)->get();
 
-        return view('ahp.edit',compact('ahp', 'bobot', 'PB_obj'));
+        return view('user_bobot.ahp.edit',compact('ahp', 'bobot', 'PB_obj'));
     }
-    
 
-    public function update(Request $request, $id_get)
+    public function ahp_update(Request $request, $id_get)
     {
         // dd($id_get);
         // dd($request->all());
@@ -790,13 +738,13 @@ class AHPController extends Controller
 
 
         if ($is_konsisten) {
-            return redirect()->route('ahp.show', $ahp_obj->id_perhitungan)
+            return redirect()->route('user.bobot.ahp.show', $ahp_obj->id_perhitungan)
                         ->with('success','AHP calculation added successfully and consistent.');
         } elseif (!$is_konsisten) {
-            return redirect()->route('ahp.show', $ahp_obj->id_perhitungan)
+            return redirect()->route('user.bobot.ahp.show', $ahp_obj->id_perhitungan)
                         ->with('danger','AHP calculation added successfully but not consistent.');
         }else {
-            return redirect()->route('ahp.show', $ahp_obj->id_perhitungan)
+            return redirect()->route('user.bobot.ahp.show', $ahp_obj->id_perhitungan)
                         ->with('danger','ooppss something wrong');
         }
 
@@ -805,12 +753,10 @@ class AHPController extends Controller
                         ->with('success','Product updated successfully');
     }
 
-    public function destroy($id_get_url)
+
+    public function ahp_destroy($id_get_url)
     {
-        // dd($product);
-        // var_dump($product);
-        // print_r($product);
-        // die();
+
         AHP::where('id_perhitungan', $id_get_url)->delete();
         
         // tidak perlu delete ke table Bobot dan PerbandinganBerpasangan karena sudah forignKey onCascade->delete()
@@ -818,25 +764,72 @@ class AHPController extends Controller
         // Bobot::where('id_perhitungan', $id_get_url)->delete();
         // PerbandinganBerpasangan::where('id_perhitungan', $id_get_url)->delete();
     
-        return redirect()->route('ahp.index')
+        return redirect()->route('user.bobot.ahp.index')
                         ->with('success','AHP calculation deleted successfully');
     }
 
-    public function toggle($id_get_url)
+    public function ahp_toggle($id_get_url)
     {
         $this_user = User::where('id', Auth::id())->update(['id_perhitungan_aktif' => $id_get_url]);
 
-        // $ahp_obj = AHP::where('is_dipilih', 1)->first();
-        // $ahp_obj->is_dipilih = 0;
-        // $ahp_obj->save();
-
-        // $ahp_obj = AHP::where('id_perhitungan', $id_get_url)->first();
-        // $ahp_obj->is_dipilih = 1;
-        // $ahp_obj->save();
-
-        return redirect()->route('ahp.index')
+        return redirect()->route('user.bobot.ahp.index')
                         ->with('success','AHP calculation current active state changed successfully');
     }
 
 
+
+    // ----------
+    // pembobotan Langsung
+    // ----------
+    public function langsung_index()
+    {
+        $this_user_id = Auth::id(); // return this_user->id
+        $bobot_langsung = BobotLangsung::where('id_user', $this_user_id)->first();
+        // $data = 1;
+        return view('user_bobot.langsung.index',compact('bobot_langsung'));
+    }
+
+    public function langsung_edit()
+    {
+        $this_user_id = Auth::id(); // return this_user->id
+        $bobot_langsung = BobotLangsung::where('id_user', $this_user_id)->first();
+        // $data = 1;
+        return view('user_bobot.langsung.edit',compact('bobot_langsung'));
+    }
+
+    public function langsung_update(Request $req)
+    {
+        $this_user_id = Auth::id(); // return this_user->id
+        $bobot_langsung = BobotLangsung::where('id_user', $this_user_id)->first();
+        // $data = 1;
+        $not_sum_zero_check = $req->harga + $req->prosesor + $req->kapasitas_ram + $req->kapasitas_hdd + $req->kapasitas_ssd +
+                             $req->kapasitas_vram + $req->kapasitas_maxram + $req->berat + $req->ukuran_layar +
+                              $req->jenis_layar + $req->refresh_rate + $req->resolusi_layar;
+
+        if ($not_sum_zero_check > 0) {
+            BobotLangsung::where('id_user', $this_user_id)->update([
+                'id_user' => $this_user_id,
+                'c1'      => $req->harga,
+                'c2'      => $req->prosesor,
+                'c3'      => $req->kapasitas_ram,
+                'c4'      => $req->kapasitas_hdd,
+                'c5'      => $req->kapasitas_ssd,
+                'c6'      => $req->kapasitas_vram,
+                'c7'      => $req->kapasitas_maxram,
+                'c8'      => $req->berat,
+                'c9'      => $req->ukuran_layar,
+                'c10'     => $req->jenis_layar,
+                'c11'     => $req->refresh_rate,
+                'c12'     => $req->resolusi_layar,
+            ]);
+            return redirect()->route('user.bobot.langsung.index')
+                        ->with('success','Bobot updated successfully');
+        } else{
+            return redirect()->route('user.bobot.langsung.edit')
+                        ->with('error','Jumlah dari bobot tidak boleh 0');
+        }
+        
+        
+        
+    }
 }

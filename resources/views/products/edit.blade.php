@@ -134,9 +134,9 @@
                 {{-- <label for="inputStatus">Jenis layar</label> --}}
                 <strong>Jenis layar:</strong>
                 <select name="jenis_layar" value="{{ $product->jenis_layar }}" class="form-control custom-select" required>
-                    @if ( $product->jenis_layar  === 1)<option disabled>-- Pilih salah satu --</option> <option value="1" selected>Twisted Nematic (TN)</option><option value="3">In-Plane Switching (IPS)</option><option value="5">Organic Light-emitting Diode (OLED)</option> @endif
-                    @if ( $product->jenis_layar  === 3)<option disabled>-- Pilih salah satu --</option> <option value="1" >Twisted Nematic (TN)</option><option value="3" selected>In-Plane Switching (IPS)</option><option value="5">Organic Light-emitting Diode (OLED)</option> @endif
-                    @if ( $product->jenis_layar  === 5)<option disabled>-- Pilih salah satu --</option> <option value="1" >Twisted Nematic (TN)</option><option value="3">In-Plane Switching (IPS)</option><option value="5" selected>Organic Light-emitting Diode (OLED)</option> @endif
+                    @if ( $product->jenis_layar  === 1)<option value="" disabled>-- Pilih salah satu --</option> <option value="1" selected>Twisted Nematic (TN)</option><option value="3">In-Plane Switching (IPS)</option><option value="5">Organic Light-emitting Diode (OLED)</option> @endif
+                    @if ( $product->jenis_layar  === 3)<option value="" disabled>-- Pilih salah satu --</option> <option value="1" >Twisted Nematic (TN)</option><option value="3" selected>In-Plane Switching (IPS)</option><option value="5">Organic Light-emitting Diode (OLED)</option> @endif
+                    @if ( $product->jenis_layar  === 5)<option value="" disabled>-- Pilih salah satu --</option> <option value="1" >Twisted Nematic (TN)</option><option value="3">In-Plane Switching (IPS)</option><option value="5" selected>Organic Light-emitting Diode (OLED)</option> @endif
                 </select>
             </div>
         </div>

@@ -17,9 +17,15 @@ class CreateTableForAhp extends Migration
             $table->id('id_perhitungan');
             $table->string('nama_perhitungan');
             $table->boolean('is_konsisten')->default(0);
-            $table->boolean('is_dipilih')->default(0);
+            $table->boolean('is_created_by_admin')->default(0);
+            $table->unsignedBigInteger('creator_id');
             $table->text('detail');
             $table->timestamps();
+
+            $table->foreign('creator_id')
+                ->references('id')
+                ->on('users')
+                ->onDelete('cascade');
         });
 
         Schema::create('perbandingan_berpasangan', function (Blueprint $table) {
@@ -72,6 +78,30 @@ class CreateTableForAhp extends Migration
                 ->onDelete('cascade');
         });
 
+        Schema::create('bobot_langsung', function (Blueprint $table) {
+            $table->unsignedBigInteger('id_user');
+            // $table->string('nama_kriteria');
+            $table->double('c1');
+            $table->double('c2');
+            $table->double('c3');
+            $table->double('c4');
+            $table->double('c5');
+            $table->double('c6');
+            $table->double('c7');
+            $table->double('c8');
+            $table->double('c9');
+            $table->double('c10');
+            $table->double('c11');
+            $table->double('c12');
+
+            $table->timestamps();
+
+            $table->foreign('id_user')
+                ->references('id')
+                ->on('users')
+                ->onDelete('cascade');
+        });
+
         
     }
 
@@ -82,8 +112,9 @@ class CreateTableForAhp extends Migration
      */
     public function down()
     {
+        Schema::dropIfExists('bobot_langsung');
         Schema::dropIfExists('bobots');
-        Schema::dropIfExists('perbandingan_berpasangans_tables');
+        Schema::dropIfExists('perbandingan_berpasangan');
         Schema::dropIfExists('ahp');
     }
 }

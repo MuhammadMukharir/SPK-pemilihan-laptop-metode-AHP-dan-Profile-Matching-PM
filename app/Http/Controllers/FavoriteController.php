@@ -51,7 +51,7 @@ class FavoriteController extends Controller
 
         $products = DB::table('products')
             ->join('favorites', function($builder) {
-                $builder->on('favorites.product_id', '=', 'products.id');
+                $builder->on('favorites.fav_product_id', '=', 'products.id');
                 // here you can add more conditions on tags table.
             })
             ->where('user_id', $this_user_id)
@@ -71,8 +71,8 @@ class FavoriteController extends Controller
      */
     public function store(Request $request)
     {
-        $user = Auth::id();
-        // dd($user);
+        $this_user_id = Auth::id();
+        // dd($this_user_id);
         // print_r($request->all());
         // die();
         // dd($request->user_id);
@@ -86,7 +86,12 @@ class FavoriteController extends Controller
         // $request->user_id = Auth::id();
         // print_r($request->product_id);
         // die();
-        Favorite::create($request->all());
+
+        // Favorite::create($request->all());
+        Favorite::create([
+            'user_id'    => $this_user_id,
+            'fav_product_id' => $request->product_id
+        ]);
     
         // return redirect()->route('myfavorites.index')
         //                 ->with('success','Product added successfully to favorite list.');
@@ -104,7 +109,7 @@ class FavoriteController extends Controller
         $this_user_id = Auth::id();
 
         $product = Product::where('id', $id)->first();
-        $is_favorite = Favorite::where([['user_id', $this_user_id], ['product_id', $id]])->first();
+        $is_favorite = Favorite::where([['user_id', $this_user_id], ['fav_product_id', $id]])->first();
         // dd($id);
         // $product->where('id', $id);
         // dd($product);
@@ -120,7 +125,8 @@ class FavoriteController extends Controller
      */
     public function destroy($id)
     {
-        Favorite::where('product_id', $id)->delete();
+        $this_user_id = Auth::id();
+        Favorite::where('user_id', $this_user_id)->where('fav_product_id', $id)->delete();
         // $product->delete();
     
         // return redirect()->route('myfavorites.index')->with('success','Product removed successfully from favorite.');

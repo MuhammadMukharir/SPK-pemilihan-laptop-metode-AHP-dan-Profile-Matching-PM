@@ -18,6 +18,7 @@ class UserController extends Controller
         // $currentUser = Auth::user()->id;
         // var_dump($currentUser);
         $data = User::orderBy('id','DESC')->paginate(6);
+        // dd($data[0]->id);
         return view('users.index',compact('data'))
             ->with('i', ($request->input('page', 1) - 1) * 6);
     }

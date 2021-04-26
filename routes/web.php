@@ -11,6 +11,8 @@ use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\RekomendasiController;
 use App\Http\Controllers\AHPController;
+use App\Http\Controllers\UserMetodePembobotanController;
+
   
 /*
 |--------------------------------------------------------------------------
@@ -81,9 +83,38 @@ Route::group(['middleware' => ['auth']], function() {
             'only' => ['index', 'store', 'destroy']
         ]);
         Route::get('laptop/rekomendasi/usepreset/{presetpreference}', [RekomendasiController::class, 'index'])->name('rekomendasi.preset.use');
+        Route::get('laptop/rekomendasi/hasil', [RekomendasiController::class, 'hasil_index'])->name('rekomendasi.hasil.index');
         Route::post('laptop/rekomendasi/hasil', [RekomendasiController::class, 'hasil'])->name('rekomendasi.hasil');
         Route::get('laptop/rekomendasi/preset', [RekomendasiController::class, 'list'])->name('rekomendasi.list_preset');
         Route::get('laptop/rekomendasi/preset/{presetpreference}', [RekomendasiController::class, 'presetDetail'])->name('rekomendasi.preset.show');
+
+        // -----------------
+        // metode pembobotan
+        // -----------------
+        // Pembobotan AHP
+        Route::get('user/bobot/ahp', [UserMetodePembobotanController::class, 'ahp_index'])->name('user.bobot.ahp.index');
+        Route::get('user/bobot/ahp/create', [UserMetodePembobotanController::class, 'ahp_create'])->name('user.bobot.ahp.create');
+        Route::post('user/bobot/ahp', [UserMetodePembobotanController::class, 'ahp_store'])->name('user.bobot.ahp.store');
+        Route::get('user/bobot/ahp/{ahp}', [UserMetodePembobotanController::class, 'ahp_show'])->name('user.bobot.ahp.show');
+        Route::get('user/bobot/ahp/{ahp}/edit', [UserMetodePembobotanController::class, 'ahp_edit'])->name('user.bobot.ahp.edit');
+        Route::post('user/bobot/ahp/{ahp}', [UserMetodePembobotanController::class, 'ahp_update'])->name('user.bobot.ahp.update');
+        Route::post('user/bobot/ahp/t/{ahp}', [UserMetodePembobotanController::class, 'ahp_toggle'])->name('user.bobot.ahp.toggle');
+        Route::delete('user/bobot/ahp/{ahp}', [UserMetodePembobotanController::class, 'ahp_destroy'])->name('user.bobot.ahp.destroy');
+
+
+        // Pembobotan Langsung
+        Route::get('user/bobot/langsung', [UserMetodePembobotanController::class, 'langsung_index'])->name('user.bobot.langsung.index');
+        Route::get('user/bobot/langsung/edit', [UserMetodePembobotanController::class, 'langsung_edit'])->name('user.bobot.langsung.edit');
+        Route::post('user/bobot/langsung/edit', [UserMetodePembobotanController::class, 'langsung_update'])->name('user.bobot.langsung.update');
+
+        // Route::resource('user/bobot/ahp', SearchController::class, [
+        //     // 'except' => ['edit', 'create', 'update']
+        //     'only' => ['index', 'store', 'show', 'destroy']
+        // ]);
+        // Route::resource('user/bobot/langsung', SearchController::class, [
+        //     // 'except' => ['create', 'update', 'show', 'destroy']
+        //     'only' => ['index', 'store', 'edit']
+        // ]);
         
     });
     

@@ -51,7 +51,7 @@
         </h1>
 
         <p class="tagline">
-          Dibangun Menggunakan Kombinasi Metode AHP dan Profile Matching
+          Menggunakan Kombinasi Metode AHP dan Profile Matching
         </p>
         <a class="btn btn-full scrollto" href="{{ route('home') }}">Get Started Now</a>
       </div>

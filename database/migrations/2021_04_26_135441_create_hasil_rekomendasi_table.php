@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateFavoritesTable extends Migration
+class CreateHasilRekomendasiTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,25 +13,25 @@ class CreateFavoritesTable extends Migration
      */
     public function up()
     {
-        Schema::create('favorites', function (Blueprint $table) {
+        Schema::create('hasil_rekomendasi', function (Blueprint $table) {
             $tableNames['users'] = 'users';
             $tableNames['products'] = 'products';
 
             $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('fav_product_id');
-            $table->timestamps();
+            $table->unsignedBigInteger('product_id');
+            $table->double('n_bobot');
 
             $table->foreign('user_id')
                 ->references('id')
                 ->on($tableNames['users'])
                 ->onDelete('cascade');
 
-            $table->foreign('fav_product_id')
+            $table->foreign('product_id')
                 ->references('id')
                 ->on($tableNames['products'])
                 ->onDelete('cascade');
 
-            $table->primary(['user_id', 'fav_product_id'], 'favorites_user_id_fav_product_id_primary');
+            $table->primary(['user_id', 'product_id'], 'hasil_rekomendasi_user_id_product_id_primary');
         });
     }
 
@@ -42,6 +42,6 @@ class CreateFavoritesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('favorites');
+        Schema::dropIfExists('hasil_rekomendasi');
     }
 }
