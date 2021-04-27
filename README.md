@@ -13,7 +13,7 @@ I can make this system because of the help from all of you, so again, Thanks you
 So, here it goes, Laptop Selection DSS with AHP and PM method build on laravel 8 framework, enjoy! :)
 
 Created by: Muhammad Mukharir <br>
-Utk Skripsi S1
+Untuk Skripsi S1
 
 ===  CS17 ===
 
