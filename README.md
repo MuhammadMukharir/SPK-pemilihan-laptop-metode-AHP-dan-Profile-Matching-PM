@@ -8,7 +8,8 @@ Hallo, I'm Muhammad Mukharir, firstly i want to say thanks to:
     https://www.itsolutionstuff.com/post/laravel-8-user-roles-and-permissions-tutorialexample.html  <br>
     https://cafeteria.id/2020/09/14/cara-integrasi-laravel-8-dengan-laravel-adminlte/  <br>
 
-I can make this system because of the help from all of you, so again, Thanks you.. :) <br>
+I can make this system because of the help from all of you, so again, Thanks you.. :)
+
 So, here it goes, Laptop Selection DSS with AHP and PM method build on laravel 8 framework, enjoy! :)
 
 Created by: Muhammad Mukharir
