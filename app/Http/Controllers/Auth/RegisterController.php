@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
 use App\Models\BobotLangsung;
+use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
@@ -32,6 +33,12 @@ class RegisterController extends Controller
      * @var string
      */
     protected $redirectTo = RouteServiceProvider::HOME;
+
+    // protected function authenticated(Request $request, $user)
+    // {
+    //    $request->session()->flash('flash_notification.success', 'Register Successfully');
+    //    return redirect()->intended($this->redirectTo);
+    // }
 
     /**
      * Create a new controller instance.

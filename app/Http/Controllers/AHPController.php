@@ -160,83 +160,156 @@ class AHPController extends Controller
         // Product::create($request->all());
 
         // dd($request);
-        function max_9 ($value){
+        function round_if ($value){
             if ($value >= 9) {
                 return 9;
-            } else {
-                return $value;
+            }
+            elseif ($value >= 1) {
+                return round($value);
+            } 
+            else {
+                return round($value, 2);
             }  
         }
 
         // inisiasi nilai bagian segitaga bawah pada tabel (1 / request->xxxx)
         if (true) 
         {
-            $c2c1 = max_9( 1 / $request->c1c2 );
-            $c3c1 = max_9( 1 / $request->c1c3 );
-            $c4c1 = max_9( 1 / $request->c1c4 );
-            $c5c1 = max_9( 1 / $request->c1c5 );
-            $c6c1 = max_9( 1 / $request->c1c6 );
-            $c7c1 = max_9( 1 / $request->c1c7 );
-            $c8c1 = max_9( 1 / $request->c1c8 );
-            $c9c1 = max_9( 1 / $request->c1c9 );
-            $c10c1 = max_9( 1 / $request->c1c10 );
-            $c11c1 = max_9( 1 / $request->c1c11 );
-            $c12c1 = max_9( 1 / $request->c1c12 );
-            $c3c2 = max_9( 1 / $request->c2c3 );
-            $c4c2 = max_9( 1 / $request->c2c4 );
-            $c5c2 = max_9( 1 / $request->c2c5 );
-            $c6c2 = max_9( 1 / $request->c2c6 );
-            $c7c2 = max_9( 1 / $request->c2c7 );
-            $c8c2 = max_9( 1 / $request->c2c8 );
-            $c9c2 = max_9( 1 / $request->c2c9 );
-            $c10c2 = max_9( 1 / $request->c2c10 );
-            $c11c2 = max_9( 1 / $request->c2c11 );
-            $c12c2 = max_9( 1 / $request->c2c12 );
-            $c4c3 = max_9( 1 / $request->c3c4 );
-            $c5c3 = max_9( 1 / $request->c3c5 );
-            $c6c3 = max_9( 1 / $request->c3c6 );
-            $c7c3 = max_9( 1 / $request->c3c7 );
-            $c8c3 = max_9( 1 / $request->c3c8 );
-            $c9c3 = max_9( 1 / $request->c3c9 );
-            $c10c3 = max_9( 1 / $request->c3c10 );
-            $c11c3 = max_9( 1 / $request->c3c11 );
-            $c12c3 = max_9( 1 / $request->c3c12 );
-            $c5c4 = max_9( 1 / $request->c4c5 );
-            $c6c4 = max_9( 1 / $request->c4c6 );
-            $c7c4 = max_9( 1 / $request->c4c7 );
-            $c8c4 = max_9( 1 / $request->c4c8 );
-            $c9c4 = max_9( 1 / $request->c4c9 );
-            $c10c4 = max_9( 1 / $request->c4c10 );
-            $c11c4 = max_9( 1 / $request->c4c11 );
-            $c12c4 = max_9( 1 / $request->c4c12 );
-            $c6c5 = max_9( 1 / $request->c5c6 );
-            $c7c5 = max_9( 1 / $request->c5c7 );
-            $c8c5 = max_9( 1 / $request->c5c8 );
-            $c9c5 = max_9( 1 / $request->c5c9 );
-            $c10c5 = max_9( 1 / $request->c5c10 );
-            $c11c5 = max_9( 1 / $request->c5c11 );
-            $c12c5 = max_9( 1 / $request->c5c12 );
-            $c7c6 = max_9( 1 / $request->c6c7 );
-            $c8c6 = max_9( 1 / $request->c6c8 );
-            $c9c6 = max_9( 1 / $request->c6c9 );
-            $c10c6 = max_9( 1 / $request->c6c10 );
-            $c11c6 = max_9( 1 / $request->c6c11 );
-            $c12c6 = max_9( 1 / $request->c6c12 );
-            $c8c7 = max_9( 1 / $request->c7c8 );
-            $c9c7 = max_9( 1 / $request->c7c9 );
-            $c10c7 = max_9( 1 / $request->c7c10 );
-            $c11c7 = max_9( 1 / $request->c7c11 );
-            $c12c7 = max_9( 1 / $request->c7c12 );
-            $c9c8 = max_9( 1 / $request->c8c9 );
-            $c10c8 = max_9( 1 / $request->c8c10 );
-            $c11c8 = max_9( 1 / $request->c8c11 );
-            $c12c8 = max_9( 1 / $request->c8c12 );
-            $c10c9 = max_9( 1 / $request->c9c10 );
-            $c11c9 = max_9( 1 / $request->c9c11 );
-            $c12c9 = max_9( 1 / $request->c9c12 );
-            $c11c10 = max_9( 1 / $request->c10c11 );
-            $c12c10 = max_9( 1 / $request->c10c12 );
-            $c12c11 = max_9( 1 / $request->c11c12 );
+            // bulatkan dulu menggunakan fungsi round_if pada masukan user
+            $request->c1c2 = round_if($request->c1c2);
+            $request->c1c3 = round_if($request->c1c3);
+            $request->c1c4 = round_if($request->c1c4);
+            $request->c1c5 = round_if($request->c1c5);
+            $request->c1c6 = round_if($request->c1c6);
+            $request->c1c7 = round_if($request->c1c7);
+            $request->c1c8 = round_if($request->c1c8);
+            $request->c1c9 = round_if($request->c1c9);
+            $request->c1c10 = round_if($request->c1c10);
+            $request->c1c11 = round_if($request->c1c11);
+            $request->c1c12 = round_if($request->c1c12);
+            $request->c2c3 = round_if($request->c2c3);
+            $request->c2c4 = round_if($request->c2c4);
+            $request->c2c5 = round_if($request->c2c5);
+            $request->c2c6 = round_if($request->c2c6);
+            $request->c2c7 = round_if($request->c2c7);
+            $request->c2c8 = round_if($request->c2c8);
+            $request->c2c9 = round_if($request->c2c9);
+            $request->c2c10 = round_if($request->c2c10);
+            $request->c2c11 = round_if($request->c2c11);
+            $request->c2c12 = round_if($request->c2c12);
+            $request->c3c4 = round_if($request->c3c4);
+            $request->c3c5 = round_if($request->c3c5);
+            $request->c3c6 = round_if($request->c3c6);
+            $request->c3c7 = round_if($request->c3c7);
+            $request->c3c8 = round_if($request->c3c8);
+            $request->c3c9 = round_if($request->c3c9);
+            $request->c3c10 = round_if($request->c3c10);
+            $request->c3c11 = round_if($request->c3c11);
+            $request->c3c12 = round_if($request->c3c12);
+            $request->c4c5 = round_if($request->c4c5);
+            $request->c4c6 = round_if($request->c4c6);
+            $request->c4c7 = round_if($request->c4c7);
+            $request->c4c8 = round_if($request->c4c8);
+            $request->c4c9 = round_if($request->c4c9);
+            $request->c4c10 = round_if($request->c4c10);
+            $request->c4c11 = round_if($request->c4c11);
+            $request->c4c12 = round_if($request->c4c12);
+            $request->c5c6 = round_if($request->c5c6);
+            $request->c5c7 = round_if($request->c5c7);
+            $request->c5c8 = round_if($request->c5c8);
+            $request->c5c9 = round_if($request->c5c9);
+            $request->c5c10 = round_if($request->c5c10);
+            $request->c5c11 = round_if($request->c5c11);
+            $request->c5c12 = round_if($request->c5c12);
+            $request->c6c7 = round_if($request->c6c7);
+            $request->c6c8 = round_if($request->c6c8);
+            $request->c6c9 = round_if($request->c6c9);
+            $request->c6c10 = round_if($request->c6c10);
+            $request->c6c11 = round_if($request->c6c11);
+            $request->c6c12 = round_if($request->c6c12);
+            $request->c7c8 = round_if($request->c7c8);
+            $request->c7c9 = round_if($request->c7c9);
+            $request->c7c10 = round_if($request->c7c10);
+            $request->c7c11 = round_if($request->c7c11);
+            $request->c7c12 = round_if($request->c7c12);
+            $request->c8c9 = round_if($request->c8c9);
+            $request->c8c10 = round_if($request->c8c10);
+            $request->c8c11 = round_if($request->c8c11);
+            $request->c8c12 = round_if($request->c8c12);
+            $request->c9c10 = round_if($request->c9c10);
+            $request->c9c11 = round_if($request->c9c11);
+            $request->c9c12 = round_if($request->c9c12);
+            $request->c10c11 = round_if($request->c10c11);
+            $request->c10c12 = round_if($request->c10c12);
+            $request->c11c12 = round_if($request->c11c12);
+
+            // inisiasi nilai bagian segitaga bawah pada tabel (1 / request->xxxx)
+            $c2c1 = round_if( 1 / $request->c1c2 );
+            $c3c1 = round_if( 1 / $request->c1c3 );
+            $c4c1 = round_if( 1 / $request->c1c4 );
+            $c5c1 = round_if( 1 / $request->c1c5 );
+            $c6c1 = round_if( 1 / $request->c1c6 );
+            $c7c1 = round_if( 1 / $request->c1c7 );
+            $c8c1 = round_if( 1 / $request->c1c8 );
+            $c9c1 = round_if( 1 / $request->c1c9 );
+            $c10c1 = round_if( 1 / $request->c1c10 );
+            $c11c1 = round_if( 1 / $request->c1c11 );
+            $c12c1 = round_if( 1 / $request->c1c12 );
+            $c3c2 = round_if( 1 / $request->c2c3 );
+            $c4c2 = round_if( 1 / $request->c2c4 );
+            $c5c2 = round_if( 1 / $request->c2c5 );
+            $c6c2 = round_if( 1 / $request->c2c6 );
+            $c7c2 = round_if( 1 / $request->c2c7 );
+            $c8c2 = round_if( 1 / $request->c2c8 );
+            $c9c2 = round_if( 1 / $request->c2c9 );
+            $c10c2 = round_if( 1 / $request->c2c10 );
+            $c11c2 = round_if( 1 / $request->c2c11 );
+            $c12c2 = round_if( 1 / $request->c2c12 );
+            $c4c3 = round_if( 1 / $request->c3c4 );
+            $c5c3 = round_if( 1 / $request->c3c5 );
+            $c6c3 = round_if( 1 / $request->c3c6 );
+            $c7c3 = round_if( 1 / $request->c3c7 );
+            $c8c3 = round_if( 1 / $request->c3c8 );
+            $c9c3 = round_if( 1 / $request->c3c9 );
+            $c10c3 = round_if( 1 / $request->c3c10 );
+            $c11c3 = round_if( 1 / $request->c3c11 );
+            $c12c3 = round_if( 1 / $request->c3c12 );
+            $c5c4 = round_if( 1 / $request->c4c5 );
+            $c6c4 = round_if( 1 / $request->c4c6 );
+            $c7c4 = round_if( 1 / $request->c4c7 );
+            $c8c4 = round_if( 1 / $request->c4c8 );
+            $c9c4 = round_if( 1 / $request->c4c9 );
+            $c10c4 = round_if( 1 / $request->c4c10 );
+            $c11c4 = round_if( 1 / $request->c4c11 );
+            $c12c4 = round_if( 1 / $request->c4c12 );
+            $c6c5 = round_if( 1 / $request->c5c6 );
+            $c7c5 = round_if( 1 / $request->c5c7 );
+            $c8c5 = round_if( 1 / $request->c5c8 );
+            $c9c5 = round_if( 1 / $request->c5c9 );
+            $c10c5 = round_if( 1 / $request->c5c10 );
+            $c11c5 = round_if( 1 / $request->c5c11 );
+            $c12c5 = round_if( 1 / $request->c5c12 );
+            $c7c6 = round_if( 1 / $request->c6c7 );
+            $c8c6 = round_if( 1 / $request->c6c8 );
+            $c9c6 = round_if( 1 / $request->c6c9 );
+            $c10c6 = round_if( 1 / $request->c6c10 );
+            $c11c6 = round_if( 1 / $request->c6c11 );
+            $c12c6 = round_if( 1 / $request->c6c12 );
+            $c8c7 = round_if( 1 / $request->c7c8 );
+            $c9c7 = round_if( 1 / $request->c7c9 );
+            $c10c7 = round_if( 1 / $request->c7c10 );
+            $c11c7 = round_if( 1 / $request->c7c11 );
+            $c12c7 = round_if( 1 / $request->c7c12 );
+            $c9c8 = round_if( 1 / $request->c8c9 );
+            $c10c8 = round_if( 1 / $request->c8c10 );
+            $c11c8 = round_if( 1 / $request->c8c11 );
+            $c12c8 = round_if( 1 / $request->c8c12 );
+            $c10c9 = round_if( 1 / $request->c9c10 );
+            $c11c9 = round_if( 1 / $request->c9c11 );
+            $c12c9 = round_if( 1 / $request->c9c12 );
+            $c11c10 = round_if( 1 / $request->c10c11 );
+            $c12c10 = round_if( 1 / $request->c10c12 );
+            $c12c11 = round_if( 1 / $request->c11c12 );
         }
 
 
@@ -461,10 +534,10 @@ class AHPController extends Controller
 
         if ($is_konsisten) {
             return redirect()->route('ahp.show', $ahp_obj->id_perhitungan)
-                        ->with('success','AHP calculation added successfully and consistent.');
+                        ->with('success','AHP calculation added successfully and consistent (CR value < 0,1).');
         } elseif (!$is_konsisten) {
             return redirect()->route('ahp.show', $ahp_obj->id_perhitungan)
-                        ->with('danger','AHP calculation added successfully but not consistent.');
+                        ->with('danger','AHP calculation added successfully but not consistent (CR value >= 0,1).');
         }else {
             return redirect()->route('ahp.show', $ahp_obj->id_perhitungan)
                         ->with('danger','ooppss something wrong');
@@ -517,83 +590,156 @@ class AHPController extends Controller
         // dd($request->all());
         request()->validate($this->ahp_atribute_required);
 
-        function max_9 ($value){
+        function round_if ($value){
             if ($value >= 9) {
                 return 9;
-            } else {
-                return $value;
+            }
+            elseif ($value >= 1) {
+                return round($value);
+            } 
+            else {
+                return round($value, 2);
             }  
         }
 
         // inisiasi nilai bagian segitaga bawah pada tabel (1 / request->xxxx)
         if (true) 
         {
-            $c2c1 = max_9( 1 / $request->c1c2 );
-            $c3c1 = max_9( 1 / $request->c1c3 );
-            $c4c1 = max_9( 1 / $request->c1c4 );
-            $c5c1 = max_9( 1 / $request->c1c5 );
-            $c6c1 = max_9( 1 / $request->c1c6 );
-            $c7c1 = max_9( 1 / $request->c1c7 );
-            $c8c1 = max_9( 1 / $request->c1c8 );
-            $c9c1 = max_9( 1 / $request->c1c9 );
-            $c10c1 = max_9( 1 / $request->c1c10 );
-            $c11c1 = max_9( 1 / $request->c1c11 );
-            $c12c1 = max_9( 1 / $request->c1c12 );
-            $c3c2 = max_9( 1 / $request->c2c3 );
-            $c4c2 = max_9( 1 / $request->c2c4 );
-            $c5c2 = max_9( 1 / $request->c2c5 );
-            $c6c2 = max_9( 1 / $request->c2c6 );
-            $c7c2 = max_9( 1 / $request->c2c7 );
-            $c8c2 = max_9( 1 / $request->c2c8 );
-            $c9c2 = max_9( 1 / $request->c2c9 );
-            $c10c2 = max_9( 1 / $request->c2c10 );
-            $c11c2 = max_9( 1 / $request->c2c11 );
-            $c12c2 = max_9( 1 / $request->c2c12 );
-            $c4c3 = max_9( 1 / $request->c3c4 );
-            $c5c3 = max_9( 1 / $request->c3c5 );
-            $c6c3 = max_9( 1 / $request->c3c6 );
-            $c7c3 = max_9( 1 / $request->c3c7 );
-            $c8c3 = max_9( 1 / $request->c3c8 );
-            $c9c3 = max_9( 1 / $request->c3c9 );
-            $c10c3 = max_9( 1 / $request->c3c10 );
-            $c11c3 = max_9( 1 / $request->c3c11 );
-            $c12c3 = max_9( 1 / $request->c3c12 );
-            $c5c4 = max_9( 1 / $request->c4c5 );
-            $c6c4 = max_9( 1 / $request->c4c6 );
-            $c7c4 = max_9( 1 / $request->c4c7 );
-            $c8c4 = max_9( 1 / $request->c4c8 );
-            $c9c4 = max_9( 1 / $request->c4c9 );
-            $c10c4 = max_9( 1 / $request->c4c10 );
-            $c11c4 = max_9( 1 / $request->c4c11 );
-            $c12c4 = max_9( 1 / $request->c4c12 );
-            $c6c5 = max_9( 1 / $request->c5c6 );
-            $c7c5 = max_9( 1 / $request->c5c7 );
-            $c8c5 = max_9( 1 / $request->c5c8 );
-            $c9c5 = max_9( 1 / $request->c5c9 );
-            $c10c5 = max_9( 1 / $request->c5c10 );
-            $c11c5 = max_9( 1 / $request->c5c11 );
-            $c12c5 = max_9( 1 / $request->c5c12 );
-            $c7c6 = max_9( 1 / $request->c6c7 );
-            $c8c6 = max_9( 1 / $request->c6c8 );
-            $c9c6 = max_9( 1 / $request->c6c9 );
-            $c10c6 = max_9( 1 / $request->c6c10 );
-            $c11c6 = max_9( 1 / $request->c6c11 );
-            $c12c6 = max_9( 1 / $request->c6c12 );
-            $c8c7 = max_9( 1 / $request->c7c8 );
-            $c9c7 = max_9( 1 / $request->c7c9 );
-            $c10c7 = max_9( 1 / $request->c7c10 );
-            $c11c7 = max_9( 1 / $request->c7c11 );
-            $c12c7 = max_9( 1 / $request->c7c12 );
-            $c9c8 = max_9( 1 / $request->c8c9 );
-            $c10c8 = max_9( 1 / $request->c8c10 );
-            $c11c8 = max_9( 1 / $request->c8c11 );
-            $c12c8 = max_9( 1 / $request->c8c12 );
-            $c10c9 = max_9( 1 / $request->c9c10 );
-            $c11c9 = max_9( 1 / $request->c9c11 );
-            $c12c9 = max_9( 1 / $request->c9c12 );
-            $c11c10 = max_9( 1 / $request->c10c11 );
-            $c12c10 = max_9( 1 / $request->c10c12 );
-            $c12c11 = max_9( 1 / $request->c11c12 );
+            // bulatkan dulu menggunakan fungsi round_if pada masukan user
+            $request->c1c2 = round_if($request->c1c2);
+            $request->c1c3 = round_if($request->c1c3);
+            $request->c1c4 = round_if($request->c1c4);
+            $request->c1c5 = round_if($request->c1c5);
+            $request->c1c6 = round_if($request->c1c6);
+            $request->c1c7 = round_if($request->c1c7);
+            $request->c1c8 = round_if($request->c1c8);
+            $request->c1c9 = round_if($request->c1c9);
+            $request->c1c10 = round_if($request->c1c10);
+            $request->c1c11 = round_if($request->c1c11);
+            $request->c1c12 = round_if($request->c1c12);
+            $request->c2c3 = round_if($request->c2c3);
+            $request->c2c4 = round_if($request->c2c4);
+            $request->c2c5 = round_if($request->c2c5);
+            $request->c2c6 = round_if($request->c2c6);
+            $request->c2c7 = round_if($request->c2c7);
+            $request->c2c8 = round_if($request->c2c8);
+            $request->c2c9 = round_if($request->c2c9);
+            $request->c2c10 = round_if($request->c2c10);
+            $request->c2c11 = round_if($request->c2c11);
+            $request->c2c12 = round_if($request->c2c12);
+            $request->c3c4 = round_if($request->c3c4);
+            $request->c3c5 = round_if($request->c3c5);
+            $request->c3c6 = round_if($request->c3c6);
+            $request->c3c7 = round_if($request->c3c7);
+            $request->c3c8 = round_if($request->c3c8);
+            $request->c3c9 = round_if($request->c3c9);
+            $request->c3c10 = round_if($request->c3c10);
+            $request->c3c11 = round_if($request->c3c11);
+            $request->c3c12 = round_if($request->c3c12);
+            $request->c4c5 = round_if($request->c4c5);
+            $request->c4c6 = round_if($request->c4c6);
+            $request->c4c7 = round_if($request->c4c7);
+            $request->c4c8 = round_if($request->c4c8);
+            $request->c4c9 = round_if($request->c4c9);
+            $request->c4c10 = round_if($request->c4c10);
+            $request->c4c11 = round_if($request->c4c11);
+            $request->c4c12 = round_if($request->c4c12);
+            $request->c5c6 = round_if($request->c5c6);
+            $request->c5c7 = round_if($request->c5c7);
+            $request->c5c8 = round_if($request->c5c8);
+            $request->c5c9 = round_if($request->c5c9);
+            $request->c5c10 = round_if($request->c5c10);
+            $request->c5c11 = round_if($request->c5c11);
+            $request->c5c12 = round_if($request->c5c12);
+            $request->c6c7 = round_if($request->c6c7);
+            $request->c6c8 = round_if($request->c6c8);
+            $request->c6c9 = round_if($request->c6c9);
+            $request->c6c10 = round_if($request->c6c10);
+            $request->c6c11 = round_if($request->c6c11);
+            $request->c6c12 = round_if($request->c6c12);
+            $request->c7c8 = round_if($request->c7c8);
+            $request->c7c9 = round_if($request->c7c9);
+            $request->c7c10 = round_if($request->c7c10);
+            $request->c7c11 = round_if($request->c7c11);
+            $request->c7c12 = round_if($request->c7c12);
+            $request->c8c9 = round_if($request->c8c9);
+            $request->c8c10 = round_if($request->c8c10);
+            $request->c8c11 = round_if($request->c8c11);
+            $request->c8c12 = round_if($request->c8c12);
+            $request->c9c10 = round_if($request->c9c10);
+            $request->c9c11 = round_if($request->c9c11);
+            $request->c9c12 = round_if($request->c9c12);
+            $request->c10c11 = round_if($request->c10c11);
+            $request->c10c12 = round_if($request->c10c12);
+            $request->c11c12 = round_if($request->c11c12);
+
+            // inisiasi nilai bagian segitaga bawah pada tabel (1 / request->xxxx)
+            $c2c1 = round_if( 1 / $request->c1c2 );
+            $c3c1 = round_if( 1 / $request->c1c3 );
+            $c4c1 = round_if( 1 / $request->c1c4 );
+            $c5c1 = round_if( 1 / $request->c1c5 );
+            $c6c1 = round_if( 1 / $request->c1c6 );
+            $c7c1 = round_if( 1 / $request->c1c7 );
+            $c8c1 = round_if( 1 / $request->c1c8 );
+            $c9c1 = round_if( 1 / $request->c1c9 );
+            $c10c1 = round_if( 1 / $request->c1c10 );
+            $c11c1 = round_if( 1 / $request->c1c11 );
+            $c12c1 = round_if( 1 / $request->c1c12 );
+            $c3c2 = round_if( 1 / $request->c2c3 );
+            $c4c2 = round_if( 1 / $request->c2c4 );
+            $c5c2 = round_if( 1 / $request->c2c5 );
+            $c6c2 = round_if( 1 / $request->c2c6 );
+            $c7c2 = round_if( 1 / $request->c2c7 );
+            $c8c2 = round_if( 1 / $request->c2c8 );
+            $c9c2 = round_if( 1 / $request->c2c9 );
+            $c10c2 = round_if( 1 / $request->c2c10 );
+            $c11c2 = round_if( 1 / $request->c2c11 );
+            $c12c2 = round_if( 1 / $request->c2c12 );
+            $c4c3 = round_if( 1 / $request->c3c4 );
+            $c5c3 = round_if( 1 / $request->c3c5 );
+            $c6c3 = round_if( 1 / $request->c3c6 );
+            $c7c3 = round_if( 1 / $request->c3c7 );
+            $c8c3 = round_if( 1 / $request->c3c8 );
+            $c9c3 = round_if( 1 / $request->c3c9 );
+            $c10c3 = round_if( 1 / $request->c3c10 );
+            $c11c3 = round_if( 1 / $request->c3c11 );
+            $c12c3 = round_if( 1 / $request->c3c12 );
+            $c5c4 = round_if( 1 / $request->c4c5 );
+            $c6c4 = round_if( 1 / $request->c4c6 );
+            $c7c4 = round_if( 1 / $request->c4c7 );
+            $c8c4 = round_if( 1 / $request->c4c8 );
+            $c9c4 = round_if( 1 / $request->c4c9 );
+            $c10c4 = round_if( 1 / $request->c4c10 );
+            $c11c4 = round_if( 1 / $request->c4c11 );
+            $c12c4 = round_if( 1 / $request->c4c12 );
+            $c6c5 = round_if( 1 / $request->c5c6 );
+            $c7c5 = round_if( 1 / $request->c5c7 );
+            $c8c5 = round_if( 1 / $request->c5c8 );
+            $c9c5 = round_if( 1 / $request->c5c9 );
+            $c10c5 = round_if( 1 / $request->c5c10 );
+            $c11c5 = round_if( 1 / $request->c5c11 );
+            $c12c5 = round_if( 1 / $request->c5c12 );
+            $c7c6 = round_if( 1 / $request->c6c7 );
+            $c8c6 = round_if( 1 / $request->c6c8 );
+            $c9c6 = round_if( 1 / $request->c6c9 );
+            $c10c6 = round_if( 1 / $request->c6c10 );
+            $c11c6 = round_if( 1 / $request->c6c11 );
+            $c12c6 = round_if( 1 / $request->c6c12 );
+            $c8c7 = round_if( 1 / $request->c7c8 );
+            $c9c7 = round_if( 1 / $request->c7c9 );
+            $c10c7 = round_if( 1 / $request->c7c10 );
+            $c11c7 = round_if( 1 / $request->c7c11 );
+            $c12c7 = round_if( 1 / $request->c7c12 );
+            $c9c8 = round_if( 1 / $request->c8c9 );
+            $c10c8 = round_if( 1 / $request->c8c10 );
+            $c11c8 = round_if( 1 / $request->c8c11 );
+            $c12c8 = round_if( 1 / $request->c8c12 );
+            $c10c9 = round_if( 1 / $request->c9c10 );
+            $c11c9 = round_if( 1 / $request->c9c11 );
+            $c12c9 = round_if( 1 / $request->c9c12 );
+            $c11c10 = round_if( 1 / $request->c10c11 );
+            $c12c10 = round_if( 1 / $request->c10c12 );
+            $c12c11 = round_if( 1 / $request->c11c12 );
         }
 
         $c1 = array();
@@ -791,10 +937,10 @@ class AHPController extends Controller
 
         if ($is_konsisten) {
             return redirect()->route('ahp.show', $ahp_obj->id_perhitungan)
-                        ->with('success','AHP calculation added successfully and consistent.');
+                        ->with('success','AHP calculation added successfully and consistent (CR value < 0,1).');
         } elseif (!$is_konsisten) {
             return redirect()->route('ahp.show', $ahp_obj->id_perhitungan)
-                        ->with('danger','AHP calculation added successfully but not consistent.');
+                        ->with('danger','AHP calculation added successfully but not consistent (CR value >= 0,1).');
         }else {
             return redirect()->route('ahp.show', $ahp_obj->id_perhitungan)
                         ->with('danger','ooppss something wrong');
@@ -835,7 +981,7 @@ class AHPController extends Controller
         // $ahp_obj->save();
 
         return redirect()->route('ahp.index')
-                        ->with('success','AHP calculation current active state changed successfully');
+                        ->with('success','Bobot AHP yang digunakan berhasil diganti');
     }
 
 

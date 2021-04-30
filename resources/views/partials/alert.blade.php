@@ -1,4 +1,14 @@
 <div class="">
+    @if (session()->has('flash_notification.success')) 
+    <div class="alert alert-success alert-block">
+
+        <button type="button" class="btn btn-danger close" data-dismiss="alert">×</button>
+
+        <i class="icon fas fa-check"></i> {!! session('flash_notification.success') !!}
+
+    </div>
+    @endif
+
     @if ($message = Session::get('success'))
 
     <div class="alert alert-success alert-block">

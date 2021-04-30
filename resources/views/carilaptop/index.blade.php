@@ -26,9 +26,9 @@
 <table class="table table- table-hover" >
     <tr>
         <th style="text-align: center">No</th>
-        <th>Product Name</th>
+        <th>Nama Produk</th>
         <th>Harga</th>
-        <th>Details</th>
+        <th>Deskripsi</th>
         <th width='320px'>Action</th>
     </tr>
     @foreach ($products as $product)
@@ -43,7 +43,7 @@
             @if ( !($product->fav_product_id) )
 
             <form action="{{ route('myfavorites.store',$product->id) }}" method="POST">
-                <a class="btn btn-info" href="{{ route('search.show',$product->id) }}">Show</a>
+                <a class="btn btn-info" href="{{ route('search.show',$product->id) }}">Detail</a>
 
                 <input type="hidden" name="product_id" value="{{ $product->id }}">
                 <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
@@ -54,7 +54,7 @@
         @else
             <form action="{{ route('myfavorites.destroy',$product->id) }}" method="POST">
                 
-                <a class="btn btn-info" href="{{ route('search.show',$product->id) }}">Show</a>
+                <a class="btn btn-info" href="{{ route('search.show',$product->id) }}">Detail</a>
                 @csrf
                 @method('DELETE')
                 <button type="submit" class="btn btn-link "> <i class="far fa-star"></i> Remove from favorite</button>

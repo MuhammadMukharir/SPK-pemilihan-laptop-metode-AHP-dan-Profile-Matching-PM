@@ -26,7 +26,8 @@
     @csrf
 
 <div class="pull-right">
-    <a class="btn btn-primary" href="{{ route('user.bobot.langsung.edit') }}"> Edit bobot</a>
+    <a class="btn btn-secondary btn-" href="{{ route('rekomendasi.index') }}"> <i class="fas fa-fw fa-laptop"></i> Mulai Rekomendasi </a>
+    <a class="btn btn-primary" href="{{ route('user.bobot.langsung.edit') }}"> <i class="fas fa-fw fa-balance-scale"></i> Edit bobot</a>
     <noscript>
         <input type="submit" value="Submit form!" />
     </noscript>

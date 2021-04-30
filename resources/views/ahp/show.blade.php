@@ -107,11 +107,11 @@
               </div>
             </div>
             <div class="card-body p-0">
-              <table class="table table-hover table- ">
+              <table class="table table-hover table-borderless table-striped">
                 <thead>
                   <tr>
                     <th class="goCenter">No</th>
-                    <th class="goCenter">Kriteria</th>
+                    <th class="goCenter" style="text-align: left">Kriteria</th>
                     <th class="goCenter">Bobot</th>
                     {{-- <th></th> --}}
                   </tr>
@@ -119,53 +119,53 @@
                 <tbody>
     
                   <tr>
-                    <td class="goCenter">C1</td>
-                    <td>Harga laptop</td>
-                    <td class="goCenter">{{ number_format($bobot->c1,2,",",".") }}</td>
+                    <td class="goCenter custColor">C1</td>
+                    <td><strong> Harga laptop </strong></td>
+                    <td class="goCenter"> <strong> {{ number_format($bobot->c1,2,",",".") }} </strong> </td>
                   </tr><tr>
-                    <td class="goCenter">C2</td>
-                    <td>Prosesor</td>
-                    <td class="goCenter">{{ number_format($bobot->c2,2,",",".") }}</td>
+                    <td class="goCenter custColor">C2</td>
+                    <td><strong> Prosesor </strong></td>
+                    <td class="goCenter"> <strong> {{ number_format($bobot->c2,2,",",".") }} </strong> </td>
                   </tr><tr>
-                    <td class="goCenter">C3</td>
-                    <td>Kapasitas RAM</td>
-                    <td class="goCenter">{{ number_format($bobot->c3,2,",",".") }}</td>
+                    <td class="goCenter custColor">C3</td>
+                    <td><strong> Kapasitas RAM </strong></td>
+                    <td class="goCenter"> <strong> {{ number_format($bobot->c3,2,",",".") }} </strong> </td>
                   </tr><tr>
-                    <td class="goCenter">C4</td>
-                    <td>Kapasitas Harddisk</td>
-                    <td class="goCenter">{{ number_format($bobot->c4,2,",",".") }}</td>
+                    <td class="goCenter custColor">C4</td>
+                    <td><strong> Kapasitas Harddisk </strong></td>
+                    <td class="goCenter"> <strong> {{ number_format($bobot->c4,2,",",".") }} </strong> </td>
                   </tr><tr>
-                    <td class="goCenter">C5</td>
-                    <td>Kapasitas SSD</td>
-                    <td class="goCenter">{{ number_format($bobot->c5,2,",",".") }}</td>
+                    <td class="goCenter custColor">C5</td>
+                    <td><strong> Kapasitas SSD </strong></td>
+                    <td class="goCenter"> <strong> {{ number_format($bobot->c5,2,",",".") }} </strong> </td>
                   </tr><tr>
-                    <td class="goCenter">C6</td>
-                    <td>Kapasitas V-RAM</td>
-                    <td class="goCenter">{{ number_format($bobot->c6,2,",",".") }}</td>
+                    <td class="goCenter custColor">C6</td>
+                    <td><strong> Kapasitas V-RAM </strong></td>
+                    <td class="goCenter"> <strong> {{ number_format($bobot->c6,2,",",".") }} </strong> </td>
                   </tr><tr>
-                    <td class="goCenter">C7</td>
-                    <td>Kapasitas maksimal upgrade RAM</td>
-                    <td class="goCenter">{{ number_format($bobot->c7,2,",",".") }}</td>
+                    <td class="goCenter custColor">C7</td>
+                    <td><strong> Kapasitas maksimal upgrade RAM </strong></td>
+                    <td class="goCenter"> <strong> {{ number_format($bobot->c7,2,",",".") }} </strong> </td>
                   </tr><tr>
-                    <td class="goCenter">C8</td>
-                    <td>Berat laptop</td>
-                    <td class="goCenter">{{ number_format($bobot->c8,2,",",".") }}</td>
+                    <td class="goCenter custColor">C8</td>
+                    <td><strong> Berat laptop </strong></td>
+                    <td class="goCenter"> <strong> {{ number_format($bobot->c8,2,",",".") }} </strong> </td>
                   </tr><tr>
-                    <td class="goCenter">C9</td>
-                    <td>Ukuran layar</td>
-                    <td class="goCenter">{{ number_format($bobot->c9,2,",",".") }}</td>
+                    <td class="goCenter custColor">C9</td>
+                    <td><strong> Ukuran layar </strong></td>
+                    <td class="goCenter"> <strong> {{ number_format($bobot->c9,2,",",".") }} </strong> </td>
                   </tr><tr>
-                    <td class="goCenter">C10</td>
-                    <td>Jenis layar</td>
-                    <td class="goCenter">{{ number_format($bobot->c10,2,",",".") }}</td>
+                    <td class="goCenter custColor">C10</td>
+                    <td><strong> Jenis layar </strong></td>
+                    <td class="goCenter"> <strong> {{ number_format($bobot->c10,2,",",".") }} </strong> </td>
                   </tr><tr>
-                    <td class="goCenter">C11</td>
-                    <td>Refresh rate layar</td>
-                    <td class="goCenter">{{ number_format($bobot->c11,2,",",".") }}</td>
+                    <td class="goCenter custColor">C11</td>
+                    <td><strong> Refresh rate layar </strong></td>
+                    <td class="goCenter"> <strong> {{ number_format($bobot->c11,2,",",".") }} </strong> </td>
                   </tr><tr>
-                    <td class="goCenter">C12</td>
-                    <td>Resolusi layar</td>
-                    <td class="goCenter">{{ number_format($bobot->c12,2,",",".") }}</td>
+                    <td class="goCenter custColor">C12</td>
+                    <td><strong> Resolusi layar </strong></td>
+                    <td class="goCenter"> <strong> {{ number_format($bobot->c12,2,",",".") }} </strong> </td>
                   </tr>
                   
 
@@ -247,39 +247,39 @@
               </div>
             </div>
             <div class="card-body p-0">
-              <table class="table table-hover table-">
+              <table class="table table-hover table-stripe table-borderles">
                 <thead>
                   <tr>
                     <th class="goCenter">Intensitas kepentingan</th>
-                    <th class="goCenter">Definisi</th>
+                    <th class="goCente">Definisi</th>
                     {{-- <th></th> --}}
                   </tr>
                 </thead>
                 <tbody>
     
                   <tr>
-                    <td class="goCenter">1</td>
+                    <td class="goCenter"><strong> 1</strong></td>
                     <td>Kedua kriteria tersebut sama pentingnya.</td>
                   </tr><tr>
-                    <td class="goCenter">3</td>
+                    <td class="goCenter"><strong> 3</strong></td>
                     <td>Satu kriteria sedikit lebih penting.</td>
                   </tr><tr>
-                    <td class="goCenter">5</td>
+                    <td class="goCenter"><strong>5</strong></td>
                     <td>Satu kriteria lebih penting.</td>
                   </tr><tr>
-                    <td class="goCenter">7</td>
+                    <td class="goCenter"><strong>7</strong></td>
                     <td>Satu kriteria jauh lebih penting.</td>
                   </tr><tr>
-                    <td class="goCenter">9</td>
+                    <td class="goCenter"><strong>9</strong></td>
                     <td>Satu kriteria sangatlah penting.</td>
                   </tr>
                   <tr>
-                    <td class="goCenter">2, 4, 6, 8</td>
+                    <td class="goCenter"><strong>2, 4, 6, 8</strong></td>
                     <td>Nilai antara dua penilaian yang berdekatan.</td>
                   </tr>
                   <tr>
-                    <td class="goCenter">Timbal-balik</td>
-                    <td>Jika kriteria i ditetapkan dengan salah satu nilai di atas jika dibandingkan dengan kriteria j, maka kriteria j memiliki nilai timbal balik jika dibandingkan dengan kriteria i.</td>
+                    <td class="goCenter"><strong>Timbal-balik</strong></td>
+                    <td>Jika kriteria i ditetapkan dengan salah satu nilai di atas jika dibandingkan dengan kriteria j, maka kriteria j memiliki nilai timbal balik jika dibandingkan dengan kriteria i. (Contoh: i : j = 3 maka j : i = 1 / 3)</td>
                   </tr>
                 
                 </tbody>
@@ -363,23 +363,79 @@
     </datalist>
 </div> --}}
 
+<datalist id="bobot">
+  <option value="1">1</option>
+  <option value="2">2</option>
+  <option value="3">3</option>
+  <option value="4">4</option>
+  <option value="5">5</option>
+  <option value="6">6</option>
+  <option value="7">7</option>
+  <option value="8">8</option>
+  <option value="9">9</option>
+  {{-- <option value="1">1/1</option> --}}
+  <option value="0.5">1/2</option>
+  <option value="0.33">1/3</option>
+  <option value="0.25">1/4</option>
+  <option value="0.20">1/5</option>
+  <option value="0.17">1/6</option>
+  <option value="0.14">1/7</option>
+  <option value="0.13">1/8</option>
+  <option value="0.11">1/9</option>
+  {{-- <option value="1">2/2</option> --}}
+  <option value="0.67">2/3</option>
+  <option value="0.5">2/4</option>
+  <option value="0.4">2/5</option>
+  <option value="0.33">2/6</option>
+  <option value="0.29">2/7</option>
+  <option value="0.25">2/8</option>
+  <option value="0.22">2/9</option>
+  {{-- <option value="1">3/3</option> --}}
+  <option value="0.75">3/4</option>
+  <option value="0.6">3/5</option>
+  <option value="0.5">3/6</option>
+  <option value="0.43">3/7</option>
+  <option value="0.38">3/8</option>
+  <option value="0.33">3/9</option>
+  {{-- <option value="1">4/4</option> --}}
+  <option value="0.8">4/5</option>
+  <option value="0.67">4/6</option>
+  <option value="0.57">4/7</option>
+  <option value="0.5">4/8</option>
+  <option value="0.44">4/9</option>
+  {{-- <option value="1">5/5</option> --}}
+  <option value="0.83">5/6</option>
+  <option value="0.71">5/7</option>
+  <option value="0.63">5/8</option>
+  <option value="0.56">5/9</option>
+  {{-- <option value="1">6/6</option> --}}
+  <option value="0.86">6/7</option>
+  <option value="0.75">6/8</option>
+  <option value="0.67">6/9</option>
+  {{-- <option value="1">7/7</option> --}}
+  <option value="0.88">7/8</option>
+  <option value="0.78">7/9</option>
+  {{-- <option value="1">8/8</option> --}}
+  <option value="0.89">8/9</option>
+  {{-- <option value="1">9/9</option> --}}
+</datalist>
 
 @foreach ($PB_obj as $row)
     <tr>
         <td class="custColor">{{ $row->nama_kriteria }}</td>
         
-        <td> <input disabled type="number" name="c1c2" class="form-control" placeholder="" min=0 max="9" step="0.01" value="{{ $row->c1 }}"> </td>
-        <td> <input disabled type="number" name="c1c3" class="form-control" placeholder="" min=0 max="9" step="0.01" value="{{ $row->c2 }}"> </td>
-        <td> <input disabled type="number" name="c1c4" class="form-control" placeholder="" min=0 max="9" step="0.01" value="{{ $row->c3 }}">  </td>
-        <td> <input disabled type="number" name="c1c5" class="form-control" placeholder="" min=0 max="9" step="0.01" value="{{ $row->c4 }}">  </td>
-        <td> <input disabled type="number" name="c1c6" class="form-control" placeholder="" min=0 max="9" step="0.01" value="{{ $row->c5 }}">  </td>
-        <td> <input disabled type="number" name="c1c7" class="form-control" placeholder="" min=0 max="9" step="0.01" value="{{ $row->c6 }}">  </td>
-        <td> <input disabled type="number" name="c1c8" class="form-control" placeholder="" min=0 max="9" step="0.01" value="{{ $row->c7 }}">  </td>
-        <td> <input disabled type="number" name="c1c9" class="form-control" placeholder="" min=0 max="9" step="0.01" value="{{ $row->c8 }}">  </td>
-        <td> <input disabled type="number" name="c1c10" class="form-control" placeholder="" min=0 max="9" step="0.01" value="{{ $row->c9 }}">  </td>
-        <td> <input disabled type="number" name="c1c11" class="form-control" placeholder="" min=0 max="9" step="0.01" value="{{ $row->c10 }}">  </td>
-        <td> <input disabled type="number" name="c1c12" class="form-control" placeholder="" min=0 max="9" step="0.01" value="{{ $row->c11 }}">  </td>
-        <td> <input disabled type="number" name="c1c12" class="form-control" placeholder="" min=0 max="9" step="0.01" value="{{ $row->c12 }}"> </td> <input type="number" name="c1c1" class="form-control center" style="display: none" value="1">
+        <td> <input disabled list="bobot" type="number" name="c1c2" class="form-control" placeholder="" min=0.11 max="9" step="0.01" value="{{ $row->c1 }}"> </td>
+        <td> <input disabled list="bobot" type="number" name="c1c3" class="form-control" placeholder="" min=0.11 max="9" step="0.01" value="{{ $row->c2 }}"> </td>
+        <td> <input disabled list="bobot" type="number" name="c1c4" class="form-control" placeholder="" min=0.11 max="9" step="0.01" value="{{ $row->c3 }}">  </td>
+        <td> <input disabled list="bobot" type="number" name="c1c5" class="form-control" placeholder="" min=0.11 max="9" step="0.01" value="{{ $row->c4 }}">  </td>
+        <td> <input disabled list="bobot" type="number" name="c1c6" class="form-control" placeholder="" min=0.11 max="9" step="0.01" value="{{ $row->c5 }}">  </td>
+        <td> <input disabled list="bobot" type="number" name="c1c7" class="form-control" placeholder="" min=0.11 max="9" step="0.01" value="{{ $row->c6 }}">  </td>
+        <td> <input disabled list="bobot" type="number" name="c1c8" class="form-control" placeholder="" min=0.11 max="9" step="0.01" value="{{ $row->c7 }}">  </td>
+        <td> <input disabled list="bobot" type="number" name="c1c9" class="form-control" placeholder="" min=0.11 max="9" step="0.01" value="{{ $row->c8 }}">  </td>
+        <td> <input disabled list="bobot" type="number" name="c1c10" class="form-control" placeholder="" min=0.11 max="9" step="0.01" value="{{ $row->c9 }}">  </td>
+        <td> <input disabled list="bobot" type="number" name="c1c11" class="form-control" placeholder="" min=0.11 max="9" step="0.01" value="{{ $row->c10 }}">  </td>
+        <td> <input disabled list="bobot" type="number" name="c1c12" class="form-control" placeholder="" min=0.11 max="9" step="0.01" value="{{ $row->c11 }}">  </td>
+        <td> <input disabled list="bobot" type="number" name="c1c12" class="form-control" placeholder="" min=0.11 max="9" step="0.01" value="{{ $row->c12 }}"> </td> <input type="number" name="c1c1" class="form-control center" style="display: none" value="1">
     </tr>
 @endforeach
 

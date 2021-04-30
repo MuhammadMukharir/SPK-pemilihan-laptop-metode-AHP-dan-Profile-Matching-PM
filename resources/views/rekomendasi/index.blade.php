@@ -26,11 +26,12 @@
     @csrf
 
 <div class="pull-right">
-    <a class="btn btn-warning" href="{{ route('rekomendasi.list_preset') }}"> Use Preset Value</a>
+    <a class="btn btn-secondary btn-" href="{{ route('user.bobot.ahp.index') }}"> <i class="fas fa-fw fa-balance-scale"></i> Edit Pembobotan AHP </a>
+    <a class="btn btn-info btn-" href="{{ route('rekomendasi.list_preset') }}"> <i class="fas fa-fw fa-bullseye"></i> Gunakan preset nilai preferensi </a>
     <noscript>
         <input type="submit" value="Submit form!" />
     </noscript>
-    <button type="submit" class="btn btn-primary"> Rekomendasikan!</button>
+    <button type="submit" class="btn btn-primary btn-"> <i class="fas fa-fw fa-calculator"></i> Rekomendasikan!</button>
 </div>
 @stop
 
@@ -262,6 +263,10 @@
 
 @endif
 
+{{-- <div class="col-md-12" style="text-align: left">
+    <a class="btn btn-info btn-sm" href="{{ route('user.bobot.ahp.index') }}"> Edit Pembobotan AHP </a>
+    <a class="btn btn-info btn-sm" href="{{ route('user.bobot.langsung.index') }}"> Edit Pembobotan langsung </a>
+</div> --}}
 
         {{-- </div>
     </div> --}}

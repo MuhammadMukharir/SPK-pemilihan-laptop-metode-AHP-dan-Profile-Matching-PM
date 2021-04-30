@@ -27,8 +27,8 @@
 <table class="table table- table-hover">
     <tr>
         <th style="text-align: center">No</th>
-        <th>Preference Name</th>
-        <th>Details</th>
+        <th>Nama Preferensi</th>
+        <th>Deskripsi</th>
         <th width="280px">Action</th>
     </tr>
     @foreach ($presetpreferences as $key => $presetpreference)
@@ -37,8 +37,8 @@
         <td>{{ $presetpreference->name }}</td>
         <td>{{ $presetpreference->detail }}</td>
         <td>
-                <a class="btn btn-info" href="{{ route('rekomendasi.preset.show',$presetpreference->id) }}">Show</a>
-                <a class="btn btn-warning" href="{{ route('rekomendasi.preset.use',$presetpreference->id) }}">Use Preset!</a>
+                <a class="btn btn-info" href="{{ route('rekomendasi.preset.show',$presetpreference->id) }}">Detail</a>
+                <a class="btn btn-warning" href="{{ route('rekomendasi.preset.use',$presetpreference->id) }}">Gunakan preset</a>
 
             </form>
         </td>

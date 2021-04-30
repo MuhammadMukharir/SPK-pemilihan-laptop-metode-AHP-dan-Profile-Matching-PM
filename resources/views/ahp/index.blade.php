@@ -56,7 +56,7 @@
 <tr>
 <th style="text-align: center">No</th>
 <th>Nama Perhitungan</th>
-<th>Detail</th>
+<th>Deskripsi</th>
 <th>Nama Pembuat</th>
 <th>Atribut</th>
 <th width="320px">Action</th>
@@ -85,13 +85,13 @@
 
     
     
-    @if ( $this_user->id_perhitungan_aktif === $ahp->id_perhitungan ) <label class="badge badge-pill badge-success"> Aktif </label>
+    @if ( $this_user->id_perhitungan_aktif === $ahp->id_perhitungan ) <label class="badge badge-pill badge-success"> Bobot Aktif Digunakan  </label>
     @endif 
 
     </td>
 
     <td>
-    <a class="btn btn-info" href="{{ route('ahp.show',$ahp->id_perhitungan) }}">Show</a>
+    <a class="btn btn-info" href="{{ route('ahp.show',$ahp->id_perhitungan) }}">Detail</a>
     <a class="btn btn-primary" href="{{ route('ahp.edit',$ahp->id_perhitungan) }}">Edit</a>
 
     @if ($ahp->id_perhitungan !== 1)

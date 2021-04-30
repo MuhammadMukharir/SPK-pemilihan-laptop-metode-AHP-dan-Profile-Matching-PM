@@ -58,37 +58,37 @@
         <div class="col-xs-11 col-sm-11 col-md-11">
             <div class="form-group">
                 <strong>Bobot Harga:</strong>
-                <input  type="number" name="harga" value="{{ $bobot_langsung->c1 }}" class="form-control" placeholder="Harga (Rp)" min=0 step="0.01" max="100" required>
+                <input  type="number" name="harga" value="{{ $bobot_langsung->c1 }}" class="form-control" placeholder="Harga (Rp)" min=0 step="0.01" max="10" required>
             </div>
         </div>
         <div class="col-xs-11 col-sm-11 col-md-11">
             <div class="form-group">
                 <strong>Bobot Prosesor: </strong>
-                <input  type="number " name="prosesor" value="{{ $bobot_langsung->c2 }}" class="form-control" placeholder="Prosesor (GHz)" min=0 step="0.01" max="100" required>
+                <input  type="number " name="prosesor" value="{{ $bobot_langsung->c2 }}" class="form-control" placeholder="Prosesor (GHz)" min=0 step="0.01" max="10" required>
             </div>
         </div>
         <div class="col-xs-11 col-sm-11 col-md-11">
             <div class="form-group">
                 <strong>Bobot Kapasitas RAM:</strong>
-                <input  type="number" name="kapasitas_ram" value="{{ $bobot_langsung->c3 }}" class="form-control" placeholder="Kapasitas RAM (GB)" min=0 step="0.01" max="100" required>
+                <input  type="number" name="kapasitas_ram" value="{{ $bobot_langsung->c3 }}" class="form-control" placeholder="Kapasitas RAM (GB)" min=0 step="0.01" max="10" required>
             </div>
         </div>
         <div class="col-xs-11 col-sm-11 col-md-11">
             <div class="form-group">
                 <strong>Bobot Kapasitas HDD:</strong>
-                <input  type="number" name="kapasitas_hdd" value="{{ $bobot_langsung->c4 }}" class="form-control" placeholder="Kapasitas HDD (GB)" min=0 step="0.01" max="100" required>
+                <input  type="number" name="kapasitas_hdd" value="{{ $bobot_langsung->c4 }}" class="form-control" placeholder="Kapasitas HDD (GB)" min=0 step="0.01" max="10" required>
             </div>
         </div>
         <div class="col-xs-11 col-sm-11 col-md-11">
             <div class="form-group">
                 <strong>Bobot Kapasitas SSD:</strong>
-                <input  type="number" name="kapasitas_ssd" value="{{ $bobot_langsung->c5 }}" class="form-control" placeholder="Kapasitas SSD (GB)" min=0 step="0.01" max="100" required>
+                <input  type="number" name="kapasitas_ssd" value="{{ $bobot_langsung->c5 }}" class="form-control" placeholder="Kapasitas SSD (GB)" min=0 step="0.01" max="10" required>
             </div>
         </div>
         <div class="col-xs-11 col-sm-11 col-md-11">
             <div class="form-group">
                 <strong>Bobot Kapasitas VRAM:</strong>
-                <input  type="number" name="kapasitas_vram" value="{{ $bobot_langsung->c6 }}" class="form-control" placeholder="Kapasitas VRAM (GB)" min=0 step="0.01" max="100" required>
+                <input  type="number" name="kapasitas_vram" value="{{ $bobot_langsung->c6 }}" class="form-control" placeholder="Kapasitas VRAM (GB)" min=0 step="0.01" max="10" required>
             </div>
         </div>
         </div>
@@ -97,38 +97,38 @@
         <div class="col-xs-11 col-sm-11 col-md-11">
             <div class="form-group">
                 <strong>Bobot Kapasitas maksimal upgrade RAM:</strong>
-                <input  type="number" name="kapasitas_maxram" value="{{ $bobot_langsung->c7 }}" class="form-control" placeholder="Kapasitas maksimal upgrade RAM (GB)" min=0 step="0.01" max="100" required>
+                <input  type="number" name="kapasitas_maxram" value="{{ $bobot_langsung->c7 }}" class="form-control" placeholder="Kapasitas maksimal upgrade RAM (GB)" min=0 step="0.01" max="10" required>
             </div>
         </div>
         <div class="col-xs-11 col-sm-11 col-md-11">
             <div class="form-group">
                 <strong>Bobot Berat:</strong>
-                <input  type="number" name="berat" value="{{ $bobot_langsung->c8 }}" class="form-control" placeholder="Berat (Gram)" min=0 step="0.01" max="100" required>
+                <input  type="number" name="berat" value="{{ $bobot_langsung->c8 }}" class="form-control" placeholder="Berat (Gram)" min=0 step="0.01" max="10" required>
             </div>
         </div>
         <div class="col-xs-11 col-sm-11 col-md-11">
             <div class="form-group">
                 <strong>Bobot Ukuran layar:</strong>
-                <input  type="number" name="ukuran_layar" value="{{ $bobot_langsung->c9 }}" class="form-control" placeholder="Ukuran layar (Inci)" min=0 step="0.01" max="100" required>
+                <input  type="number" name="ukuran_layar" value="{{ $bobot_langsung->c9 }}" class="form-control" placeholder="Ukuran layar (Inci)" min=0 step="0.01" max="10" required>
             </div>
         </div>
         <div class="col-xs-11 col-sm-11 col-md-11">
             <div class="form-group">
                 {{-- <label for="inputStatus">Jenis layar</label> --}}
                 <strong>Bobot Jenis layar:</strong>
-                <input  type="number" name="jenis_layar" value="{{ $bobot_langsung->c10}}" class="form-control" placeholder="Refresh rate layar (Hz)" min=0 step="0.01" max="100" required>
+                <input  type="number" name="jenis_layar" value="{{ $bobot_langsung->c10}}" class="form-control" placeholder="Refresh rate layar (Hz)" min=0 step="0.01" max="10" required>
             </div>
         </div>
         <div class="col-xs-11 col-sm-11 col-md-11">
             <div class="form-group">
                 <strong>Bobot Refresh rate layar:</strong>
-                <input  type="number" name="refresh_rate" value="{{ $bobot_langsung->c11}}" class="form-control" placeholder="Refresh rate layar (Hz)" min=0 step="0.01" max="100" required>
+                <input  type="number" name="refresh_rate" value="{{ $bobot_langsung->c11}}" class="form-control" placeholder="Refresh rate layar (Hz)" min=0 step="0.01" max="10" required>
             </div>
         </div>
         <div class="col-xs-11 col-sm-11 col-md-11">
             <div class="form-group">
                 <strong>Bobot Resolusi layar:</strong>
-                <input  type="number" name="resolusi_layar" value="{{ $bobot_langsung->c12 }}" class="form-control" placeholder="Refresh rate layar (Hz)" min=0 step="0.01" max="100" required>
+                <input  type="number" name="resolusi_layar" value="{{ $bobot_langsung->c12 }}" class="form-control" placeholder="Refresh rate layar (Hz)" min=0 step="0.01" max="10" required>
             </div>
         </div>
         {{-- <div class="col-xs-12 col-sm-12 col-md-12 text-center">

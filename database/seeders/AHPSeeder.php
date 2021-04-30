@@ -20,11 +20,11 @@ class AHPSeeder extends Seeder
     {
         
         $ahp = AHP::create([
-            'nama_perhitungan' => 'Coba ahp 1',
+            'nama_perhitungan' => 'AHP-1',
             'is_konsisten'     => 1,
             'is_created_by_admin'=> 1,
             'creator_id'       => 1,
-            'detail'           => 'ini adalah pembobotan AHP 1, you cant delete me'
+            'detail'           => 'Ini adalah pembobotan AHP-1'
         ]);
 
         $kriterias = 
@@ -273,11 +273,11 @@ class AHPSeeder extends Seeder
         // --------------------------------------------
 
         $ahp = AHP::create([
-            'nama_perhitungan' => 'Coba ahp 3',
+            'nama_perhitungan' => 'AHP-2',
             'is_konsisten'     => 1,
             'is_created_by_admin'=> 1,
             'creator_id'       => 1,
-            'detail'           => 'ini adalah pembobotan AHP 3'
+            'detail'           => 'Ini adalah pembobotan AHP-2'
         ]);
 
         $kriterias = 
@@ -527,11 +527,11 @@ class AHPSeeder extends Seeder
         // --------------------------------------------
 
         $ahp = AHP::create([
-            'nama_perhitungan' => 'Coba ahp 2',
+            'nama_perhitungan' => 'AHP-3',
             'is_konsisten'     => 0,
             'is_created_by_admin'=> 1,
             'creator_id'       => 1,
-            'detail'           => 'ini adalah pembobotan AHP 2'
+            'detail'           => 'Ini adalah pembobotan AHP-3'
         ]);
 
         $kriterias = 

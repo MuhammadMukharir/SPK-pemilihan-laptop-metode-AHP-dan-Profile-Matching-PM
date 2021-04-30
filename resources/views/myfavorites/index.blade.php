@@ -41,9 +41,9 @@
 <table class="table table- table-hover">
     <tr>
         <th style="text-align: center">No</th>
-        <th>Product Name</th>
+        <th>Nama Produk</th>
         <th>Harga</th>
-        <th>Details</th>
+        <th>Deskripsi</th>
         <th width='280px'>Action</th>
     </tr>
     @foreach ($products as $product)
@@ -54,7 +54,7 @@
         <td>{{ $product->detail }}</td>
         <td>
             <form action="{{ route('myfavorites.destroy',$product->id) }}" method="POST">
-                <a class="btn btn-info" href="{{ route('myfavorites.show',$product->id) }}">Show</a>
+                <a class="btn btn-info" href="{{ route('myfavorites.show',$product->id) }}">Detail</a>
 
                 @csrf
                 @method('DELETE')

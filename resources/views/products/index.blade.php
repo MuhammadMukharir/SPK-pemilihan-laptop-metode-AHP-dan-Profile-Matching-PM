@@ -43,8 +43,8 @@
 <table class="table table- table-hover">
     <tr>
         <th style="text-align: center">No</th>
-        <th>Product Name</th>
-        <th>Details</th>
+        <th>Nama Produk</th>
+        <th>Deskripsi</th>
         <th width="280px">Action</th>
     </tr>
     @foreach ($products as $key => $product)
@@ -55,7 +55,7 @@
         <td>{{ $product->detail }}</td>
         <td>
             <form action="{{ route('products.destroy',$product->id) }}" method="POST">
-                <a class="btn btn-info" href="{{ route('products.show',$product->id) }}">Show</a>
+                <a class="btn btn-info" href="{{ route('products.show',$product->id) }}">Detail</a>
                 @can('product-edit')
                 <a class="btn btn-primary" href="{{ route('products.edit',$product->id) }}">Edit</a>
                 @endcan

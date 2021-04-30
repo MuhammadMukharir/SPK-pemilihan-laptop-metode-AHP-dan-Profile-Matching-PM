@@ -45,7 +45,8 @@
             <h2>Users Management</h2>
         </div> --}}
         <div class="pull-right">
-            <a class="btn btn-success" href="{{ route('user.bobot.ahp.create') }}"> <i class="fas fa-plus"></i> Create New Calculation</a>
+            <a class="btn btn-secondary btn-" href="{{ route('rekomendasi.index') }}"> <i class="fas fa-fw fa-laptop"></i> Mulai Rekomendasi </a>
+            <a class="btn btn-success" href="{{ route('user.bobot.ahp.create') }}"> <i class="fas fa-plus"></i> Tambahkan pembobotan AHP</a>
         </div>
     </div>
 </div>
@@ -56,7 +57,7 @@
 <tr>
 <th style="text-align: center">No</th>
 <th>Nama Perhitungan</th>
-<th>Detail</th>
+<th>Deskripsi</th>
 <th>Atribut</th>
 <th width="320px">Action</th>
 </tr>
@@ -88,13 +89,13 @@
 
     
     
-    @if ( $this_user->id_perhitungan_aktif === $ahp->id_perhitungan ) <label class="badge badge-pill badge-success"> Aktif </label>
+    @if ( $this_user->id_perhitungan_aktif === $ahp->id_perhitungan ) <label class="badge badge-pill badge-success"> Bobot Aktif Digunakan </label>
     @endif 
 
     </td>
 
     <td>
-    <a class="btn btn-info" href="{{ route('user.bobot.ahp.show',$ahp->id_perhitungan) }}">Show</a>
+    <a class="btn btn-info" href="{{ route('user.bobot.ahp.show',$ahp->id_perhitungan) }}">Detail</a>
 
     @if ($ahp->is_created_by_admin) 
         {{-- <a class="btn btn-link disabled" href="">Edit</a> --}}

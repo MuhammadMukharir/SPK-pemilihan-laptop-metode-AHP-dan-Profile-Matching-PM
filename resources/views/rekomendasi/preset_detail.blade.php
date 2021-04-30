@@ -6,7 +6,7 @@
 <h2> Show Preset Preference </h2>
 <div class="pull-right">
     <a class="btn btn-secondary" href="{{ route('rekomendasi.list_preset') }}"> Back</a>
-    <a class="btn btn-warning" href="{{ route('rekomendasi.preset.use',$presetpreference->id) }}">Use Preset!</a>
+    <a class="btn btn-warning" href="{{ route('rekomendasi.preset.use',$presetpreference->id) }}">Gunakan preset</a>
 </div>
 @stop
 
