@@ -77,6 +77,10 @@
         float: left;
         width: 50%;
         }
+        
+    select{
+      width: 400px; text-align-last:center; text-align: center;
+    }
 
 </style>
 
@@ -420,198 +424,521 @@
   {{-- <option value="1">9/9</option> --}}
 </datalist>
 
+@php
+    $sharedOptions = [
+      ['', '.....'],
+      [1, '1'],
+      [2, '2'],
+      [3, '3'],
+      [4, '4'],
+      [5, '5'],
+      [6, '6'],
+      [7, '7'],
+      [8, '8'],
+      [9, '9'],
+      [0.5, '1/2'],
+      [0.33, '1/3'],
+      [0.25, '1/4'],
+      [0.20, '1/5'],
+      [0.17, '1/6'],
+      [0.14, '1/7'],
+      [0.13, '1/8'],
+      [0.11, '1/9']
+  ];
+
+  function float_to_divide_form($value)
+  {
+    $sharedOptions = [
+      ['', '.....'],
+      [1, '1'],
+      [2, '2'],
+      [3, '3'],
+      [4, '4'],
+      [5, '5'],
+      [6, '6'],
+      [7, '7'],
+      [8, '8'],
+      [9, '9'],
+      [0.5, '1/2'],
+      [0.33, '1/3'],
+      [0.25, '1/4'],
+      [0.20, '1/5'],
+      [0.17, '1/6'],
+      [0.14, '1/7'],
+      [0.13, '1/8'],
+      [0.11, '1/9']
+  ];
+
+    foreach ($sharedOptions as $item) {
+      if ($item[0] == $value) {
+        $gettedItem = $item;
+        return $item[1];
+      }
+    }
+
+  };
+  $amSelect = 0.9999;
+@endphp
 
 <tr>
-    <td class="custColor">C1</td>
-    <td><input list="bobot" type="number" name="c1c1" class="form-control center" style="text-align:center" value="{{ $PB_obj[0]->c1 }}"  disabled></td> <input list="bobot" type="number" name="c1c1" class="form-control center" style="display: none" value="1">
-    <td> <input list="bobot" type="number" name="c1c2" class="form-control" placeholder="" min=0.11 max="9" step="0.01" required value="{{ $PB_obj[0]->c2 }}"> </td>
-    <td> <input list="bobot" type="number" name="c1c3" class="form-control" placeholder="" min=0.11 max="9" step="0.01" required value="{{ $PB_obj[0]->c3 }}"> </td>
-    <td> <input list="bobot" type="number" name="c1c4" class="form-control" placeholder="" min=0.11 max="9" step="0.01" required value="{{ $PB_obj[0]->c4 }}">  </td>
-    <td> <input list="bobot" type="number" name="c1c5" class="form-control" placeholder="" min=0.11 max="9" step="0.01" required value="{{ $PB_obj[0]->c5 }}">  </td>
-    <td> <input list="bobot" type="number" name="c1c6" class="form-control" placeholder="" min=0.11 max="9" step="0.01" required value="{{ $PB_obj[0]->c6 }}">  </td>
-    <td> <input list="bobot" type="number" name="c1c7" class="form-control" placeholder="" min=0.11 max="9" step="0.01" required value="{{ $PB_obj[0]->c7 }}">  </td>
-    <td> <input list="bobot" type="number" name="c1c8" class="form-control" placeholder="" min=0.11 max="9" step="0.01" required value="{{ $PB_obj[0]->c8 }}">  </td>
-    <td> <input list="bobot" type="number" name="c1c9" class="form-control" placeholder="" min=0.11 max="9" step="0.01" required value="{{ $PB_obj[0]->c9 }}">  </td>
-    <td> <input list="bobot" type="number" name="c1c10" class="form-control" placeholder="" min=0.11 max="9" step="0.01" required value="{{ $PB_obj[0]->c10 }}">  </td>
-    <td> <input list="bobot" type="number" name="c1c11" class="form-control" placeholder="" min=0.11 max="9" step="0.01" required value="{{ $PB_obj[0]->c11 }}">  </td>
-    <td> <input list="bobot" type="number" name="c1c12" class="form-control" placeholder="" min=0.11 max="9" step="0.01" required value="{{ $PB_obj[0]->c12 }}">  </td>
+  <td class="custColor">C1</td>
+  <td><input type="text" name="c1c1" class="form-control center" style="text-align:center" value="{{ $PB_obj[0]->c1 }}"  disabled></td>
+  {{-- <td><select name="c1c1" id="c1c1" class="form-control" disabled><option value="1" selected>1</option></select></td>  --}}
+       <input type="number" name="c1c1" class="form-control center" style="display: none" value="1">
+
+  <td><select name="c1c2" id="c1c2" class="form-control" required> @foreach ($sharedOptions as $item) <option value="{{ $item[0] }}" @if ($item[0] == $PB_obj[0]->c2) selected='selected' @endif @if ($item[0] === '') disabled selected @endif> {{ $item[1] }} </option> @endforeach </select></td>
+  <td><select name="c1c3" id="c1c3" class="form-control" required> @foreach ($sharedOptions as $item) <option value="{{ $item[0] }}" @if ($item[0] == $PB_obj[0]->c3) selected='selected' @endif @if ($item[0] === '') disabled selected @endif> {{ $item[1] }} </option> @endforeach </select></td>
+  <td><select name="c1c4" id="c1c4" class="form-control" required> @foreach ($sharedOptions as $item) <option value="{{ $item[0] }}" @if ($item[0] == $PB_obj[0]->c4) selected='selected' @endif @if ($item[0] === '') disabled selected @endif> {{ $item[1] }} </option> @endforeach </select></td>
+  <td><select name="c1c5" id="c1c5" class="form-control" required> @foreach ($sharedOptions as $item) <option value="{{ $item[0] }}" @if ($item[0] == $PB_obj[0]->c5) selected='selected' @endif @if ($item[0] === '') disabled selected @endif> {{ $item[1] }} </option> @endforeach </select></td>
+  <td><select name="c1c6" id="c1c6" class="form-control" required> @foreach ($sharedOptions as $item) <option value="{{ $item[0] }}" @if ($item[0] == $PB_obj[0]->c6) selected='selected' @endif @if ($item[0] === '') disabled selected @endif> {{ $item[1] }} </option> @endforeach </select></td>
+  <td><select name="c1c7" id="c1c7" class="form-control" required> @foreach ($sharedOptions as $item) <option value="{{ $item[0] }}" @if ($item[0] == $PB_obj[0]->c7) selected='selected' @endif @if ($item[0] === '') disabled selected @endif> {{ $item[1] }} </option> @endforeach </select></td>
+  <td><select name="c1c8" id="c1c8" class="form-control" required> @foreach ($sharedOptions as $item) <option value="{{ $item[0] }}" @if ($item[0] == $PB_obj[0]->c8) selected='selected' @endif @if ($item[0] === '') disabled selected @endif> {{ $item[1] }} </option> @endforeach </select></td>
+  <td><select name="c1c9" id="c1c9" class="form-control" required> @foreach ($sharedOptions as $item) <option value="{{ $item[0] }}" @if ($item[0] == $PB_obj[0]->c9) selected='selected' @endif @if ($item[0] === '') disabled selected @endif> {{ $item[1] }} </option> @endforeach </select></td>
+  <td><select name="c1c10" id="c1c10" class="form-control" required> @foreach ($sharedOptions as $item) <option value="{{ $item[0] }}" @if ($item[0] == $PB_obj[0]->c10) selected='selected' @endif @if ($item[0] === '') disabled selected @endif> {{ $item[1] }} </option> @endforeach </select></td>
+  <td><select name="c1c11" id="c1c11" class="form-control" required> @foreach ($sharedOptions as $item) <option value="{{ $item[0] }}" @if ($item[0] == $PB_obj[0]->c11) selected='selected' @endif @if ($item[0] === '') disabled selected @endif> {{ $item[1] }} </option> @endforeach </select></td>
+  <td><select name="c1c12" id="c1c12" class="form-control" required> @foreach ($sharedOptions as $item) <option value="{{ $item[0] }}" @if ($item[0] == $PB_obj[0]->c12) selected='selected' @endif @if ($item[0] === '') disabled selected @endif> {{ $item[1] }} </option> @endforeach </select></td>
 </tr>
 
 <tr>
-    <td class="custColor">C2</td>
-    <td><input list="bobot" type="number" class="form-control" value="{{ $PB_obj[1]->c1 }}" disabled></td>
-    <td><input list="bobot" type="number" name="c2c2" class="form-control" value="{{ $PB_obj[1]->c2 }}" disabled></td>                  <input list="bobot" type="number" name="c2c2" class="form-control center" style="display: none" value="1">
-    <td> <input list="bobot" type="number" name="c2c3" class="form-control" placeholder="" min=0.11 max="9" step="0.01" required value="{{ $PB_obj[1]->c3 }}"> </td>
-    <td> <input list="bobot" type="number" name="c2c4" class="form-control" placeholder="" min=0.11 max="9" step="0.01" required value="{{ $PB_obj[1]->c4 }}"> </td>
-    <td> <input list="bobot" type="number" name="c2c5" class="form-control" placeholder="" min=0.11 max="9" step="0.01" required value="{{ $PB_obj[1]->c5 }}"> </td>
-    <td> <input list="bobot" type="number" name="c2c6" class="form-control" placeholder="" min=0.11 max="9" step="0.01" required value="{{ $PB_obj[1]->c6 }}"> </td>
-    <td> <input list="bobot" type="number" name="c2c7" class="form-control" placeholder="" min=0.11 max="9" step="0.01" required value="{{ $PB_obj[1]->c7 }}"> </td>
-    <td> <input list="bobot" type="number" name="c2c8" class="form-control" placeholder="" min=0.11 max="9" step="0.01" required value="{{ $PB_obj[1]->c8 }}"> </td>
-    <td> <input list="bobot" type="number" name="c2c9" class="form-control" placeholder="" min=0.11 max="9" step="0.01" required value="{{ $PB_obj[1]->c9 }}"> </td>
-    <td> <input list="bobot" type="number" name="c2c10" class="form-control" placeholder="" min=0.11 max="9" step="0.01" required value="{{ $PB_obj[1]->c10 }}"> </td>
-    <td> <input list="bobot" type="number" name="c2c11" class="form-control" placeholder="" min=0.11 max="9" step="0.01" required value="{{ $PB_obj[1]->c11 }}"> </td>
-    <td> <input list="bobot" type="number" name="c2c12" class="form-control" placeholder="" min=0.11 max="9" step="0.01" required value="{{ $PB_obj[1]->c12 }}"> </td>
+  <td class="custColor">C2</td>
+  <td><input name="c2c1" id="c2c1" type="text" class="form-control" value="{{ float_to_divide_form($PB_obj[1]->c1) }}" disabled></td>
+  <td><input type="text" name="c2c2" class="form-control" value="{{ $PB_obj[1]->c2 }}" disabled></td>           <input type="number" name="c2c2" class="form-control center" style="display: none" value="1">
+
+  <td><select name="c2c3" id="c2c3" class="form-control" required> @foreach ($sharedOptions as $item) <option value="{{ $item[0] }}" @if ($item[0] == $PB_obj[1]->c3) selected='selected' @endif @if ($item[0] === '') disabled selected @endif> {{ $item[1] }} </option> @endforeach </select></td>
+  <td><select name="c2c4" id="c2c4" class="form-control" required> @foreach ($sharedOptions as $item) <option value="{{ $item[0] }}" @if ($item[0] == $PB_obj[1]->c4) selected='selected' @endif @if ($item[0] === '') disabled selected @endif> {{ $item[1] }} </option> @endforeach </select></td>
+  <td><select name="c2c5" id="c2c5" class="form-control" required> @foreach ($sharedOptions as $item) <option value="{{ $item[0] }}" @if ($item[0] == $PB_obj[1]->c5) selected='selected' @endif @if ($item[0] === '') disabled selected @endif> {{ $item[1] }} </option> @endforeach </select></td>
+  <td><select name="c2c6" id="c2c6" class="form-control" required> @foreach ($sharedOptions as $item) <option value="{{ $item[0] }}" @if ($item[0] == $PB_obj[1]->c6) selected='selected' @endif @if ($item[0] === '') disabled selected @endif> {{ $item[1] }} </option> @endforeach </select></td>
+  <td><select name="c2c7" id="c2c7" class="form-control" required> @foreach ($sharedOptions as $item) <option value="{{ $item[0] }}" @if ($item[0] == $PB_obj[1]->c7) selected='selected' @endif @if ($item[0] === '') disabled selected @endif> {{ $item[1] }} </option> @endforeach </select></td>
+  <td><select name="c2c8" id="c2c8" class="form-control" required> @foreach ($sharedOptions as $item) <option value="{{ $item[0] }}" @if ($item[0] == $PB_obj[1]->c8) selected='selected' @endif @if ($item[0] === '') disabled selected @endif> {{ $item[1] }} </option> @endforeach </select></td>
+  <td><select name="c2c9" id="c2c9" class="form-control" required> @foreach ($sharedOptions as $item) <option value="{{ $item[0] }}" @if ($item[0] == $PB_obj[1]->c9) selected='selected' @endif @if ($item[0] === '') disabled selected @endif> {{ $item[1] }} </option> @endforeach </select></td>
+  <td><select name="c2c10" id="c2c10" class="form-control" required> @foreach ($sharedOptions as $item) <option value="{{ $item[0] }}" @if ($item[0] == $PB_obj[1]->c10) selected='selected' @endif @if ($item[0] === '') disabled selected @endif> {{ $item[1] }} </option> @endforeach </select></td>
+  <td><select name="c2c11" id="c2c11" class="form-control" required> @foreach ($sharedOptions as $item) <option value="{{ $item[0] }}" @if ($item[0] == $PB_obj[1]->c11) selected='selected' @endif @if ($item[0] === '') disabled selected @endif> {{ $item[1] }} </option> @endforeach </select></td>
+  <td><select name="c2c12" id="c2c12" class="form-control" required> @foreach ($sharedOptions as $item) <option value="{{ $item[0] }}" @if ($item[0] == $PB_obj[1]->c12) selected='selected' @endif @if ($item[0] === '') disabled selected @endif> {{ $item[1] }} </option> @endforeach </select></td>
+
 </tr>
 
 <tr>
-    <td class="custColor">C3</td>
-    <td><input list="bobot" type="number" class="form-control" value="{{ $PB_obj[2]->c1 }}" disabled></td>
-    <td><input list="bobot" type="number" class="form-control" value="{{ $PB_obj[2]->c2 }}" disabled></td>
-    <td><input list="bobot" type="number" name="c3c3" class="form-control" value="{{ $PB_obj[2]->c3 }}" disabled></td>              <input list="bobot" type="number" name="c3c3" class="form-control center" style="display: none" value="1">
-    <td> <input list="bobot" type="number" name="c3c4" class="form-control" placeholder="" min=0.11 max="9" step="0.01" required value="{{ $PB_obj[2]->c4 }}"> </td>
-    <td> <input list="bobot" type="number" name="c3c5" class="form-control" placeholder="" min=0.11 max="9" step="0.01" required value="{{ $PB_obj[2]->c5 }}"> </td>
-    <td> <input list="bobot" type="number" name="c3c6" class="form-control" placeholder="" min=0.11 max="9" step="0.01" required value="{{ $PB_obj[2]->c6 }}"> </td>
-    <td> <input list="bobot" type="number" name="c3c7" class="form-control" placeholder="" min=0.11 max="9" step="0.01" required value="{{ $PB_obj[2]->c7 }}"> </td>
-    <td> <input list="bobot" type="number" name="c3c8" class="form-control" placeholder="" min=0.11 max="9" step="0.01" required value="{{ $PB_obj[2]->c8 }}"> </td>
-    <td> <input list="bobot" type="number" name="c3c9" class="form-control" placeholder="" min=0.11 max="9" step="0.01" required value="{{ $PB_obj[2]->c9 }}"> </td>
-    <td> <input list="bobot" type="number" name="c3c10" class="form-control" placeholder="" min=0.11 max="9" step="0.01" required value="{{ $PB_obj[2]->c10 }}"> </td>
-    <td> <input list="bobot" type="number" name="c3c11" class="form-control" placeholder="" min=0.11 max="9" step="0.01" required value="{{ $PB_obj[2]->c11 }}"> </td>
-    <td> <input list="bobot" type="number" name="c3c12" class="form-control" placeholder="" min=0.11 max="9" step="0.01" required value="{{ $PB_obj[2]->c12 }}"> </td>
+  <td class="custColor">C3</td>
+  <td><input name="c3c1" id="c3c1" type="text" class="form-control" value="{{ float_to_divide_form($PB_obj[2]->c1) }}" disabled></td>
+  <td><input name="c3c2" id="c3c2" type="text" class="form-control" value="{{ float_to_divide_form($PB_obj[2]->c2) }}" disabled></td>
+  <td><input type="text" name="c3c3" class="form-control" value="{{ $PB_obj[2]->c3 }}" disabled></td>              <input type="number" name="c3c3" class="form-control center" style="display: none" value="1">
+
+  <td><select name="c3c4" id="c3c4" class="form-control" required> @foreach ($sharedOptions as $item) <option value="{{ $item[0] }}" @if ($item[0] == $PB_obj[2]->c4) selected='selected' @endif @if ($item[0] === '') disabled selected @endif> {{ $item[1] }} </option> @endforeach </select></td>
+  <td><select name="c3c5" id="c3c5" class="form-control" required> @foreach ($sharedOptions as $item) <option value="{{ $item[0] }}" @if ($item[0] == $PB_obj[2]->c5) selected='selected' @endif @if ($item[0] === '') disabled selected @endif> {{ $item[1] }} </option> @endforeach </select></td>
+  <td><select name="c3c6" id="c3c6" class="form-control" required> @foreach ($sharedOptions as $item) <option value="{{ $item[0] }}" @if ($item[0] == $PB_obj[2]->c6) selected='selected' @endif @if ($item[0] === '') disabled selected @endif> {{ $item[1] }} </option> @endforeach </select></td>
+  <td><select name="c3c7" id="c3c7" class="form-control" required> @foreach ($sharedOptions as $item) <option value="{{ $item[0] }}" @if ($item[0] == $PB_obj[2]->c7) selected='selected' @endif @if ($item[0] === '') disabled selected @endif> {{ $item[1] }} </option> @endforeach </select></td>
+  <td><select name="c3c8" id="c3c8" class="form-control" required> @foreach ($sharedOptions as $item) <option value="{{ $item[0] }}" @if ($item[0] == $PB_obj[2]->c8) selected='selected' @endif @if ($item[0] === '') disabled selected @endif> {{ $item[1] }} </option> @endforeach </select></td>
+  <td><select name="c3c9" id="c3c9" class="form-control" required> @foreach ($sharedOptions as $item) <option value="{{ $item[0] }}" @if ($item[0] == $PB_obj[2]->c9) selected='selected' @endif @if ($item[0] === '') disabled selected @endif> {{ $item[1] }} </option> @endforeach </select></td>
+  <td><select name="c3c10" id="c3c10" class="form-control" required> @foreach ($sharedOptions as $item) <option value="{{ $item[0] }}" @if ($item[0] == $PB_obj[2]->c10) selected='selected' @endif @if ($item[0] === '') disabled selected @endif> {{ $item[1] }} </option> @endforeach </select></td>
+  <td><select name="c3c11" id="c3c11" class="form-control" required> @foreach ($sharedOptions as $item) <option value="{{ $item[0] }}" @if ($item[0] == $PB_obj[2]->c11) selected='selected' @endif @if ($item[0] === '') disabled selected @endif> {{ $item[1] }} </option> @endforeach </select></td>
+  <td><select name="c3c12" id="c3c12" class="form-control" required> @foreach ($sharedOptions as $item) <option value="{{ $item[0] }}" @if ($item[0] == $PB_obj[2]->c12) selected='selected' @endif @if ($item[0] === '') disabled selected @endif> {{ $item[1] }} </option> @endforeach </select></td>
 </tr>
 
 <tr>
-    <td class="custColor">C4</td>
-    <td><input list="bobot" type="number" class="form-control" value="{{ $PB_obj[3]->c1 }}" disabled></td>
-    <td><input list="bobot" type="number" class="form-control" value="{{ $PB_obj[3]->c2 }}" disabled></td>
-    <td><input list="bobot" type="number" class="form-control" value="{{ $PB_obj[3]->c3 }}" disabled></td>
-    <td><input list="bobot" type="number" name="c4c4" class="form-control" value="{{ $PB_obj[3]->c4 }}" disabled></td>              <input list="bobot" type="number" name="c4c4" class="form-control center" style="display: none" value="1">
-    <td> <input list="bobot" type="number" name="c4c5" class="form-control" placeholder="" min=0.11 max="9" step="0.01" required value="{{ $PB_obj[3]->c5 }}"> </td>
-    <td> <input list="bobot" type="number" name="c4c6" class="form-control" placeholder="" min=0.11 max="9" step="0.01" required value="{{ $PB_obj[3]->c6 }}"> </td>
-    <td> <input list="bobot" type="number" name="c4c7" class="form-control" placeholder="" min=0.11 max="9" step="0.01" required value="{{ $PB_obj[3]->c7 }}"> </td>
-    <td> <input list="bobot" type="number" name="c4c8" class="form-control" placeholder="" min=0.11 max="9" step="0.01" required value="{{ $PB_obj[3]->c8 }}"> </td>
-    <td> <input list="bobot" type="number" name="c4c9" class="form-control" placeholder="" min=0.11 max="9" step="0.01" required value="{{ $PB_obj[3]->c9 }}"> </td>
-    <td> <input list="bobot" type="number" name="c4c10" class="form-control" placeholder="" min=0.11 max="9" step="0.01" required value="{{ $PB_obj[3]->c10 }}"> </td>
-    <td> <input list="bobot" type="number" name="c4c11" class="form-control" placeholder="" min=0.11 max="9" step="0.01" required value="{{ $PB_obj[3]->c11 }}"> </td>
-    <td> <input list="bobot" type="number" name="c4c12" class="form-control" placeholder="" min=0.11 max="9" step="0.01" required value="{{ $PB_obj[3]->c12 }}"> </td>
+  <td class="custColor">C4</td>
+  <td><input name="c4c1" id="c4c1" type="text" class="form-control" value="{{ float_to_divide_form($PB_obj[3]->c1) }}" disabled></td>
+  <td><input name="c4c2" id="c4c2" type="text" class="form-control" value="{{ float_to_divide_form($PB_obj[3]->c2) }}" disabled></td>
+  <td><input name="c4c3" id="c4c3" type="text" class="form-control" value="{{ float_to_divide_form($PB_obj[3]->c3) }}" disabled></td>
+  <td><input  type="text" name="c4c4" class="form-control" value="{{ $PB_obj[3]->c4 }}" disabled></td>              <input  type="number" name="c4c4" class="form-control center" style="display: none" value="1">
+
+  <td><select name="c4c5" id="c4c5" class="form-control" required> @foreach ($sharedOptions as $item) <option value="{{ $item[0] }}" @if ($item[0] == $PB_obj[3]->c5) selected='selected' @endif @if ($item[0] === '') disabled selected @endif> {{ $item[1] }} </option> @endforeach </select></td>
+  <td><select name="c4c6" id="c4c6" class="form-control" required> @foreach ($sharedOptions as $item) <option value="{{ $item[0] }}" @if ($item[0] == $PB_obj[3]->c6) selected='selected' @endif @if ($item[0] === '') disabled selected @endif> {{ $item[1] }} </option> @endforeach </select></td>
+  <td><select name="c4c7" id="c4c7" class="form-control" required> @foreach ($sharedOptions as $item) <option value="{{ $item[0] }}" @if ($item[0] == $PB_obj[3]->c7) selected='selected' @endif @if ($item[0] === '') disabled selected @endif> {{ $item[1] }} </option> @endforeach </select></td>
+  <td><select name="c4c8" id="c4c8" class="form-control" required> @foreach ($sharedOptions as $item) <option value="{{ $item[0] }}" @if ($item[0] == $PB_obj[3]->c8) selected='selected' @endif @if ($item[0] === '') disabled selected @endif> {{ $item[1] }} </option> @endforeach </select></td>
+  <td><select name="c4c9" id="c4c9" class="form-control" required> @foreach ($sharedOptions as $item) <option value="{{ $item[0] }}" @if ($item[0] == $PB_obj[3]->c9) selected='selected' @endif @if ($item[0] === '') disabled selected @endif> {{ $item[1] }} </option> @endforeach </select></td>
+  <td><select name="c4c10" id="c4c10" class="form-control" required> @foreach ($sharedOptions as $item) <option value="{{ $item[0] }}" @if ($item[0] == $PB_obj[3]->c10) selected='selected' @endif @if ($item[0] === '') disabled selected @endif> {{ $item[1] }} </option> @endforeach </select></td>
+  <td><select name="c4c11" id="c4c11" class="form-control" required> @foreach ($sharedOptions as $item) <option value="{{ $item[0] }}" @if ($item[0] == $PB_obj[3]->c11) selected='selected' @endif @if ($item[0] === '') disabled selected @endif> {{ $item[1] }} </option> @endforeach </select></td>
+  <td><select name="c4c12" id="c4c12" class="form-control" required> @foreach ($sharedOptions as $item) <option value="{{ $item[0] }}" @if ($item[0] == $PB_obj[3]->c12) selected='selected' @endif @if ($item[0] === '') disabled selected @endif> {{ $item[1] }} </option> @endforeach </select></td>
 </tr>
 
 <tr>
-    <td class="custColor">C5</td>
-    <td><input list="bobot" type="number" class="form-control" value="{{ $PB_obj[4]->c1 }}" disabled></td>
-    <td><input list="bobot" type="number" class="form-control" value="{{ $PB_obj[4]->c2 }}" disabled></td>
-    <td><input list="bobot" type="number" class="form-control" value="{{ $PB_obj[4]->c3 }}" disabled></td>
-    <td><input list="bobot" type="number" class="form-control" value="{{ $PB_obj[4]->c4 }}" disabled></td>
-    <td><input list="bobot" type="number" name="c5c5"class="form-control" value="{{ $PB_obj[4]->c5 }}" disabled></td>               <input list="bobot" type="number" name="c5c5" class="form-control center" style="display: none" value="1">
-    <td> <input list="bobot" type="number" name="c5c6" class="form-control" placeholder="" min=0.11 max="9" step="0.01" required value="{{ $PB_obj[4]->c6 }}"> </td>
-    <td> <input list="bobot" type="number" name="c5c7" class="form-control" placeholder="" min=0.11 max="9" step="0.01" required value="{{ $PB_obj[4]->c7 }}"> </td>
-    <td> <input list="bobot" type="number" name="c5c8" class="form-control" placeholder="" min=0.11 max="9" step="0.01" required value="{{ $PB_obj[4]->c8 }}"> </td>
-    <td> <input list="bobot" type="number" name="c5c9" class="form-control" placeholder="" min=0.11 max="9" step="0.01" required value="{{ $PB_obj[4]->c9 }}"> </td>
-    <td> <input list="bobot" type="number" name="c5c10" class="form-control" placeholder="" min=0.11 max="9" step="0.01" required value="{{ $PB_obj[4]->c10 }}"> </td>
-    <td> <input list="bobot" type="number" name="c5c11" class="form-control" placeholder="" min=0.11 max="9" step="0.01" required value="{{ $PB_obj[4]->c11 }}"> </td>
-    <td> <input list="bobot" type="number" name="c5c12" class="form-control" placeholder="" min=0.11 max="9" step="0.01" required value="{{ $PB_obj[4]->c12 }}"> </td>
+  <td class="custColor">C5</td>
+  <td><input name="c5c1" id="c5c1" type="text" class="form-control" value="{{ float_to_divide_form($PB_obj[4]->c1) }}" disabled></td>
+  <td><input name="c5c2" id="c5c2" type="text" class="form-control" value="{{ float_to_divide_form($PB_obj[4]->c2) }}" disabled></td>
+  <td><input name="c5c3" id="c5c3" type="text" class="form-control" value="{{ float_to_divide_form($PB_obj[4]->c3) }}" disabled></td>
+  <td><input name="c5c4" id="c5c4" type="text" class="form-control" value="{{ float_to_divide_form($PB_obj[4]->c4) }}" disabled></td>
+  <td><input  type="text" name="c5c5"class="form-control" value="{{ $PB_obj[4]->c5 }}" disabled></td>               <input  type="number" name="c5c5" class="form-control center" style="display: none" value="1">
+
+  <td><select name="c5c6" id="c5c6" class="form-control" required> @foreach ($sharedOptions as $item) <option value="{{ $item[0] }}" @if ($item[0] == $PB_obj[4]->c6) selected='selected' @endif @if ($item[0] === '') disabled selected @endif> {{ $item[1] }} </option> @endforeach </select></td>
+  <td><select name="c5c7" id="c5c7" class="form-control" required> @foreach ($sharedOptions as $item) <option value="{{ $item[0] }}" @if ($item[0] == $PB_obj[4]->c7) selected='selected' @endif @if ($item[0] === '') disabled selected @endif> {{ $item[1] }} </option> @endforeach </select></td>
+  <td><select name="c5c8" id="c5c8" class="form-control" required> @foreach ($sharedOptions as $item) <option value="{{ $item[0] }}" @if ($item[0] == $PB_obj[4]->c8) selected='selected' @endif @if ($item[0] === '') disabled selected @endif> {{ $item[1] }} </option> @endforeach </select></td>
+  <td><select name="c5c9" id="c5c9" class="form-control" required> @foreach ($sharedOptions as $item) <option value="{{ $item[0] }}" @if ($item[0] == $PB_obj[4]->c9) selected='selected' @endif @if ($item[0] === '') disabled selected @endif> {{ $item[1] }} </option> @endforeach </select></td>
+  <td><select name="c5c10" id="c5c10" class="form-control" required> @foreach ($sharedOptions as $item) <option value="{{ $item[0] }}" @if ($item[0] == $PB_obj[4]->c10) selected='selected' @endif @if ($item[0] === '') disabled selected @endif> {{ $item[1] }} </option> @endforeach </select></td>
+  <td><select name="c5c11" id="c5c11" class="form-control" required> @foreach ($sharedOptions as $item) <option value="{{ $item[0] }}" @if ($item[0] == $PB_obj[4]->c11) selected='selected' @endif @if ($item[0] === '') disabled selected @endif> {{ $item[1] }} </option> @endforeach </select></td>
+  <td><select name="c5c12" id="c5c12" class="form-control" required> @foreach ($sharedOptions as $item) <option value="{{ $item[0] }}" @if ($item[0] == $PB_obj[4]->c12) selected='selected' @endif @if ($item[0] === '') disabled selected @endif> {{ $item[1] }} </option> @endforeach </select></td>
+
 </tr>
 
 <tr>
-    <td class="custColor">C6</td>
-    <td><input list="bobot" type="number" class="form-control" value="{{ $PB_obj[5]->c1 }}" disabled></td>
-    <td><input list="bobot" type="number" class="form-control" value="{{ $PB_obj[5]->c2 }}" disabled></td>
-    <td><input list="bobot" type="number" class="form-control" value="{{ $PB_obj[5]->c3 }}" disabled></td>
-    <td><input list="bobot" type="number" class="form-control" value="{{ $PB_obj[5]->c4 }}" disabled></td>
-    <td><input list="bobot" type="number" class="form-control" value="{{ $PB_obj[5]->c5 }}" disabled></td>
-    <td><input list="bobot" type="number" name="c6c6" class="form-control" value="{{ $PB_obj[5]->c6 }}" disabled></td>              <input list="bobot" type="number" name="c6c6" class="form-control center" style="display: none" value="1">
-    <td> <input list="bobot" type="number" name="c6c7" class="form-control" placeholder="" min=0.11 max="9" step="0.01" required value="{{ $PB_obj[5]->c7 }}"> </td>
-    <td> <input list="bobot" type="number" name="c6c8" class="form-control" placeholder="" min=0.11 max="9" step="0.01" required value="{{ $PB_obj[5]->c8 }}"> </td>
-    <td> <input list="bobot" type="number" name="c6c9" class="form-control" placeholder="" min=0.11 max="9" step="0.01" required value="{{ $PB_obj[5]->c9 }}"> </td>
-    <td> <input list="bobot" type="number" name="c6c10" class="form-control" placeholder="" min=0.11 max="9" step="0.01" required value="{{ $PB_obj[5]->c10 }}"> </td>
-    <td> <input list="bobot" type="number" name="c6c11" class="form-control" placeholder="" min=0.11 max="9" step="0.01" required value="{{ $PB_obj[5]->c11 }}"> </td>
-    <td> <input list="bobot" type="number" name="c6c12" class="form-control" placeholder="" min=0.11 max="9" step="0.01" required value="{{ $PB_obj[5]->c12 }}"> </td>
+  <td class="custColor">C6</td>
+  <td><input name="c6c1" id="c6c1" type="text" class="form-control" value="{{ float_to_divide_form($PB_obj[5]->c1) }}" disabled></td>
+  <td><input name="c6c2" id="c6c2" type="text" class="form-control" value="{{ float_to_divide_form($PB_obj[5]->c2) }}" disabled></td>
+  <td><input name="c6c3" id="c6c3" type="text" class="form-control" value="{{ float_to_divide_form($PB_obj[5]->c3) }}" disabled></td>
+  <td><input name="c6c4" id="c6c4" type="text" class="form-control" value="{{ float_to_divide_form($PB_obj[5]->c4) }}" disabled></td>
+  <td><input name="c6c5" id="c6c5" type="text" class="form-control" value="{{ float_to_divide_form($PB_obj[5]->c5) }}" disabled></td>
+  <td><input  type="text" name="c6c6" class="form-control" value="{{ $PB_obj[5]->c6 }}" disabled></td>              <input  type="number" name="c6c6" class="form-control center" style="display: none" value="1">
+
+  <td><select name="c6c7" id="c6c7" class="form-control" required> @foreach ($sharedOptions as $item) <option value="{{ $item[0] }}" @if ($item[0] == $PB_obj[5]->c7) selected='selected' @endif @if ($item[0] === '') disabled selected @endif> {{ $item[1] }} </option> @endforeach </select></td>
+  <td><select name="c6c8" id="c6c8" class="form-control" required> @foreach ($sharedOptions as $item) <option value="{{ $item[0] }}" @if ($item[0] == $PB_obj[5]->c8) selected='selected' @endif @if ($item[0] === '') disabled selected @endif> {{ $item[1] }} </option> @endforeach </select></td>
+  <td><select name="c6c9" id="c6c9" class="form-control" required> @foreach ($sharedOptions as $item) <option value="{{ $item[0] }}" @if ($item[0] == $PB_obj[5]->c9) selected='selected' @endif @if ($item[0] === '') disabled selected @endif> {{ $item[1] }} </option> @endforeach </select></td>
+  <td><select name="c6c10" id="c6c10" class="form-control" required> @foreach ($sharedOptions as $item) <option value="{{ $item[0] }}" @if ($item[0] == $PB_obj[5]->c10) selected='selected' @endif @if ($item[0] === '') disabled selected @endif> {{ $item[1] }} </option> @endforeach </select></td>
+  <td><select name="c6c11" id="c6c11" class="form-control" required> @foreach ($sharedOptions as $item) <option value="{{ $item[0] }}" @if ($item[0] == $PB_obj[5]->c11) selected='selected' @endif @if ($item[0] === '') disabled selected @endif> {{ $item[1] }} </option> @endforeach </select></td>
+  <td><select name="c6c12" id="c6c12" class="form-control" required> @foreach ($sharedOptions as $item) <option value="{{ $item[0] }}" @if ($item[0] == $PB_obj[5]->c12) selected='selected' @endif @if ($item[0] === '') disabled selected @endif> {{ $item[1] }} </option> @endforeach </select></td>
 </tr>
 
 <tr>
-    <td class="custColor">C7</td>
-    <td><input list="bobot" type="number" class="form-control" value="{{ $PB_obj[6]->c1 }}" disabled></td>
-    <td><input list="bobot" type="number" class="form-control" value="{{ $PB_obj[6]->c2 }}" disabled></td>
-    <td><input list="bobot" type="number" class="form-control" value="{{ $PB_obj[6]->c3 }}" disabled></td>
-    <td><input list="bobot" type="number" class="form-control" value="{{ $PB_obj[6]->c4 }}" disabled></td>
-    <td><input list="bobot" type="number" class="form-control" value="{{ $PB_obj[6]->c5 }}" disabled></td>
-    <td><input list="bobot" type="number" class="form-control" value="{{ $PB_obj[6]->c6 }}" disabled></td>
-    <td><input list="bobot" type="number" name="c7c7" class="form-control" value="{{ $PB_obj[6]->c7 }}" disabled></td>              <input list="bobot" type="number" name="c7c7" class="form-control center" style="display: none" value="1">
-    <td> <input list="bobot" type="number" name="c7c8" class="form-control" placeholder="" min=0.11 max="9" step="0.01" required value="{{ $PB_obj[6]->c8 }}"> </td>
-    <td> <input list="bobot" type="number" name="c7c9" class="form-control" placeholder="" min=0.11 max="9" step="0.01" required value="{{ $PB_obj[6]->c9 }}"> </td>
-    <td> <input list="bobot" type="number" name="c7c10" class="form-control" placeholder="" min=0.11 max="9" step="0.01" required value="{{ $PB_obj[6]->c10 }}"> </td>
-    <td> <input list="bobot" type="number" name="c7c11" class="form-control" placeholder="" min=0.11 max="9" step="0.01" required value="{{ $PB_obj[6]->c11 }}"> </td>
-    <td> <input list="bobot" type="number" name="c7c12" class="form-control" placeholder="" min=0.11 max="9" step="0.01" required value="{{ $PB_obj[6]->c12 }}"> </td>
+  <td class="custColor">C7</td>
+  <td><input name="c7c1" id="c7c1" class="form-control" value="{{ float_to_divide_form($PB_obj[6]->c1) }}" disabled></td>
+  <td><input name="c7c2" id="c7c2" class="form-control" value="{{ float_to_divide_form($PB_obj[6]->c2) }}" disabled></td>
+  <td><input name="c7c3" id="c7c3" class="form-control" value="{{ float_to_divide_form($PB_obj[6]->c3) }}" disabled></td>
+  <td><input name="c7c4" id="c7c4" class="form-control" value="{{ float_to_divide_form($PB_obj[6]->c4) }}" disabled></td>
+  <td><input name="c7c5" id="c7c5" class="form-control" value="{{ float_to_divide_form($PB_obj[6]->c5) }}" disabled></td>
+  <td><input name="c7c6" id="c7c6" class="form-control" value="{{ float_to_divide_form($PB_obj[6]->c6) }}" disabled></td>
+  <td><input  type="text" name="c7c7" class="form-control" value="{{ $PB_obj[6]->c7 }}" disabled></td>              <input  type="number" name="c7c7" class="form-control center" style="display: none" value="1">
+
+  <td><select name="c7c8" id="c7c8" class="form-control" required> @foreach ($sharedOptions as $item) <option value="{{ $item[0] }}" @if ($item[0] == $PB_obj[6]->c8) selected='selected' @endif @if ($item[0] === '') disabled selected @endif> {{ $item[1] }} </option> @endforeach </select></td>
+  <td><select name="c7c9" id="c7c9" class="form-control" required> @foreach ($sharedOptions as $item) <option value="{{ $item[0] }}" @if ($item[0] == $PB_obj[6]->c9) selected='selected' @endif @if ($item[0] === '') disabled selected @endif> {{ $item[1] }} </option> @endforeach </select></td>
+  <td><select name="c7c10" id="c7c10" class="form-control" required> @foreach ($sharedOptions as $item) <option value="{{ $item[0] }}" @if ($item[0] == $PB_obj[6]->c10) selected='selected' @endif @if ($item[0] === '') disabled selected @endif> {{ $item[1] }} </option> @endforeach </select></td>
+  <td><select name="c7c11" id="c7c11" class="form-control" required> @foreach ($sharedOptions as $item) <option value="{{ $item[0] }}" @if ($item[0] == $PB_obj[6]->c11) selected='selected' @endif @if ($item[0] === '') disabled selected @endif> {{ $item[1] }} </option> @endforeach </select></td>
+  <td><select name="c7c12" id="c7c12" class="form-control" required> @foreach ($sharedOptions as $item) <option value="{{ $item[0] }}" @if ($item[0] == $PB_obj[6]->c12) selected='selected' @endif @if ($item[0] === '') disabled selected @endif> {{ $item[1] }} </option> @endforeach </select></td>
 </tr>
 
 <tr>
-    <td class="custColor">C8</td>
-    <td><input list="bobot" type="number" class="form-control" value="{{ $PB_obj[7]->c1 }}" disabled></td>
-    <td><input list="bobot" type="number" class="form-control" value="{{ $PB_obj[7]->c2 }}" disabled></td>
-    <td><input list="bobot" type="number" class="form-control" value="{{ $PB_obj[7]->c3 }}" disabled></td>
-    <td><input list="bobot" type="number" class="form-control" value="{{ $PB_obj[7]->c4 }}" disabled></td>
-    <td><input list="bobot" type="number" class="form-control" value="{{ $PB_obj[7]->c5 }}" disabled></td>
-    <td><input list="bobot" type="number" class="form-control" value="{{ $PB_obj[7]->c6 }}" disabled></td>
-    <td><input list="bobot" type="number" class="form-control" value="{{ $PB_obj[7]->c7 }}" disabled></td>
-    <td><input list="bobot" type="number" name="c8c8" class="form-control" value="{{ $PB_obj[7]->c8 }}" disabled></td>              <input list="bobot" type="number" name="c8c8" class="form-control center" style="display: none" value="1">
-    <td> <input list="bobot" type="number" name="c8c9" class="form-control" placeholder="" min=0.11 max="9" step="0.01" required value="{{ $PB_obj[7]->c9 }}"> </td>
-    <td> <input list="bobot" type="number" name="c8c10" class="form-control" placeholder="" min=0.11 max="9" step="0.01" required value="{{ $PB_obj[7]->c10 }}"> </td>
-    <td> <input list="bobot" type="number" name="c8c11" class="form-control" placeholder="" min=0.11 max="9" step="0.01" required value="{{ $PB_obj[7]->c11 }}"> </td>
-    <td> <input list="bobot" type="number" name="c8c12" class="form-control" placeholder="" min=0.11 max="9" step="0.01" required value="{{ $PB_obj[7]->c12 }}"> </td>
+  <td class="custColor">C8</td>
+  <td><input name="c8c1" id="c8c1" type="text" class="form-control" value="{{ float_to_divide_form($PB_obj[7]->c1) }}" disabled></td>
+  <td><input name="c8c2" id="c8c2" type="text" class="form-control" value="{{ float_to_divide_form($PB_obj[7]->c2) }}" disabled></td>
+  <td><input name="c8c3" id="c8c3" type="text" class="form-control" value="{{ float_to_divide_form($PB_obj[7]->c3) }}" disabled></td>
+  <td><input name="c8c4" id="c8c4" type="text" class="form-control" value="{{ float_to_divide_form($PB_obj[7]->c4) }}" disabled></td>
+  <td><input name="c8c5" id="c8c5" type="text" class="form-control" value="{{ float_to_divide_form($PB_obj[7]->c5) }}" disabled></td>
+  <td><input name="c8c6" id="c8c6" type="text" class="form-control" value="{{ float_to_divide_form($PB_obj[7]->c6) }}" disabled></td>
+  <td><input name="c8c7" id="c8c7" type="text" class="form-control" value="{{ float_to_divide_form($PB_obj[7]->c7) }}" disabled></td>
+  <td><input  type="text" name="c8c8" class="form-control" value="{{ $PB_obj[7]->c8 }}" disabled></td>              <input  type="number" name="c8c8" class="form-control center" style="display: none" value="1">
+
+  <td><select name="c8c9" id="c8c9" class="form-control" required> @foreach ($sharedOptions as $item) <option value="{{ $item[0] }}" @if ($item[0] == $PB_obj[7]->c9) selected='selected' @endif @if ($item[0] === '') disabled selected @endif> {{ $item[1] }} </option> @endforeach </select></td>
+  <td><select name="c8c10" id="c8c10" class="form-control" required> @foreach ($sharedOptions as $item) <option value="{{ $item[0] }}" @if ($item[0] == $PB_obj[7]->c10) selected='selected' @endif @if ($item[0] === '') disabled selected @endif> {{ $item[1] }} </option> @endforeach </select></td>
+  <td><select name="c8c11" id="c8c11" class="form-control" required> @foreach ($sharedOptions as $item) <option value="{{ $item[0] }}" @if ($item[0] == $PB_obj[7]->c11) selected='selected' @endif @if ($item[0] === '') disabled selected @endif> {{ $item[1] }} </option> @endforeach </select></td>
+  <td><select name="c8c12" id="c8c12" class="form-control" required> @foreach ($sharedOptions as $item) <option value="{{ $item[0] }}" @if ($item[0] == $PB_obj[7]->c12) selected='selected' @endif @if ($item[0] === '') disabled selected @endif> {{ $item[1] }} </option> @endforeach </select></td>
 </tr>
 
 <tr>
-    <td class="custColor">C9</td>
-    <td><input list="bobot" type="number" class="form-control" value="{{ $PB_obj[8]->c1 }}" disabled></td>
-    <td><input list="bobot" type="number" class="form-control" value="{{ $PB_obj[8]->c2 }}" disabled></td>
-    <td><input list="bobot" type="number" class="form-control" value="{{ $PB_obj[8]->c3 }}" disabled></td>
-    <td><input list="bobot" type="number" class="form-control" value="{{ $PB_obj[8]->c4 }}" disabled></td>
-    <td><input list="bobot" type="number" class="form-control" value="{{ $PB_obj[8]->c5 }}" disabled></td>
-    <td><input list="bobot" type="number" class="form-control" value="{{ $PB_obj[8]->c6 }}" disabled></td>
-    <td><input list="bobot" type="number" class="form-control" value="{{ $PB_obj[8]->c7 }}" disabled></td>
-    <td><input list="bobot" type="number" class="form-control" value="{{ $PB_obj[8]->c8 }}" disabled></td>
-    <td><input list="bobot" type="number" name="c9c9" class="form-control" value="{{ $PB_obj[8]->c9 }}" disabled></td>              <input list="bobot" type="number" name="c9c9" class="form-control center" style="display: none" value="1">
-    <td> <input list="bobot" type="number" name="c9c10" class="form-control" placeholder="" min=0.11 max="9" step="0.01" required value="{{ $PB_obj[8]->c10 }}"> </td>
-    <td> <input list="bobot" type="number" name="c9c11" class="form-control" placeholder="" min=0.11 max="9" step="0.01" required value="{{ $PB_obj[8]->c11 }}"> </td>
-    <td> <input list="bobot" type="number" name="c9c12" class="form-control" placeholder="" min=0.11 max="9" step="0.01" required value="{{ $PB_obj[8]->c12 }}"> </td>
+  <td class="custColor">C9</td>
+  <td><input name="c9c1" id="c9c1" type="text" class="form-control" value="{{ float_to_divide_form($PB_obj[8]->c1) }}" disabled></td>
+  <td><input name="c9c2" id="c9c2" type="text" class="form-control" value="{{ float_to_divide_form($PB_obj[8]->c2) }}" disabled></td>
+  <td><input name="c9c3" id="c9c3" type="text" class="form-control" value="{{ float_to_divide_form($PB_obj[8]->c3) }}" disabled></td>
+  <td><input name="c9c4" id="c9c4" type="text" class="form-control" value="{{ float_to_divide_form($PB_obj[8]->c4) }}" disabled></td>
+  <td><input name="c9c5" id="c9c5" type="text" class="form-control" value="{{ float_to_divide_form($PB_obj[8]->c5) }}" disabled></td>
+  <td><input name="c9c6" id="c9c6" type="text" class="form-control" value="{{ float_to_divide_form($PB_obj[8]->c6) }}" disabled></td>
+  <td><input name="c9c7" id="c9c7" type="text" class="form-control" value="{{ float_to_divide_form($PB_obj[8]->c7) }}" disabled></td>
+  <td><input name="c9c8" id="c9c8" type="text" class="form-control" value="{{ float_to_divide_form($PB_obj[8]->c8) }}" disabled></td>
+  <td><input  type="text" name="c9c9" class="form-control" value="{{ $PB_obj[8]->c9 }}" disabled></td>              <input  type="number" name="c9c9" class="form-control center" style="display: none" value="1">
+
+  <td><select name="c9c10" id="c9c10" class="form-control" required> @foreach ($sharedOptions as $item) <option value="{{ $item[0] }}" @if ($item[0] == $PB_obj[8]->c10) selected='selected' @endif @if ($item[0] === '') disabled selected @endif> {{ $item[1] }} </option> @endforeach </select></td>
+  <td><select name="c9c11" id="c9c11" class="form-control" required> @foreach ($sharedOptions as $item) <option value="{{ $item[0] }}" @if ($item[0] == $PB_obj[8]->c11) selected='selected' @endif @if ($item[0] === '') disabled selected @endif> {{ $item[1] }} </option> @endforeach </select></td>
+  <td><select name="c9c12" id="c9c12" class="form-control" required> @foreach ($sharedOptions as $item) <option value="{{ $item[0] }}" @if ($item[0] == $PB_obj[8]->c12) selected='selected' @endif @if ($item[0] === '') disabled selected @endif> {{ $item[1] }} </option> @endforeach </select></td>
 </tr>
 
 <tr>
-    <td class="custColor">C10</td>
-    <td><input list="bobot" type="number" class="form-control" value="{{ $PB_obj[9]->c1 }}" disabled></td>
-    <td><input list="bobot" type="number" class="form-control" value="{{ $PB_obj[9]->c2 }}" disabled></td>
-    <td><input list="bobot" type="number" class="form-control" value="{{ $PB_obj[9]->c3 }}" disabled></td>
-    <td><input list="bobot" type="number" class="form-control" value="{{ $PB_obj[9]->c4 }}" disabled></td>
-    <td><input list="bobot" type="number" class="form-control" value="{{ $PB_obj[9]->c5 }}" disabled></td>
-    <td><input list="bobot" type="number" class="form-control" value="{{ $PB_obj[9]->c6 }}" disabled></td>
-    <td><input list="bobot" type="number" class="form-control" value="{{ $PB_obj[9]->c7 }}" disabled></td>
-    <td><input list="bobot" type="number" class="form-control" value="{{ $PB_obj[9]->c8 }}" disabled></td>
-    <td><input list="bobot" type="number" class="form-control" value="{{ $PB_obj[9]->c9 }}" disabled></td>
-    <td><input list="bobot" type="number" name="c10c10" class="form-control" value="{{ $PB_obj[9]->c10 }}" disabled></td>            <input list="bobot" type="number" name="c10c10" class="form-control center" style="display: none" value="1">
-    <td> <input list="bobot" type="number" name="c10c11" class="form-control" placeholder="" min=0.11 max="9" step="0.01" required value="{{ $PB_obj[9]->c11 }}"> </td>
-    <td> <input list="bobot" type="number" name="c10c12" class="form-control" placeholder="" min=0.11 max="9" step="0.01" required value="{{ $PB_obj[9]->c12 }}"> </td>
+  <td class="custColor">C10</td>
+  <td><input name="c10c1" id="c10c1" type="text" class="form-control" value="{{ float_to_divide_form($PB_obj[9]->c1) }}" disabled></td>
+  <td><input name="c10c2" id="c10c2" type="text" class="form-control" value="{{ float_to_divide_form($PB_obj[9]->c2) }}" disabled></td>
+  <td><input name="c10c3" id="c10c3" type="text" class="form-control" value="{{ float_to_divide_form($PB_obj[9]->c3) }}" disabled></td>
+  <td><input name="c10c4" id="c10c4" type="text" class="form-control" value="{{ float_to_divide_form($PB_obj[9]->c4) }}" disabled></td>
+  <td><input name="c10c5" id="c10c5" type="text" class="form-control" value="{{ float_to_divide_form($PB_obj[9]->c5) }}" disabled></td>
+  <td><input name="c10c6" id="c10c6" type="text" class="form-control" value="{{ float_to_divide_form($PB_obj[9]->c6) }}" disabled></td>
+  <td><input name="c10c7" id="c10c7" type="text" class="form-control" value="{{ float_to_divide_form($PB_obj[9]->c7) }}" disabled></td>
+  <td><input name="c10c8" id="c10c8" type="text" class="form-control" value="{{ float_to_divide_form($PB_obj[9]->c8) }}" disabled></td>
+  <td><input name="c10c9" id="c10c9" type="text" class="form-control" value="{{ float_to_divide_form($PB_obj[9]->c9) }}" disabled></td>
+  <td><input  type="text" name="c10c10" class="form-control" value="{{ $PB_obj[9]->c10 }}" disabled></td>            <input  type="number" name="c10c10" class="form-control center" style="display: none" value="1">
+
+  <td><select name="c10c11" id="c10c11" class="form-control" required> @foreach ($sharedOptions as $item) <option value="{{ $item[0] }}" @if ($item[0] == $PB_obj[9]->c11) selected='selected' @endif @if ($item[0] === '') disabled selected @endif> {{ $item[1] }} </option> @endforeach </select></td>
+  <td><select name="c10c12" id="c10c12" class="form-control" required> @foreach ($sharedOptions as $item) <option value="{{ $item[0] }}" @if ($item[0] == $PB_obj[9]->c12) selected='selected' @endif @if ($item[0] === '') disabled selected @endif> {{ $item[1] }} </option> @endforeach </select></td>
 </tr>
 
 <tr>
     <td class="custColor">C11</td>
-    <td><input list="bobot" type="number" class="form-control" value="{{ $PB_obj[10]->c1 }}" disabled></td>
-    <td><input list="bobot" type="number" class="form-control" value="{{ $PB_obj[10]->c2 }}" disabled></td>
-    <td><input list="bobot" type="number" class="form-control" value="{{ $PB_obj[10]->c3 }}" disabled></td>
-    <td><input list="bobot" type="number" class="form-control" value="{{ $PB_obj[10]->c4 }}" disabled></td>
-    <td><input list="bobot" type="number" class="form-control" value="{{ $PB_obj[10]->c5 }}" disabled></td>
-    <td><input list="bobot" type="number" class="form-control" value="{{ $PB_obj[10]->c6 }}" disabled></td>
-    <td><input list="bobot" type="number" class="form-control" value="{{ $PB_obj[10]->c7 }}" disabled></td>
-    <td><input list="bobot" type="number" class="form-control" value="{{ $PB_obj[10]->c8 }}" disabled></td>
-    <td><input list="bobot" type="number" class="form-control" value="{{ $PB_obj[10]->c9 }}" disabled></td>
-    <td><input list="bobot" type="number" class="form-control" value="{{ $PB_obj[10]->c10 }}" disabled></td>
-    <td><input list="bobot" type="number" name="c11c11" class="form-control" value="{{ $PB_obj[10]->c11 }}" disabled></td>            <input list="bobot" type="number" name="c11c11" class="form-control center" style="display: none" value="1">
-    <td> <input list="bobot" type="number" name="c11c12" class="form-control" placeholder="" min=0.11 max="9" step="0.01" required value="{{ $PB_obj[10]->c12 }}"> </td>
+    <td><input name="c11c1" id="c11c1" type="text" class="form-control" value="{{ float_to_divide_form($PB_obj[10]->c1) }}" disabled></td>
+    <td><input name="c11c2" id="c11c2" type="text" class="form-control" value="{{ float_to_divide_form($PB_obj[10]->c2) }}" disabled></td>
+    <td><input name="c11c3" id="c11c3" type="text" class="form-control" value="{{ float_to_divide_form($PB_obj[10]->c3) }}" disabled></td>
+    <td><input name="c11c4" id="c11c4" type="text" class="form-control" value="{{ float_to_divide_form($PB_obj[10]->c4) }}" disabled></td>
+    <td><input name="c11c5" id="c11c5" type="text" class="form-control" value="{{ float_to_divide_form($PB_obj[10]->c5) }}" disabled></td>
+    <td><input name="c11c6" id="c11c6" type="text" class="form-control" value="{{ float_to_divide_form($PB_obj[10]->c6) }}" disabled></td>
+    <td><input name="c11c7" id="c11c7" type="text" class="form-control" value="{{ float_to_divide_form($PB_obj[10]->c7) }}" disabled></td>
+    <td><input name="c11c8" id="c11c8" type="text" class="form-control" value="{{ float_to_divide_form($PB_obj[10]->c8) }}" disabled></td>
+    <td><input name="c11c9" id="c11c9" type="text" class="form-control" value="{{ float_to_divide_form($PB_obj[10]->c9) }}" disabled></td>
+    <td><input name="c11c10" id="c11c10" type="text" class="form-control" value="{{ $PB_obj[10]->c10 }}" disabled></td>
+    <td><input  type="text" name="c11c11" class="form-control" value="{{ $PB_obj[10]->c11 }}" disabled></td>            <input  type="number" name="c11c11" class="form-control center" style="display: none" value="1">
+
+    <td><select name="c11c12" id="c11c12" class="form-control" required> @foreach ($sharedOptions as $item) <option value="{{ $item[0] }}" @if ($item[0] == $PB_obj[10]->c12) selected='selected' @endif @if ($item[0] === '') disabled selected @endif> {{ $item[1] }} </option> @endforeach </select></td>
 </tr>
 
 <tr>
-    <td class="custColor">C12</td>
-    <td><input list="bobot" type="number" class="form-control" value="{{ $PB_obj[11]->c1 }}" disabled></td>
-    <td><input list="bobot" type="number" class="form-control" value="{{ $PB_obj[11]->c2 }}" disabled></td>
-    <td><input list="bobot" type="number" class="form-control" value="{{ $PB_obj[11]->c3 }}" disabled></td>
-    <td><input list="bobot" type="number" class="form-control" value="{{ $PB_obj[11]->c4 }}" disabled></td>
-    <td><input list="bobot" type="number" class="form-control" value="{{ $PB_obj[11]->c5 }}" disabled></td>
-    <td><input list="bobot" type="number" class="form-control" value="{{ $PB_obj[11]->c6 }}" disabled></td>
-    <td><input list="bobot" type="number" class="form-control" value="{{ $PB_obj[11]->c7 }}" disabled></td>
-    <td><input list="bobot" type="number" class="form-control" value="{{ $PB_obj[11]->c8 }}" disabled></td>
-    <td><input list="bobot" type="number" class="form-control" value="{{ $PB_obj[11]->c9 }}" disabled></td>
-    <td><input list="bobot" type="number" class="form-control" value="{{ $PB_obj[11]->c10 }}" disabled></td>
-    <td><input list="bobot" type="number" class="form-control" value="{{ $PB_obj[11]->c11 }}" disabled></td>
-    <td><input list="bobot" type="number" name="c12c12" class="form-control" value="{{ $PB_obj[11]->c12 }}" disabled></td>            <input list="bobot" type="number" name="c12c12" class="form-control center" style="display: none" value="1">
+  <td class="custColor">C12</td>
+  <td><input name="c12c1" id="c12c1" type="text" class="form-control" value="{{ float_to_divide_form($PB_obj[11]->c1) }}" disabled></td>
+  <td><input name="c12c2" id="c12c2" type="text" class="form-control" value="{{ float_to_divide_form($PB_obj[11]->c2) }}" disabled></td>
+  <td><input name="c12c3" id="c12c3" type="text" class="form-control" value="{{ float_to_divide_form($PB_obj[11]->c3) }}" disabled></td>
+  <td><input name="c12c4" id="c12c4" type="text" class="form-control" value="{{ float_to_divide_form($PB_obj[11]->c4) }}" disabled></td>
+  <td><input name="c12c5" id="c12c5" type="text" class="form-control" value="{{ float_to_divide_form($PB_obj[11]->c5) }}" disabled></td>
+  <td><input name="c12c6" id="c12c6" type="text" class="form-control" value="{{ float_to_divide_form($PB_obj[11]->c6) }}" disabled></td>
+  <td><input name="c12c7" id="c12c7" type="text" class="form-control" value="{{ float_to_divide_form($PB_obj[11]->c7) }}" disabled></td>
+  <td><input name="c12c8" id="c12c8" type="text" class="form-control" value="{{ float_to_divide_form($PB_obj[11]->c8) }}" disabled></td>
+  <td><input name="c12c9" id="c12c9" type="text" class="form-control" value="{{ float_to_divide_form($PB_obj[11]->c9) }}" disabled></td>
+  <td><input name="c12c10" id="c12c10" type="text" class="form-control" value="{{ float_to_divide_form($PB_obj[11]->c10) }}" disabled></td>
+  <td><input name="c12c11" id="c12c11" type="text" class="form-control" value="{{ float_to_divide_form($PB_obj[11]->c11) }}" disabled></td>
+  <td><input  type="text" name="c12c12" class="form-control" value="{{ $PB_obj[11]->c12 }}" disabled></td>     <input  type="number" name="c12c12" class="form-control center" style="display: none" value="1">
 </tr>
+
+
+<script>
+  // id="c1c2" onchange="isi_kolom_yg_satunya(event)"    <==== masukkan di element <input ....here...>
+  function roundToTwo(num) {
+    return +(Math.round(num + "e+2")  + "e-2");
+  }
+  function round_if(num) {
+    if (num >= 9) { return 9 } 
+    else if (num >= 1) { return num.toFixed(0) }
+    else { return roundToTwo(num) }
+  }
+
+  var onChangeCoba = function(evt) {
+    console.log('x');
+    // or
+    // console.log(evt.target.value);
+  };
+  function isi_kolom_yg_satunya(e)
+  {
+    var source = event.target || event.srcElement;
+    var source_element = document.getElementById(source.id)
+
+    var id = source.id
+    var first_c = 'c' + id.split("c")[1]
+    var last_c = 'c' + id.split("c")[2]
+    var full_el_target_id = last_c + first_c
+    // console.log(full_el_target_id)
+    // alert(id)
+  
+    var target_element = document.getElementById(full_el_target_id)
+    // console.log(source_element.options[source_element.selectedIndex].text)
+    var source_str = source_element.options[source_element.selectedIndex].text;
+    var temp = ''
+    console.log(source_str.includes("/"))
+    if (source_str.includes("/")) {
+      temp = source_str.split("/")[1]
+    } else if (!source_str.includes("1")) {
+      temp = '1/' + source_str
+    } else {
+      temp = source_str
+    }
+    target_element.value = temp
+  }
+
+  var elements = document.getElementsByClassName("form-control");
+
+  var myFunction = function() {
+      var attribute = this.getAttribute("data-myattribute");
+      alert(attribute);
+  };
+
+  for (var i = 0; i < elements.length; i++) {
+      elements[i].addEventListener('load', isi_kolom_yg_satunya, false);
+      elements[i].addEventListener('keyup', isi_kolom_yg_satunya, false);
+      elements[i].addEventListener('change', isi_kolom_yg_satunya, false);
+      elements[i].addEventListener('click', isi_kolom_yg_satunya, false);
+  }
+</script>
+
+
+{{-- <tr>
+  <td class="custColor">C1</td>
+  <td><input list="bobot" type="number" name="c1c1" class="form-control center" style="text-align:center" value="{{ $PB_obj[0]->c1 }}"  disabled></td> <input list="bobot" type="number" name="c1c1" class="form-control center" style="display: none" value="1">
+  <td> <input list="bobot" type="number" name="c1c2" class="form-control" placeholder="" min=0.11 max="9" step="0.01" required value="{{ $PB_obj[0]->c2 }}"> </td>
+  <td> <input list="bobot" type="number" name="c1c3" class="form-control" placeholder="" min=0.11 max="9" step="0.01" required value="{{ $PB_obj[0]->c3 }}"> </td>
+  <td> <input list="bobot" type="number" name="c1c4" class="form-control" placeholder="" min=0.11 max="9" step="0.01" required value="{{ $PB_obj[0]->c4 }}">  </td>
+  <td> <input list="bobot" type="number" name="c1c5" class="form-control" placeholder="" min=0.11 max="9" step="0.01" required value="{{ $PB_obj[0]->c5 }}">  </td>
+  <td> <input list="bobot" type="number" name="c1c6" class="form-control" placeholder="" min=0.11 max="9" step="0.01" required value="{{ $PB_obj[0]->c6 }}">  </td>
+  <td> <input list="bobot" type="number" name="c1c7" class="form-control" placeholder="" min=0.11 max="9" step="0.01" required value="{{ $PB_obj[0]->c7 }}">  </td>
+  <td> <input list="bobot" type="number" name="c1c8" class="form-control" placeholder="" min=0.11 max="9" step="0.01" required value="{{ $PB_obj[0]->c8 }}">  </td>
+  <td> <input list="bobot" type="number" name="c1c9" class="form-control" placeholder="" min=0.11 max="9" step="0.01" required value="{{ $PB_obj[0]->c9 }}">  </td>
+  <td> <input list="bobot" type="number" name="c1c10" class="form-control" placeholder="" min=0.11 max="9" step="0.01" required value="{{ $PB_obj[0]->c10 }}">  </td>
+  <td> <input list="bobot" type="number" name="c1c11" class="form-control" placeholder="" min=0.11 max="9" step="0.01" required value="{{ $PB_obj[0]->c11 }}">  </td>
+  <td> <input list="bobot" type="number" name="c1c12" class="form-control" placeholder="" min=0.11 max="9" step="0.01" required value="{{ $PB_obj[0]->c12 }}">  </td>
+</tr>
+
+<tr>
+  <td class="custColor">C2</td>
+  <td><input list="bobot" type="number" class="form-control" value="{{ $PB_obj[1]->c1 }}" disabled></td>
+  <td><input list="bobot" type="number" name="c2c2" class="form-control" value="{{ $PB_obj[1]->c2 }}" disabled></td>                  <input list="bobot" type="number" name="c2c2" class="form-control center" style="display: none" value="1">
+  <td> <input list="bobot" type="number" name="c2c3" class="form-control" placeholder="" min=0.11 max="9" step="0.01" required value="{{ $PB_obj[1]->c3 }}"> </td>
+  <td> <input list="bobot" type="number" name="c2c4" class="form-control" placeholder="" min=0.11 max="9" step="0.01" required value="{{ $PB_obj[1]->c4 }}"> </td>
+  <td> <input list="bobot" type="number" name="c2c5" class="form-control" placeholder="" min=0.11 max="9" step="0.01" required value="{{ $PB_obj[1]->c5 }}"> </td>
+  <td> <input list="bobot" type="number" name="c2c6" class="form-control" placeholder="" min=0.11 max="9" step="0.01" required value="{{ $PB_obj[1]->c6 }}"> </td>
+  <td> <input list="bobot" type="number" name="c2c7" class="form-control" placeholder="" min=0.11 max="9" step="0.01" required value="{{ $PB_obj[1]->c7 }}"> </td>
+  <td> <input list="bobot" type="number" name="c2c8" class="form-control" placeholder="" min=0.11 max="9" step="0.01" required value="{{ $PB_obj[1]->c8 }}"> </td>
+  <td> <input list="bobot" type="number" name="c2c9" class="form-control" placeholder="" min=0.11 max="9" step="0.01" required value="{{ $PB_obj[1]->c9 }}"> </td>
+  <td> <input list="bobot" type="number" name="c2c10" class="form-control" placeholder="" min=0.11 max="9" step="0.01" required value="{{ $PB_obj[1]->c10 }}"> </td>
+  <td> <input list="bobot" type="number" name="c2c11" class="form-control" placeholder="" min=0.11 max="9" step="0.01" required value="{{ $PB_obj[1]->c11 }}"> </td>
+  <td> <input list="bobot" type="number" name="c2c12" class="form-control" placeholder="" min=0.11 max="9" step="0.01" required value="{{ $PB_obj[1]->c12 }}"> </td>
+</tr>
+
+<tr>
+  <td class="custColor">C3</td>
+  <td><input list="bobot" type="number" class="form-control" value="{{ $PB_obj[2]->c1 }}" disabled></td>
+  <td><input list="bobot" type="number" class="form-control" value="{{ $PB_obj[2]->c2 }}" disabled></td>
+  <td><input list="bobot" type="number" name="c3c3" class="form-control" value="{{ $PB_obj[2]->c3 }}" disabled></td>              <input list="bobot" type="number" name="c3c3" class="form-control center" style="display: none" value="1">
+  <td> <input list="bobot" type="number" name="c3c4" class="form-control" placeholder="" min=0.11 max="9" step="0.01" required value="{{ $PB_obj[2]->c4 }}"> </td>
+  <td> <input list="bobot" type="number" name="c3c5" class="form-control" placeholder="" min=0.11 max="9" step="0.01" required value="{{ $PB_obj[2]->c5 }}"> </td>
+  <td> <input list="bobot" type="number" name="c3c6" class="form-control" placeholder="" min=0.11 max="9" step="0.01" required value="{{ $PB_obj[2]->c6 }}"> </td>
+  <td> <input list="bobot" type="number" name="c3c7" class="form-control" placeholder="" min=0.11 max="9" step="0.01" required value="{{ $PB_obj[2]->c7 }}"> </td>
+  <td> <input list="bobot" type="number" name="c3c8" class="form-control" placeholder="" min=0.11 max="9" step="0.01" required value="{{ $PB_obj[2]->c8 }}"> </td>
+  <td> <input list="bobot" type="number" name="c3c9" class="form-control" placeholder="" min=0.11 max="9" step="0.01" required value="{{ $PB_obj[2]->c9 }}"> </td>
+  <td> <input list="bobot" type="number" name="c3c10" class="form-control" placeholder="" min=0.11 max="9" step="0.01" required value="{{ $PB_obj[2]->c10 }}"> </td>
+  <td> <input list="bobot" type="number" name="c3c11" class="form-control" placeholder="" min=0.11 max="9" step="0.01" required value="{{ $PB_obj[2]->c11 }}"> </td>
+  <td> <input list="bobot" type="number" name="c3c12" class="form-control" placeholder="" min=0.11 max="9" step="0.01" required value="{{ $PB_obj[2]->c12 }}"> </td>
+</tr>
+
+<tr>
+  <td class="custColor">C4</td>
+  <td><input list="bobot" type="number" class="form-control" value="{{ $PB_obj[3]->c1 }}" disabled></td>
+  <td><input list="bobot" type="number" class="form-control" value="{{ $PB_obj[3]->c2 }}" disabled></td>
+  <td><input list="bobot" type="number" class="form-control" value="{{ $PB_obj[3]->c3 }}" disabled></td>
+  <td><input list="bobot" type="number" name="c4c4" class="form-control" value="{{ $PB_obj[3]->c4 }}" disabled></td>              <input list="bobot" type="number" name="c4c4" class="form-control center" style="display: none" value="1">
+  <td> <input list="bobot" type="number" name="c4c5" class="form-control" placeholder="" min=0.11 max="9" step="0.01" required value="{{ $PB_obj[3]->c5 }}"> </td>
+  <td> <input list="bobot" type="number" name="c4c6" class="form-control" placeholder="" min=0.11 max="9" step="0.01" required value="{{ $PB_obj[3]->c6 }}"> </td>
+  <td> <input list="bobot" type="number" name="c4c7" class="form-control" placeholder="" min=0.11 max="9" step="0.01" required value="{{ $PB_obj[3]->c7 }}"> </td>
+  <td> <input list="bobot" type="number" name="c4c8" class="form-control" placeholder="" min=0.11 max="9" step="0.01" required value="{{ $PB_obj[3]->c8 }}"> </td>
+  <td> <input list="bobot" type="number" name="c4c9" class="form-control" placeholder="" min=0.11 max="9" step="0.01" required value="{{ $PB_obj[3]->c9 }}"> </td>
+  <td> <input list="bobot" type="number" name="c4c10" class="form-control" placeholder="" min=0.11 max="9" step="0.01" required value="{{ $PB_obj[3]->c10 }}"> </td>
+  <td> <input list="bobot" type="number" name="c4c11" class="form-control" placeholder="" min=0.11 max="9" step="0.01" required value="{{ $PB_obj[3]->c11 }}"> </td>
+  <td> <input list="bobot" type="number" name="c4c12" class="form-control" placeholder="" min=0.11 max="9" step="0.01" required value="{{ $PB_obj[3]->c12 }}"> </td>
+</tr>
+
+<tr>
+  <td class="custColor">C5</td>
+  <td><input list="bobot" type="number" class="form-control" value="{{ $PB_obj[4]->c1 }}" disabled></td>
+  <td><input list="bobot" type="number" class="form-control" value="{{ $PB_obj[4]->c2 }}" disabled></td>
+  <td><input list="bobot" type="number" class="form-control" value="{{ $PB_obj[4]->c3 }}" disabled></td>
+  <td><input list="bobot" type="number" class="form-control" value="{{ $PB_obj[4]->c4 }}" disabled></td>
+  <td><input list="bobot" type="number" name="c5c5"class="form-control" value="{{ $PB_obj[4]->c5 }}" disabled></td>               <input list="bobot" type="number" name="c5c5" class="form-control center" style="display: none" value="1">
+  <td> <input list="bobot" type="number" name="c5c6" class="form-control" placeholder="" min=0.11 max="9" step="0.01" required value="{{ $PB_obj[4]->c6 }}"> </td>
+  <td> <input list="bobot" type="number" name="c5c7" class="form-control" placeholder="" min=0.11 max="9" step="0.01" required value="{{ $PB_obj[4]->c7 }}"> </td>
+  <td> <input list="bobot" type="number" name="c5c8" class="form-control" placeholder="" min=0.11 max="9" step="0.01" required value="{{ $PB_obj[4]->c8 }}"> </td>
+  <td> <input list="bobot" type="number" name="c5c9" class="form-control" placeholder="" min=0.11 max="9" step="0.01" required value="{{ $PB_obj[4]->c9 }}"> </td>
+  <td> <input list="bobot" type="number" name="c5c10" class="form-control" placeholder="" min=0.11 max="9" step="0.01" required value="{{ $PB_obj[4]->c10 }}"> </td>
+  <td> <input list="bobot" type="number" name="c5c11" class="form-control" placeholder="" min=0.11 max="9" step="0.01" required value="{{ $PB_obj[4]->c11 }}"> </td>
+  <td> <input list="bobot" type="number" name="c5c12" class="form-control" placeholder="" min=0.11 max="9" step="0.01" required value="{{ $PB_obj[4]->c12 }}"> </td>
+</tr>
+
+<tr>
+  <td class="custColor">C6</td>
+  <td><input list="bobot" type="number" class="form-control" value="{{ $PB_obj[5]->c1 }}" disabled></td>
+  <td><input list="bobot" type="number" class="form-control" value="{{ $PB_obj[5]->c2 }}" disabled></td>
+  <td><input list="bobot" type="number" class="form-control" value="{{ $PB_obj[5]->c3 }}" disabled></td>
+  <td><input list="bobot" type="number" class="form-control" value="{{ $PB_obj[5]->c4 }}" disabled></td>
+  <td><input list="bobot" type="number" class="form-control" value="{{ $PB_obj[5]->c5 }}" disabled></td>
+  <td><input list="bobot" type="number" name="c6c6" class="form-control" value="{{ $PB_obj[5]->c6 }}" disabled></td>              <input list="bobot" type="number" name="c6c6" class="form-control center" style="display: none" value="1">
+  <td> <input list="bobot" type="number" name="c6c7" class="form-control" placeholder="" min=0.11 max="9" step="0.01" required value="{{ $PB_obj[5]->c7 }}"> </td>
+  <td> <input list="bobot" type="number" name="c6c8" class="form-control" placeholder="" min=0.11 max="9" step="0.01" required value="{{ $PB_obj[5]->c8 }}"> </td>
+  <td> <input list="bobot" type="number" name="c6c9" class="form-control" placeholder="" min=0.11 max="9" step="0.01" required value="{{ $PB_obj[5]->c9 }}"> </td>
+  <td> <input list="bobot" type="number" name="c6c10" class="form-control" placeholder="" min=0.11 max="9" step="0.01" required value="{{ $PB_obj[5]->c10 }}"> </td>
+  <td> <input list="bobot" type="number" name="c6c11" class="form-control" placeholder="" min=0.11 max="9" step="0.01" required value="{{ $PB_obj[5]->c11 }}"> </td>
+  <td> <input list="bobot" type="number" name="c6c12" class="form-control" placeholder="" min=0.11 max="9" step="0.01" required value="{{ $PB_obj[5]->c12 }}"> </td>
+</tr>
+
+<tr>
+  <td class="custColor">C7</td>
+  <td><input list="bobot" type="number" class="form-control" value="{{ $PB_obj[6]->c1 }}" disabled></td>
+  <td><input list="bobot" type="number" class="form-control" value="{{ $PB_obj[6]->c2 }}" disabled></td>
+  <td><input list="bobot" type="number" class="form-control" value="{{ $PB_obj[6]->c3 }}" disabled></td>
+  <td><input list="bobot" type="number" class="form-control" value="{{ $PB_obj[6]->c4 }}" disabled></td>
+  <td><input list="bobot" type="number" class="form-control" value="{{ $PB_obj[6]->c5 }}" disabled></td>
+  <td><input list="bobot" type="number" class="form-control" value="{{ $PB_obj[6]->c6 }}" disabled></td>
+  <td><input list="bobot" type="number" name="c7c7" class="form-control" value="{{ $PB_obj[6]->c7 }}" disabled></td>              <input list="bobot" type="number" name="c7c7" class="form-control center" style="display: none" value="1">
+  <td> <input list="bobot" type="number" name="c7c8" class="form-control" placeholder="" min=0.11 max="9" step="0.01" required value="{{ $PB_obj[6]->c8 }}"> </td>
+  <td> <input list="bobot" type="number" name="c7c9" class="form-control" placeholder="" min=0.11 max="9" step="0.01" required value="{{ $PB_obj[6]->c9 }}"> </td>
+  <td> <input list="bobot" type="number" name="c7c10" class="form-control" placeholder="" min=0.11 max="9" step="0.01" required value="{{ $PB_obj[6]->c10 }}"> </td>
+  <td> <input list="bobot" type="number" name="c7c11" class="form-control" placeholder="" min=0.11 max="9" step="0.01" required value="{{ $PB_obj[6]->c11 }}"> </td>
+  <td> <input list="bobot" type="number" name="c7c12" class="form-control" placeholder="" min=0.11 max="9" step="0.01" required value="{{ $PB_obj[6]->c12 }}"> </td>
+</tr>
+
+<tr>
+  <td class="custColor">C8</td>
+  <td><input list="bobot" type="number" class="form-control" value="{{ $PB_obj[7]->c1 }}" disabled></td>
+  <td><input list="bobot" type="number" class="form-control" value="{{ $PB_obj[7]->c2 }}" disabled></td>
+  <td><input list="bobot" type="number" class="form-control" value="{{ $PB_obj[7]->c3 }}" disabled></td>
+  <td><input list="bobot" type="number" class="form-control" value="{{ $PB_obj[7]->c4 }}" disabled></td>
+  <td><input list="bobot" type="number" class="form-control" value="{{ $PB_obj[7]->c5 }}" disabled></td>
+  <td><input list="bobot" type="number" class="form-control" value="{{ $PB_obj[7]->c6 }}" disabled></td>
+  <td><input list="bobot" type="number" class="form-control" value="{{ $PB_obj[7]->c7 }}" disabled></td>
+  <td><input list="bobot" type="number" name="c8c8" class="form-control" value="{{ $PB_obj[7]->c8 }}" disabled></td>              <input list="bobot" type="number" name="c8c8" class="form-control center" style="display: none" value="1">
+  <td> <input list="bobot" type="number" name="c8c9" class="form-control" placeholder="" min=0.11 max="9" step="0.01" required value="{{ $PB_obj[7]->c9 }}"> </td>
+  <td> <input list="bobot" type="number" name="c8c10" class="form-control" placeholder="" min=0.11 max="9" step="0.01" required value="{{ $PB_obj[7]->c10 }}"> </td>
+  <td> <input list="bobot" type="number" name="c8c11" class="form-control" placeholder="" min=0.11 max="9" step="0.01" required value="{{ $PB_obj[7]->c11 }}"> </td>
+  <td> <input list="bobot" type="number" name="c8c12" class="form-control" placeholder="" min=0.11 max="9" step="0.01" required value="{{ $PB_obj[7]->c12 }}"> </td>
+</tr>
+
+<tr>
+  <td class="custColor">C9</td>
+  <td><input list="bobot" type="number" class="form-control" value="{{ $PB_obj[8]->c1 }}" disabled></td>
+  <td><input list="bobot" type="number" class="form-control" value="{{ $PB_obj[8]->c2 }}" disabled></td>
+  <td><input list="bobot" type="number" class="form-control" value="{{ $PB_obj[8]->c3 }}" disabled></td>
+  <td><input list="bobot" type="number" class="form-control" value="{{ $PB_obj[8]->c4 }}" disabled></td>
+  <td><input list="bobot" type="number" class="form-control" value="{{ $PB_obj[8]->c5 }}" disabled></td>
+  <td><input list="bobot" type="number" class="form-control" value="{{ $PB_obj[8]->c6 }}" disabled></td>
+  <td><input list="bobot" type="number" class="form-control" value="{{ $PB_obj[8]->c7 }}" disabled></td>
+  <td><input list="bobot" type="number" class="form-control" value="{{ $PB_obj[8]->c8 }}" disabled></td>
+  <td><input list="bobot" type="number" name="c9c9" class="form-control" value="{{ $PB_obj[8]->c9 }}" disabled></td>              <input list="bobot" type="number" name="c9c9" class="form-control center" style="display: none" value="1">
+  <td> <input list="bobot" type="number" name="c9c10" class="form-control" placeholder="" min=0.11 max="9" step="0.01" required value="{{ $PB_obj[8]->c10 }}"> </td>
+  <td> <input list="bobot" type="number" name="c9c11" class="form-control" placeholder="" min=0.11 max="9" step="0.01" required value="{{ $PB_obj[8]->c11 }}"> </td>
+  <td> <input list="bobot" type="number" name="c9c12" class="form-control" placeholder="" min=0.11 max="9" step="0.01" required value="{{ $PB_obj[8]->c12 }}"> </td>
+</tr>
+
+<tr>
+  <td class="custColor">C10</td>
+  <td><input list="bobot" type="number" class="form-control" value="{{ $PB_obj[9]->c1 }}" disabled></td>
+  <td><input list="bobot" type="number" class="form-control" value="{{ $PB_obj[9]->c2 }}" disabled></td>
+  <td><input list="bobot" type="number" class="form-control" value="{{ $PB_obj[9]->c3 }}" disabled></td>
+  <td><input list="bobot" type="number" class="form-control" value="{{ $PB_obj[9]->c4 }}" disabled></td>
+  <td><input list="bobot" type="number" class="form-control" value="{{ $PB_obj[9]->c5 }}" disabled></td>
+  <td><input list="bobot" type="number" class="form-control" value="{{ $PB_obj[9]->c6 }}" disabled></td>
+  <td><input list="bobot" type="number" class="form-control" value="{{ $PB_obj[9]->c7 }}" disabled></td>
+  <td><input list="bobot" type="number" class="form-control" value="{{ $PB_obj[9]->c8 }}" disabled></td>
+  <td><input list="bobot" type="number" class="form-control" value="{{ $PB_obj[9]->c9 }}" disabled></td>
+  <td><input list="bobot" type="number" name="c10c10" class="form-control" value="{{ $PB_obj[9]->c10 }}" disabled></td>            <input list="bobot" type="number" name="c10c10" class="form-control center" style="display: none" value="1">
+  <td> <input list="bobot" type="number" name="c10c11" class="form-control" placeholder="" min=0.11 max="9" step="0.01" required value="{{ $PB_obj[9]->c11 }}"> </td>
+  <td> <input list="bobot" type="number" name="c10c12" class="form-control" placeholder="" min=0.11 max="9" step="0.01" required value="{{ $PB_obj[9]->c12 }}"> </td>
+</tr>
+
+<tr>
+  <td class="custColor">C11</td>
+  <td><input list="bobot" type="number" class="form-control" value="{{ $PB_obj[10]->c1 }}" disabled></td>
+  <td><input list="bobot" type="number" class="form-control" value="{{ $PB_obj[10]->c2 }}" disabled></td>
+  <td><input list="bobot" type="number" class="form-control" value="{{ $PB_obj[10]->c3 }}" disabled></td>
+  <td><input list="bobot" type="number" class="form-control" value="{{ $PB_obj[10]->c4 }}" disabled></td>
+  <td><input list="bobot" type="number" class="form-control" value="{{ $PB_obj[10]->c5 }}" disabled></td>
+  <td><input list="bobot" type="number" class="form-control" value="{{ $PB_obj[10]->c6 }}" disabled></td>
+  <td><input list="bobot" type="number" class="form-control" value="{{ $PB_obj[10]->c7 }}" disabled></td>
+  <td><input list="bobot" type="number" class="form-control" value="{{ $PB_obj[10]->c8 }}" disabled></td>
+  <td><input list="bobot" type="number" class="form-control" value="{{ $PB_obj[10]->c9 }}" disabled></td>
+  <td><input list="bobot" type="number" class="form-control" value="{{ $PB_obj[10]->c10 }}" disabled></td>
+  <td><input list="bobot" type="number" name="c11c11" class="form-control" value="{{ $PB_obj[10]->c11 }}" disabled></td>            <input list="bobot" type="number" name="c11c11" class="form-control center" style="display: none" value="1">
+  <td> <input list="bobot" type="number" name="c11c12" class="form-control" placeholder="" min=0.11 max="9" step="0.01" required value="{{ $PB_obj[10]->c12 }}"> </td>
+</tr>
+
+<tr>
+  <td class="custColor">C12</td>
+  <td><input list="bobot" type="number" class="form-control" value="{{ $PB_obj[11]->c1 }}" disabled></td>
+  <td><input list="bobot" type="number" class="form-control" value="{{ $PB_obj[11]->c2 }}" disabled></td>
+  <td><input list="bobot" type="number" class="form-control" value="{{ $PB_obj[11]->c3 }}" disabled></td>
+  <td><input list="bobot" type="number" class="form-control" value="{{ $PB_obj[11]->c4 }}" disabled></td>
+  <td><input list="bobot" type="number" class="form-control" value="{{ $PB_obj[11]->c5 }}" disabled></td>
+  <td><input list="bobot" type="number" class="form-control" value="{{ $PB_obj[11]->c6 }}" disabled></td>
+  <td><input list="bobot" type="number" class="form-control" value="{{ $PB_obj[11]->c7 }}" disabled></td>
+  <td><input list="bobot" type="number" class="form-control" value="{{ $PB_obj[11]->c8 }}" disabled></td>
+  <td><input list="bobot" type="number" class="form-control" value="{{ $PB_obj[11]->c9 }}" disabled></td>
+  <td><input list="bobot" type="number" class="form-control" value="{{ $PB_obj[11]->c10 }}" disabled></td>
+  <td><input list="bobot" type="number" class="form-control" value="{{ $PB_obj[11]->c11 }}" disabled></td>
+  <td><input list="bobot" type="number" name="c12c12" class="form-control" value="{{ $PB_obj[11]->c12 }}" disabled></td>            <input list="bobot" type="number" name="c12c12" class="form-control center" style="display: none" value="1">
+</tr> --}}
+
 
 </table>
 

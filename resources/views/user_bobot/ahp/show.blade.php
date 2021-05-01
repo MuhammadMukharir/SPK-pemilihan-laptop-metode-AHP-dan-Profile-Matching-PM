@@ -419,23 +419,74 @@
   {{-- <option value="1">9/9</option> --}}
 </datalist>
 
+@php
+  function float_to_divide_form($value)
+  {
+    $sharedOptions = [
+      ['', '.....'],
+      [1, '1'],
+      [2, '2'],
+      [3, '3'],
+      [4, '4'],
+      [5, '5'],
+      [6, '6'],
+      [7, '7'],
+      [8, '8'],
+      [9, '9'],
+      [0.5, '1/2'],
+      [0.33, '1/3'],
+      [0.25, '1/4'],
+      [0.20, '1/5'],
+      [0.17, '1/6'],
+      [0.14, '1/7'],
+      [0.13, '1/8'],
+      [0.11, '1/9']
+  ];
+
+    foreach ($sharedOptions as $item) {
+      if ($item[0] == $value) {
+        $gettedItem = $item;
+        return $item[1];
+      }
+    }
+
+  };
+@endphp
+
 @foreach ($PB_obj as $row)
     <tr>
         <td class="custColor">{{ $row->nama_kriteria }}</td>
         
-        <td> <input disabled list="bobot" type="number" name="c1c2" class="form-control" placeholder="" min=0.11 max="9" step="0.01" value="{{ $row->c1 }}"> </td>
-        <td> <input disabled list="bobot" type="number" name="c1c3" class="form-control" placeholder="" min=0.11 max="9" step="0.01" value="{{ $row->c2 }}"> </td>
-        <td> <input disabled list="bobot" type="number" name="c1c4" class="form-control" placeholder="" min=0.11 max="9" step="0.01" value="{{ $row->c3 }}">  </td>
-        <td> <input disabled list="bobot" type="number" name="c1c5" class="form-control" placeholder="" min=0.11 max="9" step="0.01" value="{{ $row->c4 }}">  </td>
-        <td> <input disabled list="bobot" type="number" name="c1c6" class="form-control" placeholder="" min=0.11 max="9" step="0.01" value="{{ $row->c5 }}">  </td>
-        <td> <input disabled list="bobot" type="number" name="c1c7" class="form-control" placeholder="" min=0.11 max="9" step="0.01" value="{{ $row->c6 }}">  </td>
-        <td> <input disabled list="bobot" type="number" name="c1c8" class="form-control" placeholder="" min=0.11 max="9" step="0.01" value="{{ $row->c7 }}">  </td>
-        <td> <input disabled list="bobot" type="number" name="c1c9" class="form-control" placeholder="" min=0.11 max="9" step="0.01" value="{{ $row->c8 }}">  </td>
-        <td> <input disabled list="bobot" type="number" name="c1c10" class="form-control" placeholder="" min=0.11 max="9" step="0.01" value="{{ $row->c9 }}">  </td>
-        <td> <input disabled list="bobot" type="number" name="c1c11" class="form-control" placeholder="" min=0.11 max="9" step="0.01" value="{{ $row->c10 }}">  </td>
-        <td> <input disabled list="bobot" type="number" name="c1c12" class="form-control" placeholder="" min=0.11 max="9" step="0.01" value="{{ $row->c11 }}">  </td>
-        <td> <input disabled list="bobot" type="number" name="c1c12" class="form-control" placeholder="" min=0.11 max="9" step="0.01" value="{{ $row->c12 }}"> </td> <input type="number" name="c1c1" class="form-control center" style="display: none" value="1">
+        <td> <input disabled type="text" name="c1c2" class="form-control" placeholder="" min=0.11 max="9" step="0.01" value="{{ float_to_divide_form($row->c1) }}"> </td>
+        <td> <input disabled type="text" name="c1c3" class="form-control" placeholder="" min=0.11 max="9" step="0.01" value="{{ float_to_divide_form($row->c2) }}"> </td>
+        <td> <input disabled type="text" name="c1c4" class="form-control" placeholder="" min=0.11 max="9" step="0.01" value="{{ float_to_divide_form($row->c3) }}">  </td>
+        <td> <input disabled type="text" name="c1c5" class="form-control" placeholder="" min=0.11 max="9" step="0.01" value="{{ float_to_divide_form($row->c4) }}">  </td>
+        <td> <input disabled type="text" name="c1c6" class="form-control" placeholder="" min=0.11 max="9" step="0.01" value="{{ float_to_divide_form($row->c5) }}">  </td>
+        <td> <input disabled type="text" name="c1c7" class="form-control" placeholder="" min=0.11 max="9" step="0.01" value="{{ float_to_divide_form($row->c6) }}">  </td>
+        <td> <input disabled type="text" name="c1c8" class="form-control" placeholder="" min=0.11 max="9" step="0.01" value="{{ float_to_divide_form($row->c7) }}">  </td>
+        <td> <input disabled type="text" name="c1c9" class="form-control" placeholder="" min=0.11 max="9" step="0.01" value="{{ float_to_divide_form($row->c8) }}">  </td>
+        <td> <input disabled type="text" name="c1c10" class="form-control" placeholder="" min=0.11 max="9" step="0.01" value="{{ float_to_divide_form($row->c9) }}">  </td>
+        <td> <input disabled type="text" name="c1c11" class="form-control" placeholder="" min=0.11 max="9" step="0.01" value="{{ float_to_divide_form($row->c10) }}">  </td>
+        <td> <input disabled type="text" name="c1c12" class="form-control" placeholder="" min=0.11 max="9" step="0.01" value="{{ float_to_divide_form($row->c11) }}">  </td>
+        <td> <input disabled type="text" name="c1c12" class="form-control" placeholder="" min=0.11 max="9" step="0.01" value="{{ float_to_divide_form($row->c12) }}"> </td> <input type="number" name="c1c1" class="form-control center" style="display: none" value="1">
     </tr>
+
+    {{-- <tr>
+      <td class="custColor">{{ $row->nama_kriteria }}</td>
+      
+      <td> <input disabled list="bobot" type="number" name="c1c2" class="form-control" placeholder="" min=0.11 max="9" step="0.01" value="{{ $row->c1 }}"> </td>
+      <td> <input disabled list="bobot" type="number" name="c1c3" class="form-control" placeholder="" min=0.11 max="9" step="0.01" value="{{ $row->c2 }}"> </td>
+      <td> <input disabled list="bobot" type="number" name="c1c4" class="form-control" placeholder="" min=0.11 max="9" step="0.01" value="{{ $row->c3 }}">  </td>
+      <td> <input disabled list="bobot" type="number" name="c1c5" class="form-control" placeholder="" min=0.11 max="9" step="0.01" value="{{ $row->c4 }}">  </td>
+      <td> <input disabled list="bobot" type="number" name="c1c6" class="form-control" placeholder="" min=0.11 max="9" step="0.01" value="{{ $row->c5 }}">  </td>
+      <td> <input disabled list="bobot" type="number" name="c1c7" class="form-control" placeholder="" min=0.11 max="9" step="0.01" value="{{ $row->c6 }}">  </td>
+      <td> <input disabled list="bobot" type="number" name="c1c8" class="form-control" placeholder="" min=0.11 max="9" step="0.01" value="{{ $row->c7 }}">  </td>
+      <td> <input disabled list="bobot" type="number" name="c1c9" class="form-control" placeholder="" min=0.11 max="9" step="0.01" value="{{ $row->c8 }}">  </td>
+      <td> <input disabled list="bobot" type="number" name="c1c10" class="form-control" placeholder="" min=0.11 max="9" step="0.01" value="{{ $row->c9 }}">  </td>
+      <td> <input disabled list="bobot" type="number" name="c1c11" class="form-control" placeholder="" min=0.11 max="9" step="0.01" value="{{ $row->c10 }}">  </td>
+      <td> <input disabled list="bobot" type="number" name="c1c12" class="form-control" placeholder="" min=0.11 max="9" step="0.01" value="{{ $row->c11 }}">  </td>
+      <td> <input disabled list="bobot" type="number" name="c1c12" class="form-control" placeholder="" min=0.11 max="9" step="0.01" value="{{ $row->c12 }}"> </td> <input type="number" name="c1c1" class="form-control center" style="display: none" value="1">
+  </tr> --}}
 @endforeach
 
 </table>
