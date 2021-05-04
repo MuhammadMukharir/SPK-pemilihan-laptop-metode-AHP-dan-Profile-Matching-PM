@@ -43,8 +43,7 @@ pass : 123456
 ## Screenshot
 
 ![image](https://user-images.githubusercontent.com/32015601/116123652-77111400-a6ed-11eb-8a95-273e1465ad98.png)
-![image](https://user-images.githubusercontent.com/32015601/116123708-8a23e400-a6ed-11eb-8dd7-437e2c968a36.png)
-
+![image](https://user-images.githubusercontent.com/32015601/116775709-a5487800-aa8e-11eb-83f8-c7f195e25095.png)
 
 
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
