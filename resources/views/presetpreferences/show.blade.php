@@ -32,7 +32,7 @@
 <div class="row">
     <table class="table table-hover table-striped">
         <tr>
-            <td><strong>Preset Name</strong></td>
+            <td><strong>Preset Preference Name</strong></td>
             <td>{{ $presetpreference->name }}</td>
         </tr><tr>
             <td><strong>Details</strong></td>

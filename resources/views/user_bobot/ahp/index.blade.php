@@ -64,7 +64,7 @@
 @foreach ($ahplist as $key => $ahp)
 <tr>
     <td style="text-align: center">{{ $key + 1 }}</td>
-    <td>{{ $ahp->nama_perhitungan }}</td>
+    <td> <i class="fas fa-fw fa-balance-scale"></i> {{ $ahp->nama_perhitungan }}</td>
     <td>{{ $ahp->detail }}</td>
 
     <td>
@@ -89,7 +89,7 @@
 
     
     
-    @if ( $this_user->id_perhitungan_aktif === $ahp->id_perhitungan ) <label class="badge badge-pill badge-success"> Bobot Aktif Digunakan </label>
+    @if ( $this_user->id_perhitungan_aktif === $ahp->id_perhitungan ) <label class="badge badge-pill badge-success"> <i class="far fa-fw fa-check-circle"></i> Bobot Aktif Digunakan </label>
     @endif 
 
     </td>
@@ -98,7 +98,9 @@
     <a class="btn btn-info" href="{{ route('user.bobot.ahp.show',$ahp->id_perhitungan) }}">Detail</a>
 
     @if ($ahp->is_created_by_admin) 
-        {{-- <a class="btn btn-link disabled" href="">Edit</a> --}}
+        @can('admin', User::class)
+            <a class="btn btn-primary" href="{{ route('user.bobot.ahp.edit',$ahp->id_perhitungan) }}">Edit</a>
+        @endcan
     @else <a class="btn btn-primary" href="{{ route('user.bobot.ahp.edit',$ahp->id_perhitungan) }}">Edit</a>
         
     @endif

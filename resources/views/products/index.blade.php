@@ -44,6 +44,7 @@
     <tr>
         <th style="text-align: center">No</th>
         <th>Nama Produk</th>
+        <th>Harga</th>
         <th>Deskripsi</th>
         <th width="280px">Action</th>
     </tr>
@@ -51,7 +52,8 @@
     <tr>
         {{-- <td>{{ ++$i }}</td> --}}
         <td style="text-align: center">{{ $key+1 }}</td>
-        <td>{{ $product->name }}</td>
+        <td><i class="fas fa-fw fa-laptop"></i>  {{ $product->name }} </td>
+        <td> Rp{{ number_format($product->harga,0,",",".") }}</td>
         <td>{{ $product->detail }}</td>
         <td>
             <form action="{{ route('products.destroy',$product->id) }}" method="POST">

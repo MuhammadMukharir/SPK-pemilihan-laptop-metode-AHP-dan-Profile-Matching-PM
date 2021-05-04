@@ -20,6 +20,10 @@
     display: table;
     clear: both;
     }
+    
+    input{
+        text-align: center;
+        }
 </style>
 
 <form id="productEditForm" action="{{ route('products.update',$product->id) }}" method="POST">

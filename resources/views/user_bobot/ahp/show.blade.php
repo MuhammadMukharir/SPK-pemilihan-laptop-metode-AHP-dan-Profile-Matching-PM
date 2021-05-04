@@ -20,7 +20,13 @@
         <input type="submit" value="Submit form!" />
     </noscript>
 
-    <a class="btn btn-primary" href="{{ route('user.bobot.ahp.edit', $ahp->id_perhitungan) }}">Edit</a>
+    @if ($ahp->is_created_by_admin) 
+        @can('admin', User::class)
+            <a class="btn btn-primary" href="{{ route('user.bobot.ahp.edit',$ahp->id_perhitungan) }}">Edit</a>
+        @endcan
+    @else <a class="btn btn-primary" href="{{ route('user.bobot.ahp.edit',$ahp->id_perhitungan) }}">Edit</a>
+        
+    @endif
     
 </div>
 @stop

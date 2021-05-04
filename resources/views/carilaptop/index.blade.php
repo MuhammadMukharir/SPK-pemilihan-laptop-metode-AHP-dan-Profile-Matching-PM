@@ -34,8 +34,8 @@
     @foreach ($products as $product)
     <tr>
         <td style="text-align: center">{{ ++$i }}</td>
-        <td><strong>{{ $product->name }}</strong></td>
-        <td><strong> Rp{{ number_format($product->harga,0,",",".") }} </strong></td>
+        <td> <i class="fas fa-fw fa-laptop"></i> <strong>{{ $product->name }}</strong></td>
+        <td> <strong> Rp{{ number_format($product->harga,0,",",".") }} </strong></td>
         <td>{{ $product->detail }}</td>
         <td>
             {{-- <a class="btn btn-info" href="{{ route('search.show',$product->id) }}">Show</a> --}}

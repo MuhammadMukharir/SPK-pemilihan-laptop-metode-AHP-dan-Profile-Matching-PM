@@ -33,8 +33,8 @@
     </tr>
     @foreach ($products as $key => $product)
     <tr>
-        <td style="text-align: center"> <strong>{{ $key+1 }}</strong></td>
-        <td><strong>{{ $product->name }} </strong></td>
+        <td style="text-align: center"> <strong> @if ($key===0) <i class="fas fa-fw fa-crown"></i>@else {{ $key+1 }} @endif   </strong></td>
+        <td><i class="fas fa-fw fa-laptop"></i> <strong> {{ $product->name }} </strong></td>
         <td><strong>{{ $product->n_bobot }} </strong></td>
         <td>Rp{{ number_format($product->harga,0,",",".") }}</td>
         <td>{{ $product->detail }}</td>

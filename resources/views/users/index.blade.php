@@ -67,12 +67,13 @@ th {
 @foreach ($data as $key => $user)
 <tr>
     <td style="text-align: center">{{ ++$i }}</td>
-    <td>{{ $user->name }}</td>
-    <td>{{ $user->email }}</td>
+    <td> <i class="fas fa-fw fa-user"></i> {{ $user->name }}</td>
+    <td> <i class="fas fa-fw fa-envelope"></i> {{ $user->email }}</td>
     <td>
+        <i class="fas fa-fw fa-tag"></i>
     @if(!empty($user->getRoleNames()))
         @foreach($user->getRoleNames() as $v)
-        <label class="badge badge-pill badge-success">{{ $v }}</label>
+         <label class="badge badge-pill badge-success">{{ $v }}</label>
         @endforeach
     @endif
     </td>

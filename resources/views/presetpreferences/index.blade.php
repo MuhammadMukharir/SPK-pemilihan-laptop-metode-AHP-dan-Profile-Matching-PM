@@ -51,7 +51,7 @@
     <tr>
         {{-- <td>{{ ++$i }}</td> --}}
         <td style="text-align: center">{{ $key+1 }}</td>
-        <td>{{ $presetpreference->name }}</td>
+        <td><i class="fas fa-fw fa-bullseye"></i> {{ $presetpreference->name }}</td>
         <td>{{ $presetpreference->detail }}</td>
         <td>
             <form action="{{ route('presetpreferences.destroy',$presetpreference->id) }}" method="POST">

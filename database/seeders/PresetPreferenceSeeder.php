@@ -19,8 +19,8 @@ class PresetPreferenceSeeder extends Seeder
             // A1
             [
                 'nama'             => 'LAPTOP GAMING',
-                'detail'           => 'Laptop gaming',
-                'harga'            => '14000000',
+                'detail'           => 'Cari Laptop gaming, 15-jutaan',
+                'harga'            => '15000000',
                 'prosesor'         => '26.4',
                 'kapasitas_ram'    => '16',
                 'kapasitas_hdd'    => '1000',
@@ -35,7 +35,7 @@ class PresetPreferenceSeeder extends Seeder
             ],
             [
                 'nama'             => 'LAPTOP EDITING 3D',
-                'detail'           => 'Laptop editing 3D',
+                'detail'           => 'Cari Laptop editing 3D, 13-jutaan',
                 'harga'            => '13000000',
                 'prosesor'         => '24',
                 'kapasitas_ram'    => '16',
@@ -67,7 +67,7 @@ class PresetPreferenceSeeder extends Seeder
             // ],
             [
                 'nama'             => 'LAPTOP EDITING 2D',
-                'detail'           => 'Laptop editing 2D',
+                'detail'           => 'Cari Laptop editing 2D, 7-jutaan',
                 'harga'            => '9000000',
                 'prosesor'         => '20',
                 'kapasitas_ram'    => '16',
@@ -83,7 +83,7 @@ class PresetPreferenceSeeder extends Seeder
             ],
             [
                 'nama'             => 'LAPTOP OFFICE',
-                'detail'           => 'Laptop office',
+                'detail'           => 'Cari Laptop office, 3-jutaan',
                 'harga'            => '3000000',
                 'prosesor'         => '8',
                 'kapasitas_ram'    => '8',
@@ -99,7 +99,7 @@ class PresetPreferenceSeeder extends Seeder
             ],
             [
                 'nama'             => 'LAPTOP EDITING 2D v2',
-                'detail'           => 'Laptop editing 2D v2',
+                'detail'           => 'Cari Laptop editing 2D, 11-jutaan',
                 'harga'            => '13000000',
                 'prosesor'         => '20',
                 'kapasitas_ram'    => '8',

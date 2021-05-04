@@ -49,8 +49,8 @@
     @foreach ($products as $product)
     <tr>
         <td style="text-align: center">{{ ++$i }}</td>
-        <td>{{ $product->name }}</td>
-        <td>Rp{{ number_format($product->harga,0,",",".") }}</td>
+        <td> <i class="fas fa-fw fa-laptop"></i> {{ $product->name }}</td>
+        <td> Rp{{ number_format($product->harga,0,",",".") }}</td>
         <td>{{ $product->detail }}</td>
         <td>
             <form action="{{ route('myfavorites.destroy',$product->id) }}" method="POST">

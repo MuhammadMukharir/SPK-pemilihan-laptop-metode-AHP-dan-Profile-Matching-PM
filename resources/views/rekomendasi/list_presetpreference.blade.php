@@ -3,7 +3,7 @@
 @section('title', 'Preset Preferences Management')
 
 @section('content_header')
-<h2> Preset Preferences </h2>
+<h2> Pilih Satu Preset Preferensi </h2>
 <div class="pull-right">
     <a class="btn btn-secondary" href="{{ route('rekomendasi.index') }}"> Back</a>
 </div>
@@ -34,7 +34,7 @@
     @foreach ($presetpreferences as $key => $presetpreference)
     <tr>
         <td style="text-align: center">{{ $key + 1 }}</td>
-        <td>{{ $presetpreference->name }}</td>
+        <td> <i class="fas fa-fw fa-bullseye"></i> {{ $presetpreference->name }}</td>
         <td>{{ $presetpreference->detail }}</td>
         <td>
                 <a class="btn btn-info" href="{{ route('rekomendasi.preset.show',$presetpreference->id) }}">Detail</a>

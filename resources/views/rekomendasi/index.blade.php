@@ -18,6 +18,10 @@
     display: table;
     clear: both;
     }
+    
+    input{
+        text-align: center;
+        }
 </style>
 
 <h2> Rekomendasikan Laptop </h2>

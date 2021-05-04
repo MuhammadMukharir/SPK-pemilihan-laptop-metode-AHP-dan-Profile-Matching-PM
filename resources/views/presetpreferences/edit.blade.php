@@ -32,6 +32,10 @@
     display: table;
     clear: both;
     }
+        
+    input{
+        text-align: center;
+        }
 </style>
 
 @stop
@@ -69,7 +73,7 @@
         <div class="column">
         <div class="col-xs-12 col-sm-12 col-md-11">
             <div class="form-group">
-                <strong>Name:</strong>
+                <strong>Preset Preference Name:</strong>
                 <input type="text" name="name" value="{{ $presetpreference->name }}" class="form-control" placeholder="Name" required>
             </div>
         </div>

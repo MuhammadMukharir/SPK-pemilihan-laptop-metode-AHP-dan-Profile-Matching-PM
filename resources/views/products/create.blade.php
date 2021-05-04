@@ -20,6 +20,10 @@
     display: table;
     clear: both;
     }
+    
+    input{
+        text-align: center;
+        }
 </style>
 
 {{-- https://stackoverflow.com/questions/40702308/required-attribute-not-working --}}

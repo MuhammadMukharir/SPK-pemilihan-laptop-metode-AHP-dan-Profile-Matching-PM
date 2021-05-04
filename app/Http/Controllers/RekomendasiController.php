@@ -94,8 +94,8 @@ class RekomendasiController extends Controller
 
         $products = Product::leftJoin('favorites','favorites.fav_product_id','=','products.id')
         // ->where(Auth::id())
-        ->where('favorites.user_id', Auth::id())
-        ->orWhere('favorites.fav_product_id', null)
+        // ->where('favorites.user_id', Auth::id())
+        // ->orWhere('favorites.fav_product_id', null)
         ->orderBy('products.created_at', 'desc')
         ->get();
 
@@ -243,7 +243,9 @@ class RekomendasiController extends Controller
         if ($input->jenis_pembobotan) {
             
             $is_bobot_dipilih = AHP::where('is_konsisten', '=', 1)->where('id_perhitungan', $this_user->id_perhitungan_aktif)->first();
-            if (empty($is_bobot_dipilih)) {return redirect()->back()->with('error', 'Pastikan Anda telah mengaktifkan satu opsi pembobotan AHP yang konsisten');}
+            if (empty($is_bobot_dipilih)) {
+                return redirect()->back()->with('error', 'Pastikan Anda telah mengaktifkan satu opsi pembobotan AHP yang konsisten')
+                ;}
             
             $bobot_ahp = Bobot::where('id_perhitungan', '=', $is_bobot_dipilih->id_perhitungan)->first();
             

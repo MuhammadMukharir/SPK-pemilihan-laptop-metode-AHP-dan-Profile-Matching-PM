@@ -64,10 +64,10 @@
 @foreach ($ahplist as $key => $ahp)
 <tr>
     <td style="text-align: center">{{ $key + 1 }}</td>
-    <td>{{ $ahp->nama_perhitungan }}</td>
+    <td> <i class="fas fa-fw fa-balance-scale"></i> {{ $ahp->nama_perhitungan }}</td>
     <td>{{ $ahp->detail }}</td>
 
-    <td>{{ $ahp->name }}</td>
+    <td> <i class="fas fa-fw fa-user-edit"></i> {{ $ahp->name }}</td>
 
     <td>
 
@@ -85,7 +85,7 @@
 
     
     
-    @if ( $this_user->id_perhitungan_aktif === $ahp->id_perhitungan ) <label class="badge badge-pill badge-success"> Bobot Aktif Digunakan  </label>
+    @if ( $this_user->id_perhitungan_aktif === $ahp->id_perhitungan ) <label class="badge badge-pill badge-success"> <i class="far fa-fw fa-check-circle"></i> Bobot Aktif Digunakan  </label>
     @endif 
 
     </td>
