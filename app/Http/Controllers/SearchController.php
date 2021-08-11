@@ -14,17 +14,21 @@ class SearchController extends Controller
     {
         // dd($input->q);
         $search = $input->q;
-
+        $this_user_id = Auth::id();
         // $products = Product::latest()->paginate(6);
         // $products = Product::where('name', 'LIKE', '%'.$search.'%')->latest()->paginate(6);
         // $products = Product::where('name', 'LIKE', '%'.$search.'%')->latest()->get();
-        $products = Product::leftJoin('favorites','favorites.fav_product_id','=','products.id')
+        $products = Product::leftJoin('favorites','products.id','=','favorites.fav_product_id')
         // ->where(Auth::id())
         // ->where('favorites.user_id', Auth::id())
         // ->orWhere('favorites.fav_product_id', null)
+        ->where('favorites.user_id', '=', $this_user_id)
+        ->orWhere('favorites.fav_product_id', '=', null)
         ->where('name', 'LIKE', '%'.$search.'%')
         ->orderBy('products.created_at', 'desc')
         ->get();
+        
+        // dd($products[0]);
 
         // dd($products);
 

@@ -3,13 +3,13 @@
 @section('title', 'Hasil Rekomendasi Laptop')
 
 @section('content_header')
-<script src='https://code.jquery.com/jquery-3.1.1.min.js' type='text/javascript'></script>
-<h2> Hasil Rekomendasi Laptop </h2>
+
+{{-- <h2> Hasil Rekomendasi Laptop </h2> --}}
 @stop
 
 @section('content')
 
-<p>Hello {{ auth()->user()->name }}, berikut hasil rekomendasi produk</p>
+<h3> Berikut hasil rekomendasi produk berdasarkan bobot kriteria dan nilai preferensi yang Anda masukkan</h3>
 
 <div class="content">
     <div class="container-fluid">
@@ -18,8 +18,189 @@
     </div><!-- /.container-fluid -->
 </div>
 
+{{-- card --}}
+<div class="row">
+
+    <div class="col-md-5">
+
+        <div class="card card-dark">
+            <div class="card-header">
+              <h3 class="card-title">Input Bobot Antar Kriteria</h3>
+    
+              <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+                  <i class="fas fa-minus"></i></button>
+              </div>
+            </div>
+            <div class="card-body p-0">
+              <table class="table table-hover table-borderless table-striped">
+
+                <tbody>
+    
+                  <tr>
+                    <td class="goCenter custColor">C1</td>
+                    <td><strong> Harga laptop </strong></td>
+                    <td class="goCenter"> <strong> {{ number_format($bobotKriteriaDanPreferensiKriteria->bobot_harga * 100 ,0,",",".") . ' %' }} </strong> </td>
+                  </tr><tr>
+                    <td class="goCenter custColor">C2</td>
+                    <td><strong> Prosesor </strong></td>
+                    <td class="goCenter"> <strong> {{ number_format($bobotKriteriaDanPreferensiKriteria->bobot_prosesor * 100 ,0,",",".") . ' %' }} </strong> </td>
+                  </tr><tr>
+                    <td class="goCenter custColor">C3</td>
+                    <td><strong> Kapasitas RAM </strong></td>
+                    <td class="goCenter"> <strong> {{ number_format($bobotKriteriaDanPreferensiKriteria->bobot_kapasitas_ram * 100 ,0,",",".") . ' %' }} </strong> </td>
+                  </tr><tr>
+                    <td class="goCenter custColor">C4</td>
+                    <td><strong> Kapasitas Harddisk </strong></td>
+                    <td class="goCenter"> <strong> {{ number_format($bobotKriteriaDanPreferensiKriteria->bobot_kapasitas_hdd * 100 ,0,",",".") . ' %' }} </strong> </td>
+                  </tr><tr>
+                    <td class="goCenter custColor">C5</td>
+                    <td><strong> Kapasitas SSD </strong></td>
+                    <td class="goCenter"> <strong> {{ number_format($bobotKriteriaDanPreferensiKriteria->bobot_kapasitas_ssd * 100 ,0,",",".") . ' %' }} </strong> </td>
+                  </tr><tr>
+                    <td class="goCenter custColor">C6</td>
+                    <td><strong> Kapasitas V-RAM </strong></td>
+                    <td class="goCenter"> <strong> {{ number_format($bobotKriteriaDanPreferensiKriteria->bobot_kapasitas_vram * 100 ,0,",",".") . ' %' }} </strong> </td>
+                  </tr><tr>
+                    <td class="goCenter custColor">C7</td>
+                    <td><strong> Kapasitas maksimal upgrade RAM </strong></td>
+                    <td class="goCenter"> <strong> {{ number_format($bobotKriteriaDanPreferensiKriteria->bobot_kapasitas_maxram * 100 ,0,",",".") . ' %' }} </strong> </td>
+                  </tr><tr>
+                    <td class="goCenter custColor">C8</td>
+                    <td><strong> Berat laptop </strong></td>
+                    <td class="goCenter"> <strong> {{ number_format($bobotKriteriaDanPreferensiKriteria->bobot_berat * 100 ,0,",",".") . ' %' }} </strong> </td>
+                  </tr><tr>
+                    <td class="goCenter custColor">C9</td>
+                    <td><strong> Ukuran layar </strong></td>
+                    <td class="goCenter"> <strong> {{ number_format($bobotKriteriaDanPreferensiKriteria->bobot_ukuran_layar * 100 ,0,",",".") . ' %' }} </strong> </td>
+                  </tr><tr>
+                    <td class="goCenter custColor">C10</td>
+                    <td><strong> Jenis layar </strong></td>
+                    <td class="goCenter"> <strong> {{ number_format($bobotKriteriaDanPreferensiKriteria->bobot_jenis_layar * 100 ,0,",",".") . ' %' }} </strong> </td>
+                  </tr><tr>
+                    <td class="goCenter custColor">C11</td>
+                    <td><strong> Refresh rate layar </strong></td>
+                    <td class="goCenter"> <strong> {{ number_format($bobotKriteriaDanPreferensiKriteria->bobot_refresh_rate * 100 ,0,",",".") . ' %' }} </strong> </td>
+                  </tr><tr>
+                    <td class="goCenter custColor">C12</td>
+                    <td><strong> Resolusi layar </strong></td>
+                    <td class="goCenter"> <strong> {{ number_format($bobotKriteriaDanPreferensiKriteria->bobot_resolusi_layar * 100 ,0,",",".") . ' %' }} </strong> </td>
+                  </tr>
+                  
+
+                
+                </tbody>
+              </table>
+            </div>
+            <!-- /.card-body -->
+        </div>
+      <!-- /.card -->
+    </div>
+
+    {{-- <div class="col-md-1">
+
+    </div> --}}
+    @php
+      $kriteria = $bobotKriteriaDanPreferensiKriteria;
+      function isNumber($str)
+      {
+        if ($str == trim($str) && strpos($str, ' ') !== false) {
+            // echo 'has spaces, but not at beginning or end';
+            return false;
+        } else { return true;}
+      }
+      function isKriteriaDiabaikan($str)
+      {
+        if ($str === 'Kriteria Diabaikan') {return true;} else { return false; }
+      }
+      function isDiabaikan($str)
+      {
+        if ($str === 'Kriteria Diabaikan') {$str = '-'; return $str;} else { return $str;}
+      }
+    @endphp
+
+    <div class="col-md-7">
+
+        <div class="card card-dark">
+            <div class="card-header">
+                <h3 class="card-title">Input Preferensi Kriteria Produk</h3>
+      
+                <div class="card-tools">
+                  <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+                    <i class="fas fa-minus"></i></button>
+                </div>
+            </div>
+            <div class="card-body p-0">
+    
+                <table class="table table-hover table-striped table-borderless">
+                    <tr>
+                        <td><strong>Harga (Rp)</strong></td>
+                        <td><strong> @if(isNumber($kriteria->pref_harga))Rp{{ number_format($kriteria->pref_harga,0,",",".")  }} @else {{ isDiabaikan($kriteria->pref_harga) }} @endif </strong></td>
+                    </tr><tr>
+                        <td><strong>Prosesor (GHz)  (Baseclock(GHz) x Threads)</strong> </td>
+                        <td><strong>            {{ isDiabaikan($kriteria->pref_prosesor) }} @if(!(isKriteriaDiabaikan($kriteria->pref_prosesor)))GHz @endif </strong></td>
+                    </tr><tr>
+                        <td><strong>Kapasitas RAM (GB)</strong></td>
+                        <td><strong>            {{ isDiabaikan($kriteria->pref_kapasitas_ram) }} @if(!(isKriteriaDiabaikan($kriteria->pref_kapasitas_ram)))GB @endif </strong></td>
+                    </tr><tr>
+                        <td><strong>Kapasitas HDD (GB)</strong></td>
+                        <td><strong>            {{ isDiabaikan($kriteria->pref_kapasitas_hdd) }} @if(!(isKriteriaDiabaikan($kriteria->pref_kapasitas_hdd)))GB @endif </strong></td>
+                    </tr><tr>
+                        <td><strong>Kapasitas SSD (GB)</strong></td>
+                        <td><strong>            {{ isDiabaikan($kriteria->pref_kapasitas_ssd) }} @if(!(isKriteriaDiabaikan($kriteria->pref_kapasitas_ssd)))GB @endif </strong></td>
+                    </tr><tr>
+                        <td><strong>Kapasitas VRAM (GB)</strong></td>
+                        <td><strong>            {{ isDiabaikan($kriteria->pref_kapasitas_vram) }} @if(!(isKriteriaDiabaikan($kriteria->pref_kapasitas_vram)))GB @endif </strong></td>
+                    </tr><tr>
+                        <td width='50%'><strong>Kapasitas maksimal upgrade RAM (GB)</strong></td>
+                        <td><strong>            {{ isDiabaikan($kriteria->pref_kapasitas_maxram) }} @if(!(isKriteriaDiabaikan($kriteria->pref_kapasitas_maxram)))GB @endif </strong></td>
+                    </tr><tr>
+                        <td><strong>Berat (Gram)</strong></td>
+                        <td><strong>            {{ isDiabaikan($kriteria->pref_berat) }} @if(!(isKriteriaDiabaikan($kriteria->pref_berat)))gram @endif </strong></td>
+                    </tr><tr>
+                        <td><strong>Ukuran layar</strong></td>
+                        <td><strong>            {{ isDiabaikan($kriteria->pref_ukuran_layar) }} @if(!(isKriteriaDiabaikan($kriteria->pref_ukuran_layar)))Inci @endif </strong></td>
+                    </tr><tr>
+                        <td><strong>Jenis layar</strong></td>
+                        <td><strong>
+                            @if (!(isNumber($kriteria->pref_jenis_layar))) {{isDiabaikan($kriteria->pref_jenis_layar)}}  @endif
+                            @if ( $kriteria->pref_jenis_layar  == 1)Twisted Nematic (TN)@endif
+                            @if ( $kriteria->pref_jenis_layar  == 3)In-Plane Switching (IPS) @endif
+                            @if ( $kriteria->pref_jenis_layar  == 5)Organic Light-emitting Diode (OLED) @endif
+                            </strong>
+                        </td>
+                    </tr><tr>
+                        <td><strong>Refresh rate layar (Hz)</strong></td>
+                        <td><strong>            {{ isDiabaikan($kriteria->pref_refresh_rate) }} @if(!(isKriteriaDiabaikan($kriteria->pref_refresh_rate)))Hz @endif </strong></td>
+                    </tr><tr>
+                        <td><strong>Resolusi layar (jumlah pixel)</strong></td>
+                        <td><strong>            {{ isDiabaikan($kriteria->pref_resolusi_layar) }} @if(!(isKriteriaDiabaikan($kriteria->pref_resolusi_layar)))pixel @endif </strong></td>
+                    </tr>
+                </table>
+
+    
+            </div>
+        </div>
+
+
+
+    </div>
+
+
+</div>
+
+
+
 <section class="content">
-    <div class="card">
+    <div class="card card-primary">
+        <div class="card-header">
+            <h3 class="card-title">Hasil Rekomendasi Produk</h3>
+  
+            <div class="card-tools">
+              <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+                <i class="fas fa-minus"></i></button>
+            </div>
+        </div>
         <div class="card-body p-0">
             
 <table class="table table- table-hover">
@@ -44,7 +225,7 @@
             @if ( !($product->fav_product_id) )
 
                 <form action="{{ route('myfavorites.store',$product->id) }}" method="POST">
-                    <a class="btn btn-info" href="{{ route('search.show',$product->id) }}"> Detail</a>
+                    <a class="btn btn-info" href="{{ route('rekomendasi.hasil.product.detail',$product->id) }}"> Detail</a>
 
                     <input type="hidden" name="product_id" value="{{ $product->id }}">
                     <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">

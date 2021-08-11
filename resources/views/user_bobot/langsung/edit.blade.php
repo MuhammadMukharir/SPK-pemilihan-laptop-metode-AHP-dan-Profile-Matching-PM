@@ -36,7 +36,7 @@
 @stop
 
 @section('content')
-<p>Hello {{ auth()->user()->name }}, masukkan nilai bobot langsung spesifikasi laptop yang Anda inginkan (0.00 - 10.00).</p>
+<p>Hello {{ auth()->user()->name }}, masukkan nilai bobot langsung spesifikasi laptop yang Anda inginkan (0 - 10).</p>
 
 
 <div class="content">

@@ -68,7 +68,7 @@ class PresetPreferenceSeeder extends Seeder
             [
                 'nama'             => 'LAPTOP EDITING 2D',
                 'detail'           => 'Cari Laptop editing 2D, 7-jutaan',
-                'harga'            => '9000000',
+                'harga'            => '7000000',
                 'prosesor'         => '20',
                 'kapasitas_ram'    => '16',
                 'kapasitas_hdd'    => '1000',
@@ -100,7 +100,7 @@ class PresetPreferenceSeeder extends Seeder
             [
                 'nama'             => 'LAPTOP EDITING 2D v2',
                 'detail'           => 'Cari Laptop editing 2D, 11-jutaan',
-                'harga'            => '13000000',
+                'harga'            => '11000000',
                 'prosesor'         => '20',
                 'kapasitas_ram'    => '8',
                 'kapasitas_hdd'    => '0',
@@ -113,6 +113,23 @@ class PresetPreferenceSeeder extends Seeder
                 'refresh_rate'     => '60',
                 'resolusi_layar'   => '2073600',
             ],
+            // demo proposal
+            // [
+            //     'nama'             => 'LAPTOP EDITING 2D v2',
+            //     'detail'           => 'Cari Laptop editing 2D, 13-jutaan',
+            //     'harga'            => '13000000',
+            //     'prosesor'         => '20',
+            //     'kapasitas_ram'    => '8',
+            //     'kapasitas_hdd'    => '0',
+            //     'kapasitas_ssd'    => '512',
+            //     'kapasitas_vram'   => '4',
+            //     'kapasitas_maxram' => '20',
+            //     'berat'            => '1100',
+            //     'ukuran_layar'     => '14',
+            //     'jenis_layar'      => '3',
+            //     'refresh_rate'     => '60',
+            //     'resolusi_layar'   => '2073600',
+            // ],
         ];
 
         foreach ($presetpreferences as $presetpreference) {

@@ -255,7 +255,24 @@ class LaptopSeeder extends Seeder
                 'refresh_rate'     => '60',
                 'resolusi_layar'   => '1049088',
             ],
-            // A15
+            // A15 ( batas pada proposal )
+            [
+                'nama'             => 'DELL Inspiron 3180-A9',
+                'detail'           => 'Office Laptop',
+                'harga'            => '3900000',
+                'prosesor'         => '3.6',
+                'kapasitas_ram'    => '4',
+                'kapasitas_hdd'    => '500',
+                'kapasitas_ssd'    => '0',
+                'kapasitas_vram'   => '1',
+                'kapasitas_maxram' => '12',
+                'berat'            => '1460',
+                'ukuran_layar'     => '11',
+                'jenis_layar'      => '1',
+                'refresh_rate'     => '60',
+                'resolusi_layar'   => '921600',
+            ],
+            // A16
             [
                 'nama'             => 'DELL Inspiron 3180-A9',
                 'detail'           => 'Office Laptop',

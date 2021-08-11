@@ -267,8 +267,8 @@
     <div class="card card-primary">
 
         <div class="card-header">
-            <h3 class="card-title">Tabel Perbandingan Berpasangan</h3>
-  
+            <h3 class="card-title">Tabel Perbandingan Berpasangan &nbsp; &nbsp;</h3>
+            <p onclick="resetTabel()" class="btn btn-sm btn-warning">Reset Tabel</p>
             <div class="card-tools">
               <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
                 <i class="fas fa-minus"></i></button>
@@ -292,7 +292,7 @@
 
 
 
-<table class="table table-borderless table- table- cssTableCenter">
+<table class="table table-borderless table-sm table- cssTableCenter">
 <tr>
     <th>Kriteria</th>
     <th>C1</th>
@@ -679,6 +679,14 @@
       elements[i].addEventListener('keyup', isi_kolom_yg_satunya, false);
       elements[i].addEventListener('change', isi_kolom_yg_satunya, false);
       elements[i].addEventListener('click', isi_kolom_yg_satunya, false);
+  }
+
+  function resetTabel(e) {
+    for (var i = 0; i < elements.length; i++) {
+      if (elements[i].id.includes('c'))  {
+        elements[i].value = '1'
+      }
+    }
   }
 </script>
 

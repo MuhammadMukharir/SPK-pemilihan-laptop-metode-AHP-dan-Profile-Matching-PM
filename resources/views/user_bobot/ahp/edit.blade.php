@@ -125,51 +125,51 @@
                   <tr>
                     <td class="goCenter custColor">C1</td>
                     <td><strong> Harga laptop </strong></td>
-                    <td class="goCenter"> <strong> {{ number_format($bobot->c1,2,",",".") }} </strong> </td>
+                    <td class="goCenter"> <strong> {{ number_format($bobot->c1 * 100 ,0,",",".") . ' %' }} </strong> </td>
                   </tr><tr>
                     <td class="goCenter custColor">C2</td>
                     <td><strong> Prosesor </strong></td>
-                    <td class="goCenter"> <strong> {{ number_format($bobot->c2,2,",",".") }} </strong> </td>
+                    <td class="goCenter"> <strong> {{ number_format($bobot->c2 * 100 ,0,",",".") . ' %' }} </strong> </td>
                   </tr><tr>
                     <td class="goCenter custColor">C3</td>
                     <td><strong> Kapasitas RAM </strong></td>
-                    <td class="goCenter"> <strong> {{ number_format($bobot->c3,2,",",".") }} </strong> </td>
+                    <td class="goCenter"> <strong> {{ number_format($bobot->c3 * 100 ,0,",",".") . ' %' }} </strong> </td>
                   </tr><tr>
                     <td class="goCenter custColor">C4</td>
                     <td><strong> Kapasitas Harddisk </strong></td>
-                    <td class="goCenter"> <strong> {{ number_format($bobot->c4,2,",",".") }} </strong> </td>
+                    <td class="goCenter"> <strong> {{ number_format($bobot->c4 * 100 ,0,",",".") . ' %' }} </strong> </td>
                   </tr><tr>
                     <td class="goCenter custColor">C5</td>
                     <td><strong> Kapasitas SSD </strong></td>
-                    <td class="goCenter"> <strong> {{ number_format($bobot->c5,2,",",".") }} </strong> </td>
+                    <td class="goCenter"> <strong> {{ number_format($bobot->c5 * 100 ,0,",",".") . ' %' }} </strong> </td>
                   </tr><tr>
                     <td class="goCenter custColor">C6</td>
                     <td><strong> Kapasitas V-RAM </strong></td>
-                    <td class="goCenter"> <strong> {{ number_format($bobot->c6,2,",",".") }} </strong> </td>
+                    <td class="goCenter"> <strong> {{ number_format($bobot->c6 * 100 ,0,",",".") . ' %' }} </strong> </td>
                   </tr><tr>
                     <td class="goCenter custColor">C7</td>
                     <td><strong> Kapasitas maksimal upgrade RAM </strong></td>
-                    <td class="goCenter"> <strong> {{ number_format($bobot->c7,2,",",".") }} </strong> </td>
+                    <td class="goCenter"> <strong> {{ number_format($bobot->c7 * 100 ,0,",",".") . ' %' }} </strong> </td>
                   </tr><tr>
                     <td class="goCenter custColor">C8</td>
                     <td><strong> Berat laptop </strong></td>
-                    <td class="goCenter"> <strong> {{ number_format($bobot->c8,2,",",".") }} </strong> </td>
+                    <td class="goCenter"> <strong> {{ number_format($bobot->c8 * 100 ,0,",",".") . ' %' }} </strong> </td>
                   </tr><tr>
                     <td class="goCenter custColor">C9</td>
                     <td><strong> Ukuran layar </strong></td>
-                    <td class="goCenter"> <strong> {{ number_format($bobot->c9,2,",",".") }} </strong> </td>
+                    <td class="goCenter"> <strong> {{ number_format($bobot->c9 * 100 ,0,",",".") . ' %' }} </strong> </td>
                   </tr><tr>
                     <td class="goCenter custColor">C10</td>
                     <td><strong> Jenis layar </strong></td>
-                    <td class="goCenter"> <strong> {{ number_format($bobot->c10,2,",",".") }} </strong> </td>
+                    <td class="goCenter"> <strong> {{ number_format($bobot->c10 * 100 ,0,",",".") . ' %' }} </strong> </td>
                   </tr><tr>
                     <td class="goCenter custColor">C11</td>
                     <td><strong> Refresh rate layar </strong></td>
-                    <td class="goCenter"> <strong> {{ number_format($bobot->c11,2,",",".") }} </strong> </td>
+                    <td class="goCenter"> <strong> {{ number_format($bobot->c11 * 100 ,0,",",".") . ' %' }} </strong> </td>
                   </tr><tr>
                     <td class="goCenter custColor">C12</td>
                     <td><strong> Resolusi layar </strong></td>
-                    <td class="goCenter"> <strong> {{ number_format($bobot->c12,2,",",".") }} </strong> </td>
+                    <td class="goCenter"> <strong> {{ number_format($bobot->c12 * 100 ,0,",",".") . ' %' }} </strong> </td>
                   </tr>
                   
 
@@ -180,6 +180,39 @@
             <!-- /.card-body -->
         </div>
       <!-- /.card -->
+
+
+      <div class="card card-info">
+        <div class="card-header">
+          <h3 class="card-title">Penyebab tidak konsitennya pembobotan </h3> 
+          <div class="card-tools">
+            <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+              <i class="fas fa-minus"></i></button>
+          </div>
+        </div>
+        <div class="card-body p-0">
+          <table class="table table-hover table-borderless table-striped">
+            <tbody>
+              <tr>
+                <td class="" colspan="2" style="border-color: #a9d5de;background-color: #f8ffff; text-align: justify;">
+                  Misalnya Anda memasukkan nilai dengan kepentingan sebagai berikut. <br>
+                  - Kriteria C1 : 2 kali lebih penting C2 <br>
+                  - Kriteria C1 : 3 kali lebih penting C3 <br>
+                  - Kriteria C3 : 9 kali lebih penting C2 <br>
+                  Maka pembobotan tidak konsisten karena C3 lebih penting dibanding C2, sedangkan dalam perbandingan C1 dengan C2 dan C3, C2 lebih penting dibanding C3.
+                  <strong> Ketidak konsistenan tersebut akan menaikkan nilai Consistency Ratio (CR).  </strong> Hasil bobot perbandingan berpasangan antar kriteria dianggap tidak konsisten apabila nilai CR >= 0,1
+                </td>
+              </tr>
+            
+            </tbody>
+          </table>
+        </div>
+        <!-- /.card-body -->
+      </div>
+    <!-- /.card -->
+
+
+
     </div>
 
     <div class="col-md-8">
@@ -222,12 +255,13 @@
                         <td> {{ $bobot->consistency_index }} </td>
                       </tr><tr>
                         <td class=""> <strong> Consistency Ratio (CR) </strong> </td>
-                        <td> {{ $bobot->consistency_ratio }} </td>
+                        <td class=""> <strong>{{ $bobot->consistency_ratio }}</strong> </td>
                       </tr>
                       </tr><tr>
-                        <td class=""> <strong> Consistency </strong> </td>
-                        @if ( $ahp->is_konsisten ) <td> <label class="badge badge-pill badge-success"> Perhitungan sudah konsisten (CR < 0.1) </label> </td>
-                        @else     <td> <label class="badge badge-danger"> Perhitungan belum konsisten (CR >= 0.1) </label> </td>
+                        <td class="" colspan="2" style="border-color: #a9d5de;background-color: #f8ffff;"> <strong> Catatan: </strong>
+                        @if ( $ahp->is_konsisten ) <h5><label class="badge badge-pill badge-success">Hasil Perbandingan berpasangan antar kriteria SUDAH konsisten karena menghasilkan nilai Consitency Ratio < 0,1 </label></h5> 
+                        @else      <h5><label class="badge badge-danger">Hasil Perbandingan berpasangan antar kriteria BELUM konsisten karena menghasilkan nilai Consitency Ratio >= 0,1 </label></h5> 
+                        </td>
                         @endif
                       </tr>
       
@@ -285,7 +319,13 @@
                     <td class="goCenter"><strong>Timbal-balik</strong></td>
                     <td>Jika kriteria i ditetapkan dengan salah satu nilai di atas jika dibandingkan dengan kriteria j, maka kriteria j memiliki nilai timbal balik jika dibandingkan dengan kriteria i. (Contoh: i : j = 3 maka j : i = 1 / 3)</td>
                   </tr>
-                
+                  <tr>
+                    <td class="" colspan="2" style="border-color: #a9d5de;background-color: #f8ffff; text-align:justify"> <strong> Catatan cara melakukan perbandingan berpasangan: </strong>
+                      {{-- Perbandingan dibaca dari baris terhadap kolom pada Tabel Perbandingan di bawah ini. --}}
+                      Perbandingan dibaca dari kriteria baris terhadap kriteria kolom.
+                      Misalnya kriteria C1 empat kali lebih penting terhadap kriteria C2 maka diisi nilai 4 pada baris C1 kolom C2 pada Tabel Perbandingan Berpasangan di bawah ini.
+                    </td>
+                  </tr>
                 </tbody>
               </table>
             </div>
@@ -303,8 +343,8 @@
     <div class="card card-primary">
 
         <div class="card-header">
-            <h3 class="card-title">Tabel Perbandingan Berpasangan</h3>
-  
+            <h3 class="card-title">Tabel Perbandingan Berpasangan &nbsp; &nbsp;</h3>
+            <p onclick="resetTabel()" class="btn btn-sm btn-warning">Reset Tabel</p>
             <div class="card-tools">
               <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
                 <i class="fas fa-minus"></i></button>
@@ -328,7 +368,7 @@
 
 
 
-<table class="table table-borderless table- table- cssTableCenter">
+<table class="table table-borderless table-sm table-hover cssTableCenter">
 <tr>
     <th>Kriteria</th>
     <th>C1</th>
@@ -743,6 +783,14 @@
       elements[i].addEventListener('keyup', isi_kolom_yg_satunya, false);
       elements[i].addEventListener('change', isi_kolom_yg_satunya, false);
       elements[i].addEventListener('click', isi_kolom_yg_satunya, false);
+  }
+
+  function resetTabel(e) {
+    for (var i = 0; i < elements.length; i++) {
+      if (elements[i].id.includes('c'))  {
+        elements[i].value = '1'
+      }
+    }
   }
 </script>
 

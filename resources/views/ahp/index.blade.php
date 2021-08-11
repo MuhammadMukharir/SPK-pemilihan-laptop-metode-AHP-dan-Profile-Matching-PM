@@ -25,7 +25,7 @@
 
 </style>
 
-<p>Hello {{ auth()->user()->name }}, here you can manage your AHP weighting</p>
+<p>Hello {{ auth()->user()->name }}, here you can manage all of registered AHP weighting</p>
 
 
 <div class="content">
@@ -85,7 +85,7 @@
 
     
     
-    @if ( $this_user->id_perhitungan_aktif === $ahp->id_perhitungan ) <label class="badge badge-pill badge-success"> <i class="far fa-fw fa-check-circle"></i> Bobot Aktif Digunakan  </label>
+    @if ( $this_user->id_perhitungan_aktif === $ahp->id_perhitungan ) <label class="badge badge-pill badge-primary"> <i class="far fa-fw fa-check-circle"></i> Bobot Kriteria Aktif Digunakan </label>
     @endif 
 
     </td>
@@ -107,14 +107,14 @@
 
     @if (!($this_user->id_perhitungan_aktif === $ahp->id_perhitungan) && $ahp->is_konsisten)
         {!! Form::open(['method' => 'post','route' => ['ahp.toggle', $ahp->id_perhitungan],'style'=>'display:inline']) !!}
-            {!! Form::submit('Set Aktif', ['class' => 'btn btn-warning']) !!}
+            {!! Form::submit('Set Aktif', ['class' => 'btn btn-success']) !!}
             {{-- {!! Form::button('<i class="fas fa-user-times"></i>Delete', ['class' => 'btn btn-danger', 'type' => 'submit']) !!} --}}
         {!! Form::close() !!}
     @else
         @if ($this_user->id_perhitungan_aktif === $ahp->id_perhitungan)
             
         @else
-            <a class="btn btn-warning disabled">Set Aktif</a>
+            <a class="btn btn-success disabled">Set Aktif</a>
         @endif
         
     @endif

@@ -8,7 +8,7 @@
 
 @section('content')
 
-<p>Hello {{ auth()->user()->name }}, here you can manage your preset preferences</p>
+<p>Hello {{ auth()->user()->name }}, here you can manage preset preferences value</p>
 
 <div class="content">
     <div class="container-fluid">
@@ -32,7 +32,7 @@
         </div> --}}
         <div class="pull-right">
             @can('product-create')
-            <a class="btn btn-success" href="{{ route('presetpreferences.create') }}"> <i class="fas fa-plus"></i> Create New Preset Preference</a>
+            <a class="btn btn-success" href="{{ route('presetpreferences.create') }}"> <i class="fas fa-plus"></i> Buat Baru Nilai Preset Preferensi</a>
             @endcan
         </div>
     </div>
@@ -43,8 +43,8 @@
 <table class="table table- table-hover">
     <tr>
         <th style="text-align: center">No</th>
-        <th>Preference Name</th>
-        <th>Details</th>
+        <th>Nama Preferensi</th>
+        <th>Deskripsi</th>
         <th width="280px">Action</th>
     </tr>
     @foreach ($presetpreferences as $key => $presetpreference)

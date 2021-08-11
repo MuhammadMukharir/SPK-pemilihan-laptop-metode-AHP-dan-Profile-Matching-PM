@@ -45,14 +45,28 @@
             <div class="card-body p-0">
                 <table class="table table-">
                     <tr>
-                        <td><p style="padding: 10px 50px; text-align:justify; font-size: 18px">Laptop adalah personal computer (PC) desktop yang dimensinya diperkecil untuk meningkatkan fleksibilitas dalam penggunaannya. Perangkat keras yang terdapat di dalamnya sama persis dengan komponen pada desktop, hanya saja dijadikan lebih ringan, lebih tidak panas, ukurannya diperkecil, dan lebih hemat daya. Bahan, ukuran, dan perangkat keras yang terpasang pada laptop memengaruhi berat laptop.
-                        Saat ini banyak produk laptop yang ditawarkan di pasaran. Berbagai merek menawarkan berbagai produk laptopnya, juga pelayanan berupa perbaikan, dan masa garansi yang berbeda. Produsen laptop pada setiap merek tentunya mempertimbangkan target konsumen yang ingin dijangkau oleh produk yang akan dibuat. Hal tersebut menyebabkan banyaknya variasi spesifikasi laptop dan harganya di pasaran. Banyaknya produk laptop akan membuat kesulitan konsumen dalam menentukan pilihan laptop yang sesuai dengan kebutuhannya. Oleh karena itu, diperlukan sistem pendukung keputusan (SPK) untuk membantu konsumen dalam memilih produk laptop.</p>
+                        <td><p style="padding: 10px 50px; text-align:justify; font-size: 18px">Banyaknya variasi spesifikasi produk laptop yang berada di pasaran menyebabkan kesulitan konsumen dalam menentukan produk yang sesuai dengan kebutuhannya. Dalam memilih produk laptop ada nilai kriteria dari produk laptop itu sendiri dan nilai kriteria preferensi dari pembeli sebagai pembuat keputusan.
+                             Nilai preferensi pembeli memiliki berbagai variasi karena setiap orang membeli produk laptop memiliki tujuan dan kebutuhan yang bervariasi. Selain itu, nilai dari produk laptop itu sendiri nilai-nilai kriterianya memiliki kontribusi berbeda terhadap nilai keseluruhan produk laptop tersebut. 
+                             Oleh karena itu, diperlukan <strong> sistem pendukung keputusan untuk membantu pembeli 
+                             dalam memilih produk laptop sesuai dengan kebutuhannya dengan mempertimbangkan nilai dari sisi produk laptop dan dari sisi pembeli sebagai pembuat keputusan.</strong>
+                             Pada sistem ini digunakan metode AHP untuk menghitung bobot antar kriteria pada produk laptop. Untuk metode PM digunakan untuk menghitung nilai bobot suatu produk terhadap nilai preferensi pembeli.
+                            </p>
                         </td>
                     </tr>
                     <tr>
                         <td>
                             <div class="col-md-12" style="text-align: center">
-                                <a class="btn btn-info btn-lg" href="{{ route('rekomendasi.index') }}"> Mulai! </a>
+                                <h3 style="padding: 10px 50px; text-align:justify; font-size: 18px"> Alur penggunaan sistem yaitu <i class="fas fa-fw fa-arrow-right"></i> 
+                                    <strong> Pembobotan antar kriteria menggunakan AHP <i class="fas fa-fw fa-arrow-right"></i>
+                                         Memasukkan nilai preferensi kriteria <i class="fas fa-fw fa-arrow-right"></i>
+                                         Hasil rekomendasi produk </strong></h3>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="col-md-12" style="text-align: center">
+                                <a class="btn btn-info btn-lg" href="{{ route('user.bobot.ahp.index') }}"> Mulai! </a>
                             </div>
                         </td>
                     </tr>

@@ -39,52 +39,54 @@
 </div> --}}
 
 
-<div class="row">
-    <table class="table table-hover table-striped">
-        <tr>
-            <td><strong>Product Name</strong></td>
-            <td>{{ $product->name }}</td>
-        </tr><tr>
-            <td><strong>Details</strong></td>
-            <td>{{ $product->detail }}</td>
-        </tr><tr>
-            <td><strong>Harga (Rp)</strong></td>
-            <td>            Rp{{ $product->harga }}</td>
-        </tr><tr>
-            <td><strong>Prosesor (GHz)  (Baseclock(GHz) x Threads)</strong> </td>
-            <td>            {{ $product->prosesor }} GHz</td>
-        </tr><tr>
-            <td><strong>Kapasitas RAM (GB)</strong></td>
-            <td>            {{ $product->kapasitas_ram }} GB</td>
-        </tr><tr>
-            <td><strong>Kapasitas HDD (GB)</strong></td>
-            <td>            {{ $product->kapasitas_hdd }} GB</td>
-        </tr><tr>
-            <td><strong>Kapasitas SSD (GB)</strong></td>
-            <td>            {{ $product->kapasitas_ssd }} GB</td>
-        </tr><tr>
-            <td><strong>Kapasitas VRAM (GB)</strong></td>
-            <td>            {{ $product->kapasitas_vram }} GB</td>
-        </tr><tr>
-            <td width='30%'><strong>Kapasitas maksimal upgrade RAM (GB)</strong></td>
-            <td>            {{ $product->kapasitas_maxram }} GB</td>
-        </tr><tr>
-            <td><strong>Berat (Gram)</strong></td>
-            <td>            {{ $product->berat }} gram</td>
-        </tr><tr>
-            <td><strong>Jenis layar</strong></td>
-            <td>@if ( $product->jenis_layar  === 1)Twisted Nematic (TN)@endif
-                @if ( $product->jenis_layar  === 3)In-Plane Switching (IPS) @endif
-                @if ( $product->jenis_layar  === 5)Organic Light-emitting Diode (OLED) @endif</td>
-        </tr><tr>
-            <td><strong>Refresh rate layar (Hz)</strong></td>
-            <td>            {{ $product->refresh_rate }} Hz</td>
-        </tr><tr>
-            <td><strong>Resolusi layar (jumlah pixel)</strong></td>
-            <td>            {{ $product->resolusi_layar }} pixel</td>
-        </tr>
-    </table>
-</div>
+<table class="table table-hover table-striped">
+    <tr>
+        <td><strong>Product Name</strong></td>
+        <td><strong>{{ $product->name }}</td>
+    </tr><tr>
+        <td><strong>Details</strong></td>
+        <td><strong>{{ $product->detail }}</strong></td>
+    </tr><tr>
+        <td><strong>Harga (Rp)</strong></td>
+        <td><strong>            Rp{{ $product->harga }}</strong></td>
+    </tr><tr>
+        <td><strong>Prosesor (GHz)  (Baseclock(GHz) x Threads)</strong> </td>
+        <td><strong>            {{ $product->prosesor }} GHz</strong></td>
+    </tr><tr>
+        <td><strong>Kapasitas RAM (GB)</strong></td>
+        <td><strong>            {{ $product->kapasitas_ram }} GB</strong></td>
+    </tr><tr>
+        <td><strong>Kapasitas HDD (GB)</strong></td>
+        <td><strong>            {{ $product->kapasitas_hdd }} GB</strong></td>
+    </tr><tr>
+        <td><strong>Kapasitas SSD (GB)</strong></td>
+        <td><strong>            {{ $product->kapasitas_ssd }} GB</strong></td>
+    </tr><tr>
+        <td><strong>Kapasitas VRAM (GB)</strong></td>
+        <td><strong>            {{ $product->kapasitas_vram }} GB</strong></td>
+    </tr><tr>
+        <td width='30%'><strong>Kapasitas maksimal upgrade RAM (GB)</strong></td>
+        <td><strong>            {{ $product->kapasitas_maxram }} GB</strong></td>
+    </tr><tr>
+        <td><strong>Berat (Gram)</strong></td>
+        <td><strong>            {{ $product->berat }} gram</strong></td>
+    </tr><tr>
+        <td><strong>Ukuran layar</strong></td>
+        <td><strong>            {{ $product->ukuran_layar }} inci</strong></td>
+    </tr><tr>
+        <td><strong>Jenis layar</strong></td>
+        <td><strong>@if ( $product->jenis_layar  === 1)Twisted Nematic (TN)@endif
+            @if ( $product->jenis_layar  === 3)In-Plane Switching (IPS) @endif
+            @if ( $product->jenis_layar  === 5)Organic Light-emitting Diode (OLED) @endif</strong></td>
+    </tr><tr>
+        <td><strong>Refresh rate layar (Hz)</strong></td>
+        <td><strong>            {{ $product->refresh_rate }} Hz</strong></td>
+    </tr><tr>
+        <td><strong>Resolusi layar (jumlah pixel)</strong></td>
+        <td><strong>            {{ $product->resolusi_layar }} pixel</strong></td>
+    </tr>
+</table>
+
 
         </div>
     </div>

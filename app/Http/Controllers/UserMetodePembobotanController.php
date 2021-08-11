@@ -124,9 +124,7 @@ class UserMetodePembobotanController extends Controller
     {
         request()->validate($this->ahp_atribute_required);
     
-        // Product::create($request->all());
-
-        // dd($request);
+        // fungsi untuk membulatkan nilai
         function round_if ($value){
             if ($value >= 9) {
                 return 9;
@@ -142,7 +140,8 @@ class UserMetodePembobotanController extends Controller
         // inisiasi nilai bagian segitaga bawah pada tabel (1 / request->xxxx)
         if (true) 
         {
-            // bulatkan dulu menggunakan fungsi round_if pada masukan user
+            // jadikan nilai perbandingan berpasangan 
+            // dilakukan dalam presisi dua angka desimal
             $request->c1c2 = round_if($request->c1c2);
             $request->c1c3 = round_if($request->c1c3);
             $request->c1c4 = round_if($request->c1c4);
@@ -210,7 +209,8 @@ class UserMetodePembobotanController extends Controller
             $request->c10c12 = round_if($request->c10c12);
             $request->c11c12 = round_if($request->c11c12);
 
-            // inisiasi nilai bagian segitaga bawah pada tabel (1 / request->xxxx)
+            // inisiasi nilai bagian segitaga
+            // bawah pada tabel (1 / request->xxxx)
             $c2c1 = round_if( 1 / $request->c1c2 );
             $c3c1 = round_if( 1 / $request->c1c3 );
             $c4c1 = round_if( 1 / $request->c1c4 );
@@ -297,6 +297,9 @@ class UserMetodePembobotanController extends Controller
 
         // bangun tabel dan array
         if (true) {
+
+            ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            // Potongan Gambar Kiri                                                                            // Potongan Gambar Kanan
             array_push($c1, 1, $request->c1c2, $request->c1c3, $request->c1c4, $request->c1c5, $request->c1c6, $request->c1c7, $request->c1c8, $request->c1c9, $request->c1c10, $request->c1c11, $request->c1c12);
             array_push($c2, $c2c1, 1, $request->c2c3, $request->c2c4, $request->c2c5, $request->c2c6, $request->c2c7, $request->c2c8, $request->c2c9, $request->c2c10, $request->c2c11, $request->c2c12);
             array_push($c3, $c3c1, $c3c2, 1, $request->c3c4, $request->c3c5, $request->c3c6, $request->c3c7, $request->c3c8, $request->c3c9, $request->c3c10, $request->c3c11, $request->c3c12);
@@ -313,8 +316,9 @@ class UserMetodePembobotanController extends Controller
             array_push($initial_full_ahp_arr, $c1, $c2, $c3, $c4, $c5, $c6, $c7, $c8, $c9, $c10, $c11, $c12);
         }
 
+        // (https://stackoverflow.com/questions/797251/transposing-multidimensional-arrays-in-php)
 
-        // fungsi transpose (https://stackoverflow.com/questions/797251/transposing-multidimensional-arrays-in-php)
+        // fungsi transpose 
         function transpose($array) {
             return array_map(null, ...$array);
         }
@@ -341,25 +345,25 @@ class UserMetodePembobotanController extends Controller
 
         // dapatkan bobot tiap kriteria
         $bobot_tiap_kriteria = array();
-        foreach ($normalized_ahp_arr as $arr) 
+        foreach ($normalized_ahp_arr as $row) 
         {
-            array_push($bobot_tiap_kriteria, array_sum($arr) / count($arr));
+            array_push($bobot_tiap_kriteria, array_sum($row) / count($row));
         }
 
         // Code dibawah berikut mulai pengecekan nilai konsistensi
 
         // hitung nilai WSV
         $WSV_arr = $initial_full_ahp_arr;
-        // array_push($WSV_arr, $initial_full_ahp_arr);
+
         $WSV_value = array();
-        foreach ( $WSV_arr as $arr) 
+        foreach ( $WSV_arr as $row) 
         {
-            $temp = 0;
-            foreach ( $arr as $key => $value) 
+            $sum = 0;
+            foreach ( $row as $key => $value) 
             {
-                $temp = $temp + ($value * $bobot_tiap_kriteria[$key]);
+                $sum = $sum + ($value * $bobot_tiap_kriteria[$key]);
             }
-            array_push($WSV_value, $temp);
+            array_push($WSV_value, $sum);
         }
 
         // hitung nilai CV 
@@ -377,8 +381,8 @@ class UserMetodePembobotanController extends Controller
         $CI_value = ($lamdaMax - $banyak_kriteria) / ($banyak_kriteria - 1);
 
         // hitung nilai Consistency Ratio (CR)
-        $RandomIndex = 1.54;
-        $CR_value = $CI_value / $RandomIndex;
+        $RandomConsistency = 1.54;
+        $CR_value = $CI_value / $RandomConsistency;
 
         // dd($CR_value);
 
@@ -501,13 +505,15 @@ class UserMetodePembobotanController extends Controller
 
         if ($is_konsisten) {
             return redirect()->route('user.bobot.ahp.show', $ahp_obj->id_perhitungan)
-                        ->with('success','AHP calculation added successfully and consistent (CR value < 0,1).');
+                        ->with('success','Perhitungan AHP berhasil ditambahkan.
+                        Perbandingan berpasangan antar kriteria SUDAH konsisten karena nilai Consitency Ratio < 0,1');
         } elseif (!$is_konsisten) {
             return redirect()->route('user.bobot.ahp.show', $ahp_obj->id_perhitungan)
-                        ->with('danger','AHP calculation added successfully but not consistent (CR value >= 0,1).');
+                        ->with('error','Perhitungan AHP berhasil ditambahkan.
+                        Perbandingan berpasangan antar kriteria BELUM konsisten karena nilai Consitency Ratio >= 0,1');
         }else {
             return redirect()->route('user.bobot.ahp.show', $ahp_obj->id_perhitungan)
-                        ->with('danger','ooppss something wrong');
+                        ->with('error','ooppss something wrong');
         }
 
         
@@ -885,13 +891,15 @@ class UserMetodePembobotanController extends Controller
 
         if ($is_konsisten) {
             return redirect()->route('user.bobot.ahp.show', $ahp_obj->id_perhitungan)
-                        ->with('success','AHP calculation added successfully and consistent (CR value < 0,1).');
+                        ->with('success','Perhitungan AHP berhasil diperbarui.
+                         Perbandingan berpasangan antar kriteria SUDAH konsisten karena nilai Consitency Ratio < 0,1');
         } elseif (!$is_konsisten) {
             return redirect()->route('user.bobot.ahp.show', $ahp_obj->id_perhitungan)
-                        ->with('danger','AHP calculation added successfully but not consistent (CR value >= 0,1).');
+                        ->with('error','Perhitungan AHP berhasil diperbarui.
+                        Perbandingan berpasangan antar kriteria BELUM konsisten karena nilai Consitency Ratio >= 0,1');
         }else {
             return redirect()->route('user.bobot.ahp.show', $ahp_obj->id_perhitungan)
-                        ->with('danger','ooppss something wrong');
+                        ->with('error','ooppss something wrong');
         }
 
     
@@ -911,15 +919,15 @@ class UserMetodePembobotanController extends Controller
         // PerbandinganBerpasangan::where('id_perhitungan', $id_get_url)->delete();
     
         return redirect()->route('user.bobot.ahp.index')
-                        ->with('success','AHP calculation deleted successfully');
+                        ->with('success','Perhitungan AHP berhasil dihapus');
     }
 
     public function ahp_toggle($id_get_url)
     {
         $this_user = User::where('id', Auth::id())->update(['id_perhitungan_aktif' => $id_get_url]);
 
-        return redirect()->route('user.bobot.ahp.index')
-                        ->with('success','Bobot AHP yang digunakan berhasil diganti');
+        return redirect()->back()
+                        ->with('success','Bobot AHP yang digunakan untuk perhitungan rekomendasi berhasil diganti');
     }
 
 

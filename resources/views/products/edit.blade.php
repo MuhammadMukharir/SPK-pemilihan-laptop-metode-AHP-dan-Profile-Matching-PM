@@ -49,8 +49,8 @@
 </div>
 
 <section class="content">
-    <div class="card">
-        <div class="card-body">
+    {{-- <div class="card">
+        <div class="card-body"> --}}
 
 {{-- <div class="row">
     <div class="col-lg-12 margin-tb">
@@ -178,8 +178,8 @@
 
 </form>
 
-        </div>
-    </div>
+        {{-- </div>
+    </div> --}}
 </section>
 
 @endsection

@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', 'AHP Management')
+@section('title', 'Pilih Pembobotan AHP')
 
 @section('content_header')
-<h2> AHP Management </h2>
+{{-- <h2> Buat Baru Atau Pilih Salah Satu Bobot Kriteria dari Pembobotan AHP Berikut ini </h2> --}}
 @stop
 
 @section('content')
@@ -25,7 +25,7 @@
 
 </style>
 
-<p>Hello {{ auth()->user()->name }}, here you can manage your AHP weighting</p>
+<h3>Silakan Buat Baru atau Pilih Pembobotan Kriteria AHP yang KONSISTEN yang ingin digunakan dengan tekan tombol Set Aktif <i class="fas fa-fw fa-arrow-right"></i> Kemudian tekan tombol Mulai Rekomendasi.</h3>
 
 
 <div class="content">
@@ -45,8 +45,8 @@
             <h2>Users Management</h2>
         </div> --}}
         <div class="pull-right">
-            <a class="btn btn-secondary btn-" href="{{ route('rekomendasi.index') }}"> <i class="fas fa-fw fa-laptop"></i> Mulai Rekomendasi </a>
-            <a class="btn btn-success" href="{{ route('user.bobot.ahp.create') }}"> <i class="fas fa-plus"></i> Tambahkan pembobotan AHP</a>
+            <a class="btn btn-dark btn-" href="{{ route('rekomendasi.index') }}"> <i class="fas fa-fw fa-laptop"></i> Mulai Rekomendasi </a>
+            <a class="btn btn-success" href="{{ route('user.bobot.ahp.create') }}"> <i class="fas fa-plus"></i> Buat Baru Pembobotan Kriteria Menggunakan Metode AHP</a>
         </div>
     </div>
 </div>
@@ -71,7 +71,7 @@
 
     @if ( $ahp->is_created_by_admin ) <label class="badge badge-pill badge-info"> Dibuat Admin </label>
     @else 
-        @if ( $ahp->creator_id === $this_user->id )
+        @if ( $ahp->creator_id === auth()->user()->id )
             <label class="badge badge-pill badge-success"> Dibuat oleh Anda</label>
         @else
             <label class="badge badge-pill badge-success"> Dibuat User</label>
@@ -89,7 +89,7 @@
 
     
     
-    @if ( $this_user->id_perhitungan_aktif === $ahp->id_perhitungan ) <label class="badge badge-pill badge-success"> <i class="far fa-fw fa-check-circle"></i> Bobot Aktif Digunakan </label>
+    @if ( auth()->user()->id_perhitungan_aktif === $ahp->id_perhitungan ) <label class="badge badge-pill badge-primary"> <i class="far fa-fw fa-check-circle"></i> Bobot Kriteria Aktif Digunakan </label>
     @endif 
 
     </td>
@@ -118,14 +118,14 @@
 
     @if (!($this_user->id_perhitungan_aktif === $ahp->id_perhitungan) && $ahp->is_konsisten)
         {!! Form::open(['method' => 'post','route' => ['user.bobot.ahp.toggle', $ahp->id_perhitungan],'style'=>'display:inline']) !!}
-            {!! Form::submit('Set Aktif', ['class' => 'btn btn-warning']) !!}
+            {!! Form::submit('Set Aktif', ['class' => 'btn btn-success']) !!}
             {{-- {!! Form::button('<i class="fas fa-user-times"></i>Delete', ['class' => 'btn btn-danger', 'type' => 'submit']) !!} --}}
         {!! Form::close() !!}
     @else
         @if ($this_user->id_perhitungan_aktif === $ahp->id_perhitungan)
             
         @else
-            <a class="btn btn-warning disabled">Set Aktif</a>
+            <a class="btn btn-success disabled">Set Aktif</a>
         @endif
         
     @endif

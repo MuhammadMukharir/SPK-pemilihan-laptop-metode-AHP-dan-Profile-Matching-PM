@@ -9,7 +9,7 @@
     </div>
     @endif
 
-    @if ($message = Session::get('success'))
+    @if ($message = Session::pull('success'))
 
     <div class="alert alert-success alert-block">
 

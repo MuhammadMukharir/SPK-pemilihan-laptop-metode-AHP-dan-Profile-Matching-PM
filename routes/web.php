@@ -85,6 +85,7 @@ Route::group(['middleware' => ['auth']], function() {
         Route::get('laptop/rekomendasi/usepreset/{presetpreference}', [RekomendasiController::class, 'index'])->name('rekomendasi.preset.use');
         Route::get('laptop/rekomendasi/hasil', [RekomendasiController::class, 'hasil_index'])->name('rekomendasi.hasil.index');
         Route::post('laptop/rekomendasi/hasil', [RekomendasiController::class, 'hasil'])->name('rekomendasi.hasil');
+        Route::get('laptop/rekomendasi/hasil/{laptop}', [RekomendasiController::class, 'product_detail'])->name('rekomendasi.hasil.product.detail');
         Route::get('laptop/rekomendasi/preset', [RekomendasiController::class, 'list'])->name('rekomendasi.list_preset');
         Route::get('laptop/rekomendasi/preset/{presetpreference}', [RekomendasiController::class, 'presetDetail'])->name('rekomendasi.preset.show');
 

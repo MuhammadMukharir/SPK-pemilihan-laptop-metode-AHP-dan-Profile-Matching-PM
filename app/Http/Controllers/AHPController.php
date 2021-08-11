@@ -534,13 +534,15 @@ class AHPController extends Controller
 
         if ($is_konsisten) {
             return redirect()->route('ahp.show', $ahp_obj->id_perhitungan)
-                        ->with('success','AHP calculation added successfully and consistent (CR value < 0,1).');
+                        ->with('success','Perhitungan AHP berhasil ditambahkan.
+                        Perbandingan berpasangan antar kriteria SUDAH konsisten karena nilai Consitency Ratio < 0,1');
         } elseif (!$is_konsisten) {
             return redirect()->route('ahp.show', $ahp_obj->id_perhitungan)
-                        ->with('danger','AHP calculation added successfully but not consistent (CR value >= 0,1).');
+                        ->with('error','Perhitungan AHP berhasil ditambahkan.
+                        Perbandingan berpasangan antar kriteria BELUM konsisten karena nilai Consitency Ratio >= 0,1');
         }else {
             return redirect()->route('ahp.show', $ahp_obj->id_perhitungan)
-                        ->with('danger','ooppss something wrong');
+                        ->with('error','ooppss something wrong');
         }
 
         // if ($is_konsisten) {
@@ -937,13 +939,15 @@ class AHPController extends Controller
 
         if ($is_konsisten) {
             return redirect()->route('ahp.show', $ahp_obj->id_perhitungan)
-                        ->with('success','AHP calculation added successfully and consistent (CR value < 0,1).');
+                        ->with('success','Perhitungan AHP berhasil diperbarui.
+                         Perbandingan berpasangan antar kriteria SUDAH konsisten karena nilai Consitency Ratio < 0,1');
         } elseif (!$is_konsisten) {
             return redirect()->route('ahp.show', $ahp_obj->id_perhitungan)
-                        ->with('danger','AHP calculation added successfully but not consistent (CR value >= 0,1).');
+                        ->with('error','Perhitungan AHP berhasil diperbarui.
+                        Perbandingan berpasangan antar kriteria BELUM konsisten karena nilai Consitency Ratio >= 0,1');
         }else {
             return redirect()->route('ahp.show', $ahp_obj->id_perhitungan)
-                        ->with('danger','ooppss something wrong');
+                        ->with('error','ooppss something wrong');
         }
 
     
@@ -965,7 +969,7 @@ class AHPController extends Controller
         // PerbandinganBerpasangan::where('id_perhitungan', $id_get_url)->delete();
     
         return redirect()->route('ahp.index')
-                        ->with('success','AHP calculation deleted successfully');
+                        ->with('success','Perhitungan AHP berhasil dihapus');
     }
 
     public function toggle($id_get_url)

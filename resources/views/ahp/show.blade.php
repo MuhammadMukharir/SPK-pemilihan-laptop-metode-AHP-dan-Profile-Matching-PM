@@ -121,51 +121,51 @@
                   <tr>
                     <td class="goCenter custColor">C1</td>
                     <td><strong> Harga laptop </strong></td>
-                    <td class="goCenter"> <strong> {{ number_format($bobot->c1,2,",",".") }} </strong> </td>
+                    <td class="goCenter"> <strong> {{ number_format($bobot->c1 * 100 ,0,",",".") . ' %' }} </strong> </td>
                   </tr><tr>
                     <td class="goCenter custColor">C2</td>
                     <td><strong> Prosesor </strong></td>
-                    <td class="goCenter"> <strong> {{ number_format($bobot->c2,2,",",".") }} </strong> </td>
+                    <td class="goCenter"> <strong> {{ number_format($bobot->c2 * 100 ,0,",",".") . ' %' }} </strong> </td>
                   </tr><tr>
                     <td class="goCenter custColor">C3</td>
                     <td><strong> Kapasitas RAM </strong></td>
-                    <td class="goCenter"> <strong> {{ number_format($bobot->c3,2,",",".") }} </strong> </td>
+                    <td class="goCenter"> <strong> {{ number_format($bobot->c3 * 100 ,0,",",".") . ' %' }} </strong> </td>
                   </tr><tr>
                     <td class="goCenter custColor">C4</td>
                     <td><strong> Kapasitas Harddisk </strong></td>
-                    <td class="goCenter"> <strong> {{ number_format($bobot->c4,2,",",".") }} </strong> </td>
+                    <td class="goCenter"> <strong> {{ number_format($bobot->c4 * 100 ,0,",",".") . ' %' }} </strong> </td>
                   </tr><tr>
                     <td class="goCenter custColor">C5</td>
                     <td><strong> Kapasitas SSD </strong></td>
-                    <td class="goCenter"> <strong> {{ number_format($bobot->c5,2,",",".") }} </strong> </td>
+                    <td class="goCenter"> <strong> {{ number_format($bobot->c5 * 100 ,0,",",".") . ' %' }} </strong> </td>
                   </tr><tr>
                     <td class="goCenter custColor">C6</td>
                     <td><strong> Kapasitas V-RAM </strong></td>
-                    <td class="goCenter"> <strong> {{ number_format($bobot->c6,2,",",".") }} </strong> </td>
+                    <td class="goCenter"> <strong> {{ number_format($bobot->c6 * 100 ,0,",",".") . ' %' }} </strong> </td>
                   </tr><tr>
                     <td class="goCenter custColor">C7</td>
                     <td><strong> Kapasitas maksimal upgrade RAM </strong></td>
-                    <td class="goCenter"> <strong> {{ number_format($bobot->c7,2,",",".") }} </strong> </td>
+                    <td class="goCenter"> <strong> {{ number_format($bobot->c7 * 100 ,0,",",".") . ' %' }} </strong> </td>
                   </tr><tr>
                     <td class="goCenter custColor">C8</td>
                     <td><strong> Berat laptop </strong></td>
-                    <td class="goCenter"> <strong> {{ number_format($bobot->c8,2,",",".") }} </strong> </td>
+                    <td class="goCenter"> <strong> {{ number_format($bobot->c8 * 100 ,0,",",".") . ' %' }} </strong> </td>
                   </tr><tr>
                     <td class="goCenter custColor">C9</td>
                     <td><strong> Ukuran layar </strong></td>
-                    <td class="goCenter"> <strong> {{ number_format($bobot->c9,2,",",".") }} </strong> </td>
+                    <td class="goCenter"> <strong> {{ number_format($bobot->c9 * 100 ,0,",",".") . ' %' }} </strong> </td>
                   </tr><tr>
                     <td class="goCenter custColor">C10</td>
                     <td><strong> Jenis layar </strong></td>
-                    <td class="goCenter"> <strong> {{ number_format($bobot->c10,2,",",".") }} </strong> </td>
+                    <td class="goCenter"> <strong> {{ number_format($bobot->c10 * 100 ,0,",",".") . ' %' }} </strong> </td>
                   </tr><tr>
                     <td class="goCenter custColor">C11</td>
                     <td><strong> Refresh rate layar </strong></td>
-                    <td class="goCenter"> <strong> {{ number_format($bobot->c11,2,",",".") }} </strong> </td>
+                    <td class="goCenter"> <strong> {{ number_format($bobot->c11 * 100 ,0,",",".") . ' %' }} </strong> </td>
                   </tr><tr>
                     <td class="goCenter custColor">C12</td>
                     <td><strong> Resolusi layar </strong></td>
-                    <td class="goCenter"> <strong> {{ number_format($bobot->c12,2,",",".") }} </strong> </td>
+                    <td class="goCenter"> <strong> {{ number_format($bobot->c12 * 100 ,0,",",".") . ' %' }} </strong> </td>
                   </tr>
                   
 
@@ -324,7 +324,7 @@
 
 
 
-<table class="table table-borderless table- table- cssTableCenter">
+<table class="table table-borderless table-sm table- cssTableCenter">
 <tr>
     <th>Kriteria</th>
     <th>C1</th>

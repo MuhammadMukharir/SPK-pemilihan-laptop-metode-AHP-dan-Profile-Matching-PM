@@ -72,7 +72,7 @@
         <div class="column">
         <div class="col-xs-11 col-sm-11 col-md-11">
             <div class="form-group">
-                <strong>Name:</strong>
+                <strong>Nama Produk:</strong>
                 <input type="text" name="name" class="form-control" placeholder="Name" required>
             </div>
         </div>
